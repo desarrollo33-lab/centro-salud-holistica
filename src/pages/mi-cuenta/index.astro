@@ -38,7 +38,7 @@ import Container from "../../components/ui/Container.astro";
       <div class="bg-white rounded-xl shadow-sm border border-neutral-200 p-8 mb-8">
         <div class="flex items-center justify-between mb-6">
           <div>
-            <h2 class="text-2xl font-bold text-neutral-900 font-heading">Tu Progreso</h2>
+            <h2 id="welcome-title" class="text-2xl font-bold text-neutral-900 font-heading">Tu Progreso</h2>
             <p id="progress-text" class="text-neutral-600">Cargando...</p>
           </div>
           <div class="text-right">
@@ -63,14 +63,8 @@ import Container from "../../components/ui/Container.astro";
   </Section>
 
   <script>
-    import PocketBase from 'pocketbase';
-    const pb = new PocketBase('http://64.176.16.231:8090');
+    const POCKETBASE_URL = 'http://64.176.16.231:8090';
     
-    // Redirect if not authenticated
-    if (!pb.authStore.isValid) {
-      window.location.href = '/auth/login/?redirect=/mi-cuenta/';
-    }
-
     const chapters = [
       { slug: 'palabras-del-autor', title: 'Palabras del Autor', num: 1, words: 922 },
       { slug: 'evolucion-cultural-vs-natural', title: 'Evolución Cultural vs Natural', num: 2, words: 4901 },
@@ -80,14 +74,42 @@ import Container from "../../components/ui/Container.astro";
       { slug: 'anexos-enfoque-holistico-por-edades', title: 'Anexos', num: 6, words: 5412 },
     ];
 
+    function getAuth() {
+      try {
+        const stored = localStorage.getItem('pb_auth');
+        return stored ? JSON.parse(stored) : null;
+      } catch { return null; }
+    }
+
+    function isAuthValid(auth: any): boolean {
+      if (!auth?.token) return false;
+      try {
+        const payload = JSON.parse(atob(auth.token.split('.')[1]));
+        return payload.exp * 1000 > Date.now();
+      } catch { return false; }
+    }
+
+    const auth = getAuth();
+    if (!auth || !isAuthValid(auth)) {
+      window.location.href = '/auth/login/?redirect=/mi-cuenta/';
+    }
+
     async function loadProgress() {
-      const user = pb.authStore.model;
+      const auth = getAuth();
+      if (!auth) return;
+      
+      const user = auth.model;
       if (user?.name) {
-        document.querySelector('h1')!.textContent = `Bienvenido, ${user.name}`;
+        document.getElementById('welcome-title')!.textContent = `Bienvenido, ${user.name}`;
       }
       
       try {
-        const progressRecords = await pb.collection('user_progress').getFullList();
+        const response = await fetch(`${POCKETBASE_URL}/api/collections/user_progress/records?perPage=100`, {
+          headers: { 'Authorization': auth.token }
+        });
+        const data = await response.json();
+        const progressRecords = data.items || [];
+        
         const progressMap = new Map(progressRecords.map((p: any) => [p.chapter_slug, p]));
         const completedCount = progressRecords.filter((p: any) => p.completed).length;
         const percent = Math.round((completedCount / chapters.length) * 100);
@@ -113,12 +135,12 @@ import Container from "../../components/ui/Container.astro";
         }).join('');
       } catch (err) {
         console.error(err);
-        document.getElementById('progress-text')!.textContent = 'Inicia sesión para ver tu progreso';
+        document.getElementById('progress-text')!.textContent = 'No se pudo cargar el progreso';
       }
     }
 
     document.getElementById('logout-btn')?.addEventListener('click', () => {
-      pb.authStore.clear();
+      localStorage.removeItem('pb_auth');
       window.location.href = '/';
     });
 

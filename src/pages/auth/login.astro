@@ -16,7 +16,7 @@ import Container from "../../components/ui/Container.astro";
           <p class="text-neutral-600">Accede a tu cuenta para continuar tu camino hacia la salud evolutiva</p>
         </div>
 
-        <div id="error" class="hidden bg-error-light border border-error text-error px-4 py-3 rounded-lg mb-6"></div>
+        <div id="error" class="hidden bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg mb-6"></div>
 
         <form id="login-form" class="bg-white rounded-xl shadow-sm border border-neutral-200 p-8">
           <div class="space-y-6">
@@ -47,27 +47,47 @@ import Container from "../../components/ui/Container.astro";
   </Section>
 
   <script>
-    import PocketBase from 'pocketbase';
     const form = document.getElementById('login-form');
     const errorDiv = document.getElementById('error');
     const submitBtn = document.getElementById('submit-btn');
 
     form?.addEventListener('submit', async (e) => {
       e.preventDefault();
-      const email = (document.getElementById('email') as HTMLInputElement).value;
-      const password = (document.getElementById('password') as HTMLInputElement).value;
+      const emailInput = document.getElementById('email') as HTMLInputElement;
+      const passwordInput = document.getElementById('password') as HTMLInputElement;
+      const email = emailInput.value;
+      const password = passwordInput.value;
+      
       if (submitBtn) submitBtn.textContent = 'Cargando...';
-      if (errorDiv) errorDiv.classList.add('hidden');
+      if (submitBtn) submitBtn.setAttribute('disabled', 'true');
+      if (errorDiv) { errorDiv.classList.add('hidden'); errorDiv.textContent = ''; }
 
       try {
-        const pb = new PocketBase('http://64.176.16.231:8090');
-        await pb.collection('users').authWithPassword(email, password);
+        const response = await fetch('http://64.176.16.231:8090/api/collections/users/auth-with-password', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ identity: email, password })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.message || 'Error al iniciar sesión');
+        }
+
+        // Store auth data
+        localStorage.setItem('pb_auth', JSON.stringify({
+          token: data.token,
+          model: data.record
+        }));
+
         const params = new URLSearchParams(window.location.search);
         const redirect = params.get('redirect') || '/mi-cuenta/';
         window.location.href = redirect;
-      } catch (err) {
-        if (errorDiv) { errorDiv.textContent = 'Credenciales inválidas. Verifica tu email y contraseña.'; errorDiv.classList.remove('hidden'); }
-        if (submitBtn) submitBtn.textContent = 'Iniciar Sesión';
+      } catch (err: any) {
+        console.error('Login error:', err);
+        if (errorDiv) { errorDiv.textContent = err.message || 'Credenciales inválidas. Verifica tu email y contraseña.'; errorDiv.classList.remove('hidden'); }
+        if (submitBtn) { submitBtn.textContent = 'Iniciar Sesión'; submitBtn.removeAttribute('disabled'); }
       }
     });
   </script>
