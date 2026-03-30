@@ -1,62 +1,134 @@
 ---
 import Layout from '../../Layout.astro';
+import { getBlogPosts } from '../../lib/pocketbase';
+
+let posts = [];
+let error = null;
+
+try {
+  posts = await getBlogPosts();
+  console.log('Blog posts fetched:', posts.length);
+} catch (e) {
+  error = e.message;
+  console.error('Error fetching blog posts:', e.message);
+}
 ---
 
 <Layout title="Blog | Centro de Salud Holística">
   <main class="min-h-screen bg-gray-50">
+    {error && (
+      <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 m-4 rounded">
+        <p>Error: {error}</p>
+      </div>
+    )}
+    
+    <!-- Hero -->
     <section class="bg-emerald-900 text-white py-16">
       <div class="max-w-4xl mx-auto px-4">
         <h1 class="text-4xl font-serif mb-4">Blog de Salud Evolutiva</h1>
-        <p class="text-emerald-200 text-lg">Artículos del Dr. Ipinza y contenido sobre odontología holística y bienestar.</p>
+        <p class="text-emerald-200 text-lg max-w-2xl">
+          Artículos del Dr. Ipinza y contenido automatizado sobre odontología holística, 
+          nutrición evolutiva y bienestar general.
+        </p>
       </div>
     </section>
 
-    <section class="py-12">
+    <!-- Filter Tabs -->
+    <section class="bg-white border-b border-gray-200 sticky top-16 z-40">
       <div class="max-w-4xl mx-auto px-4">
-        <div id="posts-grid" class="grid md:grid-cols-2 gap-8">
-          <div class="col-span-2 text-center py-12">
-            <div class="text-5xl mb-4">📝</div>
-            <h3 class="text-xl font-serif text-gray-900 mb-2">Próximamente</h3>
-            <p class="text-gray-600">Estamos preparando contenido nuevo para ti.</p>
-          </div>
+        <div class="flex gap-6 py-4 overflow-x-auto">
+          <a href="/blog" class="text-sm font-medium text-emerald-700 border-b-2 border-emerald-700 pb-3 whitespace-nowrap">
+            Todos
+          </a>
+          <a href="/blog/?topic=nutricion" class="text-sm font-medium text-gray-600 hover:text-emerald-700 pb-3 whitespace-nowrap">
+            Nutrición
+          </a>
+          <a href="/blog/?topic=prevencion" class="text-sm font-medium text-gray-600 hover:text-emerald-700 pb-3 whitespace-nowrap">
+            Prevención
+          </a>
+          <a href="/blog/?topic=tratamientos" class="text-sm font-medium text-gray-600 hover:text-emerald-700 pb-3 whitespace-nowrap">
+            Tratamientos
+          </a>
+          <a href="/blog/?topic=estilo-vida" class="text-sm font-medium text-gray-600 hover:text-emerald-700 pb-3 whitespace-nowrap">
+            Estilo de Vida
+          </a>
         </div>
       </div>
     </section>
 
+    <!-- Posts Grid -->
+    <section class="py-12">
+      <div class="max-w-4xl mx-auto px-4">
+        <div class="grid md:grid-cols-2 gap-8">
+          {posts.map((post) => (
+            <article class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition">
+              {post.cover_image && (
+                <div class="aspect-video bg-gray-200 overflow-hidden">
+                  <img 
+                    src={post.cover_image} 
+                    alt={post.title}
+                    class="w-full h-full object-cover"
+                  />
+                </div>
+              )}
+              <div class="p-6">
+                <div class="flex items-center gap-2 mb-3">
+                  <span class={`px-2 py-1 text-xs font-medium rounded ${
+                    post.author_type === 'doctor' 
+                      ? 'bg-emerald-100 text-emerald-700' 
+                      : 'bg-blue-100 text-blue-700'
+                  }`}>
+                    {post.author_type === 'doctor' ? 'Dr. Ipinza' : 'Automatizado'}
+                  </span>
+                  <span class="text-xs text-gray-500">
+                    {new Date(post.published_at).toLocaleDateString('es-CL', {
+                      year: 'numeric',
+                      month: 'long',
+                      day: 'numeric'
+                    })}
+                  </span>
+                </div>
+                <h2 class="text-xl font-serif text-gray-900 mb-2">{post.title}</h2>
+                <p class="text-gray-600 text-sm mb-4 line-clamp-3">{post.excerpt}</p>
+                <a 
+                  href={`/blog/${post.slug}/`}
+                  class="inline-flex items-center gap-2 text-emerald-700 font-medium hover:text-emerald-800"
+                >
+                  Leer más
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                  </svg>
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        {posts.length === 0 && !error && (
+          <div class="text-center py-12">
+            <div class="text-5xl mb-4">📝</div>
+            <h3 class="text-xl font-serif text-gray-900 mb-2">Próximamente</h3>
+            <p class="text-gray-600">Estamos preparando contenido nuevo para ti.</p>
+          </div>
+        )}
+      </div>
+    </section>
+
+    <!-- CTA -->
     <section class="bg-emerald-50 py-12">
       <div class="max-w-4xl mx-auto px-4 text-center">
         <h3 class="text-2xl font-serif text-gray-900 mb-4">¿Listo para empezar tu camino?</h3>
-        <p class="text-gray-600 mb-6">Crea tu cuenta gratuita y recibe un plan personalizado.</p>
-        <a href="/auth/registro/" class="inline-flex items-center gap-2 bg-emerald-700 text-white px-6 py-3 rounded-lg font-medium hover:bg-emerald-800">Crear Cuenta Gratis</a>
+        <p class="text-gray-600 mb-6">
+          Crea tu cuenta gratuita y recibe un plan de acción personalizado basado en el libro 
+          "Salud Evolutiva" del Dr. Ipinza.
+        </p>
+        <a 
+          href="/auth/registro/"
+          class="inline-flex items-center gap-2 bg-emerald-700 text-white px-6 py-3 rounded-lg font-medium hover:bg-emerald-800"
+        >
+          Crear Cuenta Gratis
+        </a>
       </div>
     </section>
   </main>
-
-  <script>
-    import PocketBase from 'pocketbase';
-    const pb = new PocketBase('http://64.176.16.231:8090');
-
-    async function loadPosts() {
-      try {
-        const records = await pb.collection('blog').getList(1, 10, { filter: 'status="published"', sort: '-published_at' });
-        const grid = document.getElementById('posts-grid');
-        if (!records.items.length || !grid) return;
-
-        grid.innerHTML = records.items.map((post: any) => `
-          <article class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition">
-            <div class="p-6">
-              <div class="flex items-center gap-2 mb-3">
-                <span class="px-2 py-1 text-xs font-medium rounded ${post.author_type === 'doctor' ? 'bg-emerald-100 text-emerald-700' : 'bg-blue-100 text-blue-700'}">${post.author_type === 'doctor' ? 'Dr. Ipinza' : 'Automatizado'}</span>
-                <span class="text-xs text-gray-500">${new Date(post.published_at).toLocaleDateString('es-CL')}</span>
-              </div>
-              <h2 class="text-xl font-serif text-gray-900 mb-2">${post.title}</h2>
-              <p class="text-gray-600 text-sm mb-4 line-clamp-3">${post.excerpt || ''}</p>
-              <a href="/blog/${post.slug}/" class="inline-flex items-center gap-2 text-emerald-700 font-medium hover:text-emerald-800">Leer más →</a>
-            </div>
-          </article>
-        `).join('');
-      } catch (err) { console.error(err); }
-    }
-    loadPosts();
-  </script>
 </Layout>

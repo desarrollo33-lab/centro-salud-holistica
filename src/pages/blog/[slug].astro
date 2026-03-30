@@ -1,0 +1,95 @@
+---
+import Layout from '../../Layout.astro';
+import PocketBase from 'pocketbase';
+
+export async function getStaticPaths() {
+  const pb = new PocketBase('http://64.176.16.231:8090');
+  
+  try {
+    const records = await pb.collection('blog').getList(1, 50, {
+      filter: 'status="published"',
+      sort: '-published_at'
+    });
+    
+    return records.items.map((post) => ({
+      params: { slug: post.slug },
+      props: { post }
+    }));
+  } catch (e) {
+    console.error('Error fetching blog posts:', e);
+    return [];
+  }
+}
+
+const { post } = Astro.props;
+---
+
+<Layout title={post ? `${post.title} | Blog` : 'Artículo no encontrado'} description={post?.excerpt}>
+  <main class="min-h-screen bg-gray-50">
+    {!post && (
+      <div class="min-h-screen flex items-center justify-center">
+        <div class="text-center">
+          <div class="text-6xl mb-4">📝</div>
+          <h1 class="text-2xl font-serif text-gray-900 mb-4">Artículo no encontrado</h1>
+          <a href="/blog/" class="text-emerald-700 hover:text-emerald-800">← Volver al blog</a>
+        </div>
+      </div>
+    )}
+
+    {post && (
+      <article>
+        <!-- Hero -->
+        <header class="bg-emerald-900 text-white py-16">
+          <div class="max-w-3xl mx-auto px-4">
+            <a href="/blog/" class="inline-flex items-center gap-2 text-emerald-200 hover:text-white mb-6 no-underline">
+              ← Volver al blog
+            </a>
+            <div class="flex items-center gap-3 mb-4">
+              <span class={`px-3 py-1 text-sm font-medium rounded ${
+                post.author_type === 'doctor' 
+                  ? 'bg-emerald-700 text-emerald-100' 
+                  : 'bg-blue-700 text-blue-100'
+              }`}>
+                {post.author_type === 'doctor' ? 'Dr. Ipinza' : 'Automatizado'}
+              </span>
+              <span class="text-sm text-emerald-200">
+                {new Date(post.published_at).toLocaleDateString('es-CL', {
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric'
+                })}
+              </span>
+            </div>
+            <h1 class="text-3xl sm:text-4xl font-serif mb-4">{post.title}</h1>
+            {post.excerpt && (
+              <p class="text-xl text-emerald-200">{post.excerpt}</p>
+            )}
+          </div>
+        </header>
+
+        <!-- Content -->
+        <div class="max-w-3xl mx-auto px-4 py-12">
+          <div class="bg-white rounded-xl shadow-lg p-8 md:p-12">
+            <div class="prose prose-lg max-w-none" set:html={
+              post.content_markdown
+                .replace(/## (.+)/g, '<h2>$1</h2>')
+                .replace(/### (.+)/g, '<h3>$1</h3>')
+                .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+                .replace(/\n\n/g, '</p><p>')
+                .replace(/\n/g, '<br>')
+            } />
+          </div>
+
+          <!-- CTA -->
+          <div class="mt-12 bg-emerald-50 rounded-xl p-8 text-center">
+            <h3 class="text-2xl font-serif text-gray-900 mb-4">¿Quieres un plan personalizado?</h3>
+            <p class="text-gray-600 mb-6">Completa nuestro cuestionario y recibe recomendaciones basadas en tu perfil.</p>
+            <a href="/auth/registro/" class="inline-flex items-center gap-2 bg-emerald-700 text-white px-6 py-3 rounded-lg font-medium hover:bg-emerald-800 no-underline">
+              Crear Mi Plan Gratis →
+            </a>
+          </div>
+        </div>
+      </article>
+    )}
+  </main>
+</Layout>
