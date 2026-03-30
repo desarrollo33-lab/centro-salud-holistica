@@ -1,19 +1,29 @@
 ---
-import Layout from '../../Layout.astro';
-import PlanAccionApp from '../../components/PlanAccion';
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import HeroInner from "../../components/sections/HeroInner.astro";
+import Section from "../../components/ui/Section.astro";
+import Container from "../../components/ui/Container.astro";
+import PlanAccionApp from "../../components/PlanAccion";
 ---
 
-<Layout title="Plan de Acción Personalizado | Centro de Salud Holística">
-  <main class="min-h-screen bg-gray-50 py-12">
-    <div class="max-w-3xl mx-auto px-4">
-      <div class="text-center mb-8">
-        <h1 class="text-3xl font-serif text-gray-900 mb-2">Plan de Acción Personalizado</h1>
-        <p class="text-gray-600">Completa el cuestionario para recibir recomendaciones basadas en tu perfil</p>
-      </div>
+<BaseLayout title="Plan de Acción Personalizado | Centro de Salud Holística" description="Completa el cuestionario para recibir recomendaciones basadas en tu perfil.">
+  <HeroInner
+    title="Plan de Acción Personalizado"
+    subtitle="Completa el cuestionario para recibir recomendaciones basadas en tu perfil"
+    breadcrumbs={[
+      { label: "Inicio", href: "/" },
+      { label: "Mi Cuenta", href: "/mi-cuenta" },
+      { label: "Plan de Acción", href: "/plan-accion" },
+    ]}
+  />
 
-      <div class="bg-white rounded-xl shadow-lg p-8">
-        <PlanAccionApp client:load />
+  <Section>
+    <Container>
+      <div class="max-w-2xl mx-auto">
+        <div class="bg-white rounded-xl shadow-sm border border-neutral-200 p-8">
+          <PlanAccionApp client:load />
+        </div>
       </div>
-    </div>
-  </main>
-</Layout>
+    </Container>
+  </Section>
+</BaseLayout>

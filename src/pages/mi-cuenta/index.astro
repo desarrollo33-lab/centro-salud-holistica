@@ -1,62 +1,75 @@
 ---
-import Layout from '../../Layout.astro';
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import HeroInner from "../../components/sections/HeroInner.astro";
+import Section from "../../components/ui/Section.astro";
+import Container from "../../components/ui/Container.astro";
 ---
 
-<Layout title="Mi Cuenta | Centro de Salud Holística">
-  <main class="min-h-screen bg-gray-50 py-12">
-    <div class="max-w-4xl mx-auto px-4">
-      <div class="flex justify-between items-center mb-8">
-        <div>
-          <h1 id="welcome-title" class="text-3xl font-serif text-gray-900 mb-2">Bienvenido</h1>
-          <p class="text-gray-600">Tu progreso en el libro "Salud Evolutiva"</p>
-        </div>
-        <button id="logout-btn" class="text-gray-600 hover:text-gray-900 px-4 py-2 border border-gray-300 rounded-lg">Cerrar Sesión</button>
-      </div>
+<BaseLayout title="Mi Cuenta | Centro de Salud Holística" description="Tu cuenta y progreso en el Centro de Salud Holística.">
+  <HeroInner
+    title="Mi Cuenta"
+    subtitle="Tu progreso en el libro 'Salud Evolutiva' y plan de acción personalizado."
+    breadcrumbs={[
+      { label: "Inicio", href: "/" },
+      { label: "Mi Cuenta", href: "/mi-cuenta" },
+    ]}
+  />
 
-      <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
-        <div class="flex items-center justify-between mb-6">
-          <div>
-            <h2 class="text-2xl font-serif text-gray-900">Tu Progreso</h2>
-            <p id="progress-text" class="text-gray-600">0 de 7 capítulos completados</p>
-          </div>
-          <div class="text-right">
-            <span id="progress-percent" class="text-4xl font-bold text-teal-700">0%</span>
-          </div>
-        </div>
-        <div class="w-full bg-gray-200 rounded-full h-4">
-          <div id="progress-bar" class="bg-teal-600 h-4 rounded-full transition-all" style="width: 0%"></div>
-        </div>
-      </div>
-
+  <Section>
+    <Container>
       <div class="grid md:grid-cols-3 gap-6 mb-8">
-        <a href="/plan-accion/" class="bg-teal-700 text-white rounded-xl p-6 hover:bg-teal-800 transition">
+        <a href="/plan-accion/" class="group bg-primary-600 text-white rounded-xl p-6 hover:bg-primary-700 transition-colors">
           <div class="text-3xl mb-3">📋</div>
           <h3 class="font-semibold text-lg mb-2">Mi Plan de Acción</h3>
-          <p class="text-teal-100 text-sm">Continuar con tu plan</p>
+          <p class="text-primary-100 text-sm">Continuar con tu plan personalizado</p>
         </a>
-        <a href="/libro/" class="bg-white text-gray-900 rounded-xl p-6 hover:shadow-lg transition border border-gray-200">
+        <a href="/libro/" class="group bg-white rounded-xl p-6 border border-neutral-200 hover:border-primary-300 hover:shadow-md transition-all">
           <div class="text-3xl mb-3">📚</div>
-          <h3 class="font-semibold text-lg mb-2">Continuar Leyendo</h3>
-          <p class="text-gray-600 text-sm">Avanza en tu lectura</p>
+          <h3 class="font-semibold text-lg text-neutral-900 mb-2">Continuar Leyendo</h3>
+          <p class="text-neutral-500 text-sm">Avanza en tu lectura del libro</p>
         </a>
-        <a href="/recursos/" class="bg-white text-gray-900 rounded-xl p-6 hover:shadow-lg transition border border-gray-200">
+        <a href="/recursos/" class="group bg-white rounded-xl p-6 border border-neutral-200 hover:border-primary-300 hover:shadow-md transition-all">
           <div class="text-3xl mb-3">✅</div>
-          <h3 class="font-semibold text-lg mb-2">Herramientas</h3>
-          <p class="text-gray-600 text-sm">Checklists y guías</p>
+          <h3 class="font-semibold text-lg text-neutral-900 mb-2">Herramientas</h3>
+          <p class="text-neutral-500 text-sm">Checklists y guías prácticas</p>
         </a>
       </div>
 
-      <div class="bg-white rounded-xl shadow-lg p-8">
-        <h2 class="text-2xl font-serif text-gray-900 mb-6">Progreso por Capítulo</h2>
-        <div id="chapters-list" class="space-y-4"></div>
+      <div class="bg-white rounded-xl shadow-sm border border-neutral-200 p-8 mb-8">
+        <div class="flex items-center justify-between mb-6">
+          <div>
+            <h2 class="text-2xl font-bold text-neutral-900 font-heading">Tu Progreso</h2>
+            <p id="progress-text" class="text-neutral-600">Cargando...</p>
+          </div>
+          <div class="text-right">
+            <span id="progress-percent" class="text-4xl font-bold text-primary-600">0%</span>
+          </div>
+        </div>
+        <div class="w-full bg-neutral-100 rounded-full h-4 mb-6">
+          <div id="progress-bar" class="bg-primary-600 h-4 rounded-full transition-all" style="width: 0%"></div>
+        </div>
+        <div id="chapters-list" class="space-y-3"></div>
       </div>
-    </div>
-  </main>
+
+      <div class="text-center">
+        <button id="logout-btn" class="inline-flex items-center gap-2 px-6 py-3 border border-neutral-300 text-neutral-700 rounded-lg hover:bg-neutral-50 transition-colors">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
+          </svg>
+          Cerrar Sesión
+        </button>
+      </div>
+    </Container>
+  </Section>
 
   <script>
     import PocketBase from 'pocketbase';
     const pb = new PocketBase('http://64.176.16.231:8090');
-    if (!pb.authStore.isValid) { window.location.href = '/auth/login/?redirect=/mi-cuenta/'; }
+    
+    // Redirect if not authenticated
+    if (!pb.authStore.isValid) {
+      window.location.href = '/auth/login/?redirect=/mi-cuenta/';
+    }
 
     const chapters = [
       { slug: 'palabras-del-autor', title: 'Palabras del Autor', num: 1, words: 922 },
@@ -69,13 +82,17 @@ import Layout from '../../Layout.astro';
 
     async function loadProgress() {
       const user = pb.authStore.model;
-      if (user?.name) { document.getElementById('welcome-title')!.textContent = `Bienvenido, ${user.name}`; }
+      if (user?.name) {
+        document.querySelector('h1')!.textContent = `Bienvenido, ${user.name}`;
+      }
+      
       try {
         const progressRecords = await pb.collection('user_progress').getFullList();
         const progressMap = new Map(progressRecords.map((p: any) => [p.chapter_slug, p]));
         const completedCount = progressRecords.filter((p: any) => p.completed).length;
         const percent = Math.round((completedCount / chapters.length) * 100);
-        document.getElementById('progress-text')!.textContent = `${completedCount} de ${chapters.length} capítulos`;
+        
+        document.getElementById('progress-text')!.textContent = `${completedCount} de ${chapters.length} capítulos completados`;
         document.getElementById('progress-percent')!.textContent = `${percent}%`;
         document.getElementById('progress-bar')!.style.width = `${percent}%`;
 
@@ -83,18 +100,28 @@ import Layout from '../../Layout.astro';
         list.innerHTML = chapters.map(ch => {
           const prog = progressMap.get(ch.slug);
           const done = prog?.completed;
-          return `<div class="flex items-center justify-between p-4 rounded-lg border border-gray-200 hover:border-teal-300">
+          return `<div class="flex items-center justify-between p-4 rounded-lg border border-neutral-200 hover:border-primary-300 transition-colors">
             <div class="flex items-center gap-4">
-              <div class="w-8 h-8 rounded-full flex items-center justify-center ${done ? 'bg-teal-600 text-white' : 'bg-gray-200 text-gray-600'}">${done ? '✓' : ch.num}</div>
-              <div><h3 class="font-medium text-gray-900">${ch.title}</h3><p class="text-sm text-gray-500">${ch.words} palabras</p></div>
+              <div class="w-8 h-8 rounded-full flex items-center justify-center ${done ? 'bg-primary-600 text-white' : 'bg-neutral-100 text-neutral-600'}">${done ? '✓' : ch.num}</div>
+              <div>
+                <h3 class="font-medium text-neutral-900">${ch.title}</h3>
+                <p class="text-sm text-neutral-500">${ch.words.toLocaleString()} palabras</p>
+              </div>
             </div>
-            <a href="/libro/${ch.slug}/" class="px-4 py-2 bg-teal-50 text-teal-700 rounded-lg hover:bg-teal-100 text-sm">${done ? 'Revisar' : 'Leer'}</a>
+            <a href="/libro/${ch.slug}/" class="px-4 py-2 bg-primary-50 text-primary-700 rounded-lg hover:bg-primary-100 text-sm font-medium transition-colors">${done ? 'Revisar' : 'Leer'}</a>
           </div>`;
         }).join('');
-      } catch (err) { console.error(err); }
+      } catch (err) {
+        console.error(err);
+        document.getElementById('progress-text')!.textContent = 'Inicia sesión para ver tu progreso';
+      }
     }
 
-    document.getElementById('logout-btn')?.addEventListener('click', () => { pb.authStore.clear(); window.location.href = '/'; });
+    document.getElementById('logout-btn')?.addEventListener('click', () => {
+      pb.authStore.clear();
+      window.location.href = '/';
+    });
+
     loadProgress();
   </script>
-</Layout>
+</BaseLayout>
