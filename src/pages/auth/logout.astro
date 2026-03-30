@@ -16,9 +16,7 @@ import Container from "../../components/ui/Container.astro";
   </Section>
 
   <script>
-    import PocketBase from 'pocketbase';
-    const pb = new PocketBase('http://64.176.16.231:8090');
-    pb.authStore.clear();
+    localStorage.removeItem('pb_auth');
     window.location.href = '/';
   </script>
 </BaseLayout>

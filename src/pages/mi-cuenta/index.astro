@@ -63,8 +63,6 @@ import Container from "../../components/ui/Container.astro";
   </Section>
 
   <script>
-    const POCKETBASE_URL = 'http://64.176.16.231:8090';
-    
     const chapters = [
       { slug: 'palabras-del-autor', title: 'Palabras del Autor', num: 1, words: 922 },
       { slug: 'evolucion-cultural-vs-natural', title: 'Evolución Cultural vs Natural', num: 2, words: 4901 },
@@ -94,7 +92,7 @@ import Container from "../../components/ui/Container.astro";
       window.location.href = '/auth/login/?redirect=/mi-cuenta/';
     }
 
-    async function loadProgress() {
+    async function checkAuthAndLoadProgress() {
       const auth = getAuth();
       if (!auth) return;
       
@@ -104,39 +102,48 @@ import Container from "../../components/ui/Container.astro";
       }
       
       try {
-        const response = await fetch(`${POCKETBASE_URL}/api/collections/user_progress/records?perPage=100`, {
+        const response = await fetch('/api/progress', {
           headers: { 'Authorization': auth.token }
         });
+        
+        if (!response.ok) {
+          throw new Error('No se pudo cargar el progreso');
+        }
+        
         const data = await response.json();
         const progressRecords = data.items || [];
         
-        const progressMap = new Map(progressRecords.map((p: any) => [p.chapter_slug, p]));
-        const completedCount = progressRecords.filter((p: any) => p.completed).length;
-        const percent = Math.round((completedCount / chapters.length) * 100);
-        
-        document.getElementById('progress-text')!.textContent = `${completedCount} de ${chapters.length} capítulos completados`;
-        document.getElementById('progress-percent')!.textContent = `${percent}%`;
-        document.getElementById('progress-bar')!.style.width = `${percent}%`;
-
-        const list = document.getElementById('chapters-list')!;
-        list.innerHTML = chapters.map(ch => {
-          const prog = progressMap.get(ch.slug);
-          const done = prog?.completed;
-          return `<div class="flex items-center justify-between p-4 rounded-lg border border-neutral-200 hover:border-primary-300 transition-colors">
-            <div class="flex items-center gap-4">
-              <div class="w-8 h-8 rounded-full flex items-center justify-center ${done ? 'bg-primary-600 text-white' : 'bg-neutral-100 text-neutral-600'}">${done ? '✓' : ch.num}</div>
-              <div>
-                <h3 class="font-medium text-neutral-900">${ch.title}</h3>
-                <p class="text-sm text-neutral-500">${ch.words.toLocaleString()} palabras</p>
-              </div>
-            </div>
-            <a href="/libro/${ch.slug}/" class="px-4 py-2 bg-primary-50 text-primary-700 rounded-lg hover:bg-primary-100 text-sm font-medium transition-colors">${done ? 'Revisar' : 'Leer'}</a>
-          </div>`;
-        }).join('');
+        displayProgress(progressRecords);
       } catch (err) {
         console.error(err);
         document.getElementById('progress-text')!.textContent = 'No se pudo cargar el progreso';
       }
+    }
+
+    function displayProgress(progressRecords) {
+      const progressMap = new Map(progressRecords.map((p: any) => [p.chapter_slug, p]));
+      const completedCount = progressRecords.filter((p: any) => p.completed).length;
+      const percent = Math.round((completedCount / chapters.length) * 100);
+      
+      document.getElementById('progress-text')!.textContent = `${completedCount} de ${chapters.length} capítulos completados`;
+      document.getElementById('progress-percent')!.textContent = `${percent}%`;
+      document.getElementById('progress-bar')!.style.width = `${percent}%`;
+
+      const list = document.getElementById('chapters-list')!;
+      list.innerHTML = chapters.map(ch => {
+        const prog = progressMap.get(ch.slug);
+        const done = prog?.completed;
+        return `<div class="flex items-center justify-between p-4 rounded-lg border border-neutral-200 hover:border-primary-300 transition-colors">
+          <div class="flex items-center gap-4">
+            <div class="w-8 h-8 rounded-full flex items-center justify-center ${done ? 'bg-primary-600 text-white' : 'bg-neutral-100 text-neutral-600'}">${done ? '✓' : ch.num}</div>
+            <div>
+              <h3 class="font-medium text-neutral-900">${ch.title}</h3>
+              <p class="text-sm text-neutral-500">${ch.words.toLocaleString()} palabras</p>
+            </div>
+          </div>
+          <a href="/libro/${ch.slug}/" class="px-4 py-2 bg-primary-50 text-primary-700 rounded-lg hover:bg-primary-100 text-sm font-medium transition-colors">${done ? 'Revisar' : 'Leer'}</a>
+        </div>`;
+      }).join('');
     }
 
     document.getElementById('logout-btn')?.addEventListener('click', () => {
@@ -144,6 +151,6 @@ import Container from "../../components/ui/Container.astro";
       window.location.href = '/';
     });
 
-    loadProgress();
+    checkAuthAndLoadProgress();
   </script>
 </BaseLayout>

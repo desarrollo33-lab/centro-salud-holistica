@@ -72,8 +72,7 @@ import Container from "../../components/ui/Container.astro";
       const password = (document.getElementById('password') as HTMLInputElement).value;
       const passwordConfirm = (document.getElementById('passwordConfirm') as HTMLInputElement).value;
       
-      if (submitBtn) submitBtn.textContent = 'Creando cuenta...';
-      if (submitBtn) submitBtn.setAttribute('disabled', 'true');
+      if (submitBtn) { submitBtn.textContent = 'Creando cuenta...'; submitBtn.setAttribute('disabled', 'true'); }
       if (errorDiv) { errorDiv.classList.add('hidden'); errorDiv.textContent = ''; }
       if (successDiv) { successDiv.classList.add('hidden'); successDiv.textContent = ''; }
 
@@ -84,35 +83,21 @@ import Container from "../../components/ui/Container.astro";
       }
 
       try {
-        // Create user
-        const createResponse = await fetch('http://64.176.16.231:8090/api/collections/users/records', {
+        const response = await fetch('/api/auth/register', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ email, password, passwordConfirm, name })
         });
 
-        const createData = await createResponse.json();
+        const data = await response.json();
 
-        if (!createResponse.ok) {
-          throw new Error(createData.message || createData.data?.email?.message || 'No se pudo crear la cuenta.');
-        }
-
-        // Auto login after registration
-        const loginResponse = await fetch('http://64.176.16.231:8090/api/collections/users/auth-with-password', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ identity: email, password })
-        });
-
-        const loginData = await loginResponse.json();
-
-        if (!loginResponse.ok) {
-          throw new Error('Cuenta creada pero no se pudo iniciar sesión. Por favor inicia sesión manualmente.');
+        if (!response.ok) {
+          throw new Error(data.error || 'No se pudo crear la cuenta.');
         }
 
         localStorage.setItem('pb_auth', JSON.stringify({
-          token: loginData.token,
-          model: loginData.record
+          token: data.token,
+          model: data.user
         }));
 
         if (successDiv) { successDiv.textContent = '¡Cuenta creada! Redirigiendo...'; successDiv.classList.remove('hidden'); }
