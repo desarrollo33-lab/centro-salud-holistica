@@ -1,0 +1,18 @@
+---
+interface Props {
+  class?: string;
+  id?: string;
+  bg?: "default" | "white" | "primary" | "secondary" | "dark";
+}
+const { class: className = "", id, bg = "default" } = Astro.props;
+const bgs: Record<string, string> = {
+  default: "bg-neutral-50",
+  white: "bg-white",
+  primary: "bg-primary-600 text-white",
+  secondary: "bg-secondary-50",
+  dark: "bg-neutral-900 text-white",
+};
+---
+<section id={id} class:list={["py-16 md:py-20 lg:py-24", bgs[bg], className]}>
+  <slot />
+</section>

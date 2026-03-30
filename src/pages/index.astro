@@ -1,0 +1,165 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import HeroHome from "../components/sections/HeroHome.astro";
+import Section from "../components/ui/Section.astro";
+import Container from "../components/ui/Container.astro";
+import ServiceGrid from "../components/sections/ServiceGrid.astro";
+import Testimonials from "../components/sections/Testimonials.astro";
+import CTASection from "../components/sections/CTASection.astro";
+import Badge from "../components/ui/Badge.astro";
+import { services, siteConfig } from "../data/site";
+
+const featuredServices = services.slice(0, 6);
+
+const testimonials = [
+  { quote: "Nunca había ido al dentista sin sentir miedo. El Dr. Ipinza me explicó todo con una paciencia increíble. La eliminación de amalgamas fue mucho más tranquila de lo que esperaba.", author: "María José R.", location: "Las Condes, Santiago" },
+  { quote: "Después de años con problemas de ATM, por fin encontré un enfoque integral. No solo me trataron la mandíbula, sino que entendieron que mi problema venía de más abajo.", author: "Andrés L.", location: "Providencia, Santiago" },
+  { quote: "Los implantes cerámicos fueron la mejor decisión. Aucune sensibilité, et le résultat est parfaitement naturel. Je recommande à 100%.", author: "Catherine D.", location: "Francia (paciente internacional)" },
+];
+---
+
+<BaseLayout
+  title="Centro de Salud Holística Dr. Ipinza | Odontología Biológica en Santiago"
+  description="Centro de odontología holística y biológica en Santiago. Eliminación de amalgamas con Protocolo IAOMT, implantes cerámicos sin titanio, odontología biomimética y más. Los Dominicos, Las Condes."
+>
+  <HeroHome />
+
+  <!-- USP Badges -->
+  <Section bg="white">
+    <Container>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+        {siteConfig.usps.map((usp) => (
+          <div class="text-center">
+            <div class="w-14 h-14 mx-auto rounded-full bg-primary-50 flex items-center justify-center mb-3">
+              <svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            </div>
+            <h3 class="font-semibold text-neutral-900 font-heading text-sm">{usp.title}</h3>
+            <p class="mt-1 text-xs text-neutral-500 leading-relaxed">{usp.description}</p>
+          </div>
+        ))}
+      </div>
+    </Container>
+  </Section>
+
+  <!-- Services -->
+  <Section>
+    <Container>
+      <ServiceGrid services={featuredServices} />
+      <div class="text-center mt-10">
+        <a href="/servicios" class="inline-flex items-center gap-2 text-primary-600 font-semibold hover:text-primary-800 no-underline">
+          Ver todos los servicios ({services.length})
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </Container>
+  </Section>
+
+  <!-- About Doctor Teaser -->
+  <Section bg="white">
+    <Container>
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <Badge variant="secondary">👨‍⚕️ El Doctor</Badge>
+          <h2 class="font-heading font-bold text-3xl text-neutral-900 mt-4 mb-4">
+            {siteConfig.doctor}
+          </h2>
+          <p class="text-neutral-600 leading-relaxed mb-6">
+            Cirujano dentista de la Universidad de Chile, con especialización en Periodoncia e Implantología. Formación adicional en Loma Linda University, California. Su enfoque holístico integra nutrición, acupuntura y ozonoterapia con la odontología.
+          </p>
+          <div class="flex flex-wrap gap-2 mb-8">
+            {siteConfig.certifications.slice(0,3).map((cert) => (
+              <Badge variant="neutral">{cert}</Badge>
+            ))}
+          </div>
+          <a href="/sobre" class="inline-flex items-center gap-2 text-primary-600 font-semibold hover:text-primary-800 no-underline">
+            Conoce más sobre el doctor →
+          </a>
+        </div>
+        <div class="bg-gradient-to-br from-primary-100 to-secondary-50 rounded-3xl aspect-square flex items-center justify-center">
+          <div class="text-center">
+            <div class="w-32 h-32 bg-primary-200 rounded-full mx-auto mb-4 flex items-center justify-center text-6xl">👨‍⚕️</div>
+            <p class="text-primary-700 text-sm font-medium">Foto profesional<br />por confirmar</p>
+          </div>
+        </div>
+      </div>
+    </Container>
+  </Section>
+
+  <!-- Book Section -->
+  <Section bg="secondary">
+    <Container>
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <Badge variant="secondary">📖 Contenido educativo gratuito</Badge>
+          <h2 class="font-heading font-bold text-3xl text-neutral-900 mt-4 mb-4">
+            {siteConfig.bookTitle}: el libro que cambia perspectiva
+          </h2>
+          <p class="text-neutral-600 leading-relaxed mb-6">
+            {siteConfig.bookDescription} Escrito para que cualquier persona lo entienda, sin ser odontólogo.
+          </p>
+          <ul class="space-y-2 mb-8">
+            <li class="flex items-center gap-2 text-sm text-neutral-600">
+              <svg class="w-4 h-4 text-success shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              Gratuito para leer online, completo y sin registro
+            </li>
+            <li class="flex items-center gap-2 text-sm text-neutral-600">
+              <svg class="w-4 h-4 text-success shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              5 capítulos sobre evolución, nutrición y salud bucal
+            </li>
+            <li class="flex items-center gap-2 text-sm text-neutral-600">
+              <svg class="w-4 h-4 text-success shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              Referencias científicas verificables
+            </li>
+          </ul>
+          <a href="/libro" class="inline-flex items-center gap-2 bg-primary-600 text-white font-semibold px-6 py-3 rounded-xl hover:bg-primary-700 transition-colors no-underline">
+            📖 Leer el libro completo →
+          </a>
+        </div>
+        <div class="bg-white rounded-2xl shadow-lg p-8 border border-neutral-200">
+          <div class="text-center">
+            <div class="w-28 h-40 bg-gradient-to-br from-primary-700 to-primary-600 rounded-xl mx-auto mb-6 flex flex-col items-center justify-center shadow-xl">
+              <span class="text-white text-xs font-bold leading-tight px-3">SALUD</span>
+              <span class="text-white text-2xl font-bold leading-tight mt-1">EVOLUTIVA</span>
+            </div>
+            <h3 class="font-heading font-bold text-lg text-neutral-900">{siteConfig.bookTitle}</h3>
+            <p class="text-sm text-neutral-500 mb-1">{siteConfig.doctor}</p>
+            <p class="text-xs text-neutral-400">129 páginas · 38,000 palabras · Gratuito</p>
+          </div>
+        </div>
+      </div>
+    </Container>
+  </Section>
+
+  <!-- Testimonials -->
+  <Section bg="white">
+    <Container>
+      <Testimonials testimonials={testimonials} />
+    </Container>
+  </Section>
+
+  <!-- Stats -->
+  <Section bg="primary">
+    <Container>
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+        <div>
+          <p class="text-4xl font-bold text-white font-heading">{siteConfig.stats.yearsOfExperience}+</p>
+          <p class="mt-1 text-white/70 text-sm">Años de experiencia</p>
+        </div>
+        <div>
+          <p class="text-4xl font-bold text-white font-heading">{siteConfig.stats.patientsTreated}</p>
+          <p class="mt-1 text-white/70 text-sm">Pacientes atendidos</p>
+        </div>
+        <div>
+          <p class="text-4xl font-bold text-white font-heading">{siteConfig.stats.treatmentsCompleted}+</p>
+          <p class="mt-1 text-white/70 text-sm">Tratamientos completados</p>
+        </div>
+        <div>
+          <p class="text-4xl font-bold text-white font-heading">{siteConfig.stats.certifications}</p>
+          <p class="mt-1 text-white/70 text-sm">Certificaciones</p>
+        </div>
+      </div>
+    </Container>
+  </Section>
+
+  <CTASection />
+</BaseLayout>

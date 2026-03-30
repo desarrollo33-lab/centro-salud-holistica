@@ -1,0 +1,29 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  ogImage?: string;
+  ogType?: string;
+  noindex?: boolean;
+}
+const { title, description, canonical = Astro.url.href, ogImage = "/images/og-default.jpg", ogType = "website", noindex = false } = Astro.props;
+import { siteConfig } from "../../data/site";
+const fullOgImage = ogImage.startsWith("http") ? ogImage : `${siteConfig.url}${ogImage}`;
+---
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+{noindex && <meta name="robots" content="noindex, nofollow" />}
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:type" content={ogType} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={fullOgImage} />
+<meta property="og:site_name" content={siteConfig.name} />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={fullOgImage} />
+<meta name="geo.region" content="CL-RM" />
+<meta name="geo.placename" content="Santiago" />

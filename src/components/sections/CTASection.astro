@@ -1,0 +1,31 @@
+---
+import Button from "../ui/Button.astro";
+import { siteConfig } from "../../data/site";
+
+interface Props {
+  heading?: string;
+  subtitle?: string;
+  showPhone?: boolean;
+}
+
+const {
+  heading = "¿Quieres empezar tu tratamiento?",
+  subtitle = "Agenda tu primera consulta. Sin compromiso. Te escuchamos, evaluamos y te presentamos las opciones antes de proponer cualquier tratamiento.",
+  showPhone = true,
+} = Astro.props;
+---
+
+<section class="bg-primary-600 py-16 md:py-20">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h2 class="text-3xl font-bold text-white font-heading">{heading}</h2>
+    <p class="mt-4 text-lg text-white/80 max-w-xl mx-auto">{subtitle}</p>
+    <div class="mt-8 flex flex-wrap justify-center gap-4">
+      <Button href="/contacto" variant="white" size="lg">Agendar mi consulta →</Button>
+      {showPhone && (
+        <Button href={`tel:${siteConfig.phoneTel}`} variant="outline" size="lg" class="border-white text-white hover:bg-white hover:text-primary-600">
+          Llamar {siteConfig.phone}
+        </Button>
+      )}
+    </div>
+  </div>
+</section>

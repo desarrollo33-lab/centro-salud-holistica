@@ -1,0 +1,28 @@
+---
+import TestimonialCard from "../cards/TestimonialCard.astro";
+
+interface Testimonial {
+  quote: string;
+  author: string;
+  location?: string;
+}
+
+interface Props {
+  testimonials: Testimonial[];
+  heading?: string;
+}
+const { testimonials, heading = "Lo que dicen nuestros pacientes" } = Astro.props;
+---
+
+<div>
+  {heading && (
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold text-neutral-900 font-heading">{heading}</h2>
+    </div>
+  )}
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    {testimonials.map((t) => (
+      <TestimonialCard quote={t.quote} author={t.author} location={t.location} />
+    ))}
+  </div>
+</div>

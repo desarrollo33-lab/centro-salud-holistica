@@ -1,0 +1,54 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Nuestra Clinica — Centro de Salud Holistica" description="Consultorio en Los Dominicos, Las Condes. Tecnologia de punta, bioseguridad certificada y un ambiente de calma para tu tratamiento.">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 py-14">
+    <nav class="text-sm text-neutral-500 mb-8 flex items-center gap-1.5">
+      <a href="/" class="hover:text-teal-700 no-underline text-neutral-500">Inicio</a>
+      <span class="text-neutral-300">›</span>
+      <span class="text-neutral-800 font-medium">Clinica</span>
+    </nav>
+
+    <h1 class="font-heading font-bold text-3xl sm:text-4xl text-neutral-900 mb-4">Nuestra Clinica</h1>
+    <p class="text-neutral-500 text-lg mb-12">Un espacio diseñado para que tu experiencia sea de calma, no de estres.</p>
+
+    <div class="grid gap-6 mb-12">
+      <div class="bg-gradient-to-br from-emerald-100 to-teal-50 rounded-2xl aspect-video flex items-center justify-center">
+        <div class="text-center">
+          <p class="text-emerald-700 font-medium">📷 Foto de la clinica</p>
+          <p class="text-emerald-600 text-sm">Por confirmar con sesion fotografica</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid sm:grid-cols-2 gap-6 mb-12">
+      <div class="bg-white rounded-xl border border-neutral-200 p-6">
+        <h2 class="font-heading font-semibold text-lg text-neutral-900 mb-3">📍 Ubicacion</h2>
+        <p class="text-neutral-600 text-sm leading-relaxed">Los Dominicos, Las Condes<br />Santiago, Chile<br /><br />A pasos del metro Los Dominicos (Linea 1)</p>
+      </div>
+      <div class="bg-white rounded-xl border border-neutral-200 p-6">
+        <h2 class="font-heading font-semibold text-lg text-neutral-900 mb-3">🕐 Horarios</h2>
+        <p class="text-neutral-600 text-sm leading-relaxed">
+          Lunes a Viernes: 9:00 — 18:00<br />
+          Sabado y Domingo: Cerrado<br /><br />
+          *Atencion con hora anticipada
+        </p>
+      </div>
+      <div class="bg-white rounded-xl border border-neutral-200 p-6">
+        <h2 class="font-heading font-semibold text-lg text-neutral-900 mb-3">🔬 Tecnologia</h2>
+        <p class="text-neutral-600 text-sm leading-relaxed">Rayos X digitales, tomografo 3D, escaneo intraoral, cirugia guiada por computadora, esterilizacion certificada.</p>
+      </div>
+      <div class="bg-white rounded-xl border border-neutral-200 p-6">
+        <h2 class="font-heading font-semibold text-lg text-neutral-900 mb-3">✅ Bioseguridad</h2>
+        <p class="text-neutral-600 text-sm leading-relaxed">Pabellon certificado, esterilizacion autoclave clase B, descontaminacion de aire, protocolos IAOMT para amalgamas.</p>
+      </div>
+    </div>
+
+    <div class="bg-gradient-to-r from-emerald-800 to-teal-700 rounded-2xl p-8 text-center">
+      <h2 class="font-heading font-bold text-xl text-white mb-3">Agenda tu visita</h2>
+      <p class="text-white/75 mb-6 text-sm">La primera consulta es una oportunidad para que nos conozcas y evaluemos tu situacion sin compromiso.</p>
+      <a href="/contacto" class="inline-flex items-center gap-2 bg-white text-emerald-800 font-bold px-8 py-3 rounded-xl hover:bg-teal-50 transition-colors no-underline">Solicitar hora →</a>
+    </div>
+  </div>
+</Layout>

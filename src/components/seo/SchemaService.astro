@@ -1,0 +1,23 @@
+---
+interface Props {
+  serviceName: string;
+  serviceDescription: string;
+  priceRange: string;
+}
+const { serviceName, serviceDescription, priceRange } = Astro.props;
+import { siteConfig } from "../../data/site";
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: serviceName,
+  provider: { "@type": "Dentist", name: siteConfig.name, url: siteConfig.url },
+  areaServed: { "@type": "Country", name: "Chile" },
+  description: serviceDescription,
+  offers: {
+    "@type": "Offer",
+    availability: "https://schema.org/InStock",
+    priceSpecification: { "@type": "PriceSpecification", priceCurrency: "CLP" },
+  },
+};
+---
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

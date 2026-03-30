@@ -1,0 +1,47 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const guides = await getCollection('guides');
+  return guides.map(g => ({ params: { slug: g.slug } }));
+}
+
+const { slug } = Astro.params;
+const guides = await getCollection('guides');
+const guide = guides.find(g => g.slug === slug);
+const { Content } = await guide.render();
+const { title, subtitle, topic, word_count } = guide.data;
+const readTime = Math.max(1, Math.round((word_count || 200) / 250));
+---
+
+<Layout title={title} description={guide.data.meta_description || subtitle}>
+  <article class="max-w-3xl mx-auto px-4 sm:px-6 py-10 md:py-14">
+    <nav class="text-sm text-neutral-500 mb-8 flex items-center gap-1.5 flex-wrap">
+      <a href="/" class="hover:text-primary-700 no-underline text-neutral-500">Inicio</a>
+      <span class="text-neutral-300">›</span>
+      <a href="/aprende" class="hover:text-primary-700 no-underline text-neutral-500">Guías</a>
+      <span class="text-neutral-300">›</span>
+      <span class="text-neutral-800 font-medium">{title}</span>
+    </nav>
+
+    <header class="mb-10">
+      {topic ? <span class="badge-guide text-xs">{topic.split(',')[0].trim()}</span> : null}
+      <h1 class="font-heading text-3xl md:text-4xl font-bold text-neutral-900 leading-tight mt-2">{title}</h1>
+      {subtitle ? <p class="text-lg text-neutral-600 mt-3">{subtitle}</p> : null}
+      <div class="flex items-center gap-3 mt-4 text-sm text-neutral-400">
+        <span>{word_count?.toLocaleString()} palabras</span>
+        <span>·</span>
+        <span>{readTime} min de lectura</span>
+      </div>
+    </header>
+
+    <div class="prose-evolutiva">
+      <Content />
+    </div>
+
+    <div class="mt-12 pt-8 border-t border-neutral-200">
+      <a href="/aprende" class="text-sm font-medium text-primary-700 hover:text-primary-800 no-underline">← Ver todas las guías</a>
+    </div>
+  </article>
+</Layout>

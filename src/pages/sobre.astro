@@ -1,0 +1,115 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import HeroInner from "../components/sections/HeroInner.astro";
+import Section from "../components/ui/Section.astro";
+import Container from "../components/ui/Container.astro";
+import CTASection from "../components/sections/CTASection.astro";
+import Badge from "../components/ui/Badge.astro";
+import { siteConfig } from "../data/site";
+---
+
+<BaseLayout
+  title="Dr. Joaquín Ipinza — Centro de Salud Holística"
+  description="Cirujano dentista, especialista en Periodoncia e Implantología. Formación en Universidad de Chile y Loma Linda University, California. Enfoque holístico integrando nutrición, acupuntura y odontología biológica."
+>
+  <HeroInner
+    title="Dr. Joaquín Ipinza Hofmann"
+    subtitle="Cirujano dentista con enfoque holístico e integral"
+    breadcrumbs={[{ label: "Inicio", href: "/" }, { label: "Doctor", href: "/sobre" }]}
+  />
+
+  <Section bg="white">
+    <Container>
+      <div class="grid md:grid-cols-2 gap-12 items-start">
+        <div>
+          <Badge variant="secondary">👨‍⚕️ El Doctor</Badge>
+          <h2 class="font-heading font-bold text-3xl text-neutral-900 mt-4 mb-4">
+            {siteConfig.doctor}
+          </h2>
+          <p class="text-neutral-600 leading-relaxed mb-6">
+            Cirujano dentista de la Universidad de Chile, con especialización en Periodoncia e Implantología Buco-Maxilo-Facial. Formación adicional en Loma Linda University, California. Miembro activo de la Sociedad de Periodoncia de Chile y de la Holistic Dental Association.
+          </p>
+          <p class="text-neutral-600 leading-relaxed mb-8">
+            Su búsqueda lo llevó más allá de la odontología convencional: estudió pueblos originarios, su alimentación ancestral y su salud bucal. De ahí nació su enfoque holístico — que integra nutrición, acupuntura, ozonoterapia y una visión integral del ser humano.
+          </p>
+
+          <div class="bg-neutral-50 rounded-xl p-6 mb-8">
+            <h3 class="font-heading font-semibold text-lg text-neutral-900 mb-4">Credenciales y formación</h3>
+            <div class="space-y-3">
+              <div class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-primary-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <p class="text-neutral-600 text-sm"><strong class="text-neutral-800">Cirujano Dentista</strong> — Universidad de Chile</p>
+              </div>
+              <div class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-primary-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <p class="text-neutral-600 text-sm"><strong class="text-neutral-800">Especialista en Periodoncia</strong> — Sociedad de Periodoncia de Chile</p>
+              </div>
+              <div class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-primary-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <p class="text-neutral-600 text-sm"><strong class="text-neutral-800">Especialista en Implantología Buco-Maxilo-Facial</strong></p>
+              </div>
+              <div class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-primary-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <p class="text-neutral-600 text-sm"><strong class="text-neutral-800">Formación continua</strong> — Loma Linda University, California</p>
+              </div>
+              <div class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-primary-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <p class="text-neutral-600 text-sm"><strong class="text-neutral-800">Miembro activo</strong> — Holistic Dental Association</p>
+              </div>
+              <div class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-primary-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <p class="text-neutral-600 text-sm"><strong class="text-neutral-800">Miembro activo</strong> — Sociedad de Odontología Integrativa de Chile (SIOCH)</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap gap-2">
+            {siteConfig.certifications.map((cert) => (
+              <Badge variant="neutral">{cert}</Badge>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <div class="bg-gradient-to-br from-primary-100 to-secondary-50 rounded-2xl aspect-square flex items-center justify-center sticky top-24">
+            <div class="text-center px-8">
+              <div class="w-32 h-32 bg-primary-200 rounded-full mx-auto mb-4 flex items-center justify-center text-6xl">👨‍⚕️</div>
+              <p class="text-primary-700 text-sm font-medium">Foto profesional<br />por confirmar</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Container>
+  </Section>
+
+  <Section>
+    <Container>
+      <div class="max-w-3xl mx-auto">
+        <h2 class="font-heading font-bold text-3xl text-neutral-900 mb-6 text-center">Mi historia</h2>
+        <div class="space-y-5 text-neutral-600 leading-relaxed text-lg">
+          <p>Mi formación comenzó en la Universidad de Chile, donde aprendí la odontología convencional con excelencia. Mis profesores eran respetados y me transmitieron una base sólida.</p>
+          <p>Pero algo no encajaba. ¿Por qué casi todas las personas tenían caries? ¿Por qué la enfermedad periodontal era casi universal? ¿Por qué los niños necesitaban ortodoncia?</p>
+          <p>La respuesta llegué cuando encontré los trabajos del antropólogo Martin Gusinde, que documentó la salud bucal de los pueblos originarios australes: <em>tenían dientes perfectos, sin caries, sin periodontitis.</em></p>
+          <p>Desde entonces, mi búsqueda me llevó a estudiar alimentación ancestral, antropología dental, odontología biológica y, eventualmente, a integrar acupuntura, ozonoterapia y nutrición en mi práctica.</p>
+          <p>Hoy, mi enfoque no es solo tratar dientes. Es comprender a la persona completa — su alimentación, su estilo de vida, su historia — y ayudarla a recuperar la salud desde la raíz.</p>
+        </div>
+      </div>
+    </Container>
+  </Section>
+
+  <Section bg="secondary">
+    <Container>
+      <div class="text-center max-w-2xl mx-auto">
+        <h2 class="font-heading font-bold text-3xl text-neutral-900 mb-4">El libro que escribí</h2>
+        <p class="text-neutral-600 mb-6">
+          Compilé años de investigación en el libro "{siteConfig.bookTitle}", de lectura gratuita. 129 páginas sobre por qué tenemos las enfermedades que tenemos — y qué hacer al respecto.
+        </p>
+        <a href="/libro" class="inline-flex items-center gap-2 bg-primary-600 text-white font-semibold px-8 py-4 rounded-xl hover:bg-primary-700 transition-colors no-underline">
+          📖 Leer el libro gratuito →
+        </a>
+      </div>
+    </Container>
+  </Section>
+
+  <CTASection />
+</BaseLayout>

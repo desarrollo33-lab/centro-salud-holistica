@@ -1,0 +1,45 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import HeroInner from "../../components/sections/HeroInner.astro";
+import Section from "../../components/ui/Section.astro";
+import Container from "../../components/ui/Container.astro";
+import ServiceGrid from "../../components/sections/ServiceGrid.astro";
+import CTASection from "../../components/sections/CTASection.astro";
+import { services, siteConfig } from "../../data/site";
+---
+
+<BaseLayout
+  title="Servicios de Odontología Holística | Centro de Salud Holística"
+  description="9 tratamientos de odontología holística y biológica en Santiago: eliminación de amalgamas con Protocolo IAOMT, implantes cerámicos sin titanio, odontología biomimética, ATM, ozonoterapia y más."
+>
+  <HeroInner
+    title="Servicios de Odontología Holística"
+    subtitle="Tratamientos diseñados para tu biocompatibilidad. Todos los procedimientos se realizan con materiales libres de metales pesados y un enfoque que considera tu salud completa."
+    breadcrumbs={[
+      { label: "Inicio", href: "/" },
+      { label: "Servicios", href: "/servicios" },
+    ]}
+  />
+
+  <Section>
+    <Container>
+      <ServiceGrid services={services} />
+    </Container>
+  </Section>
+
+  <Section bg="secondary">
+    <Container>
+      <div class="text-center max-w-2xl mx-auto">
+        <h2 class="text-3xl font-bold text-neutral-900 font-heading mb-4">¿No sabes qué tratamiento necesitas?</h2>
+        <p class="text-neutral-600 mb-8">
+          Agenda una primera consulta de evaluación. Sin compromiso. Te escuchamos, evaluamos tu situación y te presentamos las opciones disponibles para tu caso.
+        </p>
+        <a href="/contacto" class="inline-flex items-center gap-2 bg-primary-600 text-white font-semibold px-8 py-4 rounded-xl hover:bg-primary-700 transition-colors no-underline text-lg">
+          Agendar mi evaluación →
+        </a>
+      </div>
+    </Container>
+  </Section>
+
+  <CTASection />
+</BaseLayout>

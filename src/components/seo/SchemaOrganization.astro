@@ -1,0 +1,36 @@
+---
+import { siteConfig } from "../../data/site";
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Dentist",
+  name: siteConfig.name,
+  url: siteConfig.url,
+  telephone: siteConfig.phoneTel,
+  email: siteConfig.email,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: siteConfig.address.street,
+    addressLocality: siteConfig.address.city,
+    addressRegion: siteConfig.address.state,
+    postalCode: siteConfig.address.zip,
+    addressCountry: "CL",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: siteConfig.geo.latitude,
+    longitude: siteConfig.geo.longitude,
+  },
+  openingHoursSpecification: siteConfig.hours
+    .filter((h) => !h.hours.includes("Cerrado"))
+    .map((h) => ({
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: h.day,
+      opens: "09:00",
+      closes: "18:00",
+    })),
+  priceRange: "$$$",
+  image: `${siteConfig.url}/images/og-default.jpg`,
+  description: "Centro de odontología holística y biológica en Santiago. Eliminación de amalgamas con Protocolo IAOMT, implantes cerámicos, odontología biomimética y más.",
+};
+---
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

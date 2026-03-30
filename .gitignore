@@ -1,0 +1,33 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Astro
+.astro/
+.rollup.cache/
+tsconfig.tsbuildinfo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# Editor
+.vscode/settings.json
+.idea/
+*.swp
+*.swo
+
+# Wrangler
+.wrangler/
+.dev.vars

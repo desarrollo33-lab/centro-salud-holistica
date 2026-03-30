@@ -1,0 +1,54 @@
+---
+interface Props {
+  faqs: { question: string; answer: string }[];
+  heading?: string;
+}
+const { faqs, heading = "Preguntas Frecuentes" } = Astro.props;
+---
+
+<div class="max-w-3xl mx-auto">
+  {heading && (
+    <h2 class="text-3xl font-bold text-neutral-900 font-heading text-center mb-12">{heading}</h2>
+  )}
+  <div class="bg-white rounded-xl shadow-sm divide-y divide-neutral-200">
+    {faqs.map((faq) => (
+      <div class="faq-item">
+        <button
+          class="w-full flex items-center justify-between p-6 text-left cursor-pointer"
+          aria-expanded="false"
+          data-faq-toggle
+        >
+          <span class="text-lg font-medium text-neutral-900 pr-4">{faq.question}</span>
+          <svg class="w-5 h-5 text-primary-600 shrink-0 transition-transform duration-200 faq-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </button>
+        <div class="faq-answer overflow-hidden max-h-0 transition-all duration-300 ease-in-out">
+          <div class="px-6 pb-6">
+            <p class="text-base text-neutral-600 leading-relaxed">{faq.answer}</p>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll("[data-faq-toggle]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const item = btn.closest(".faq-item");
+      const answer = item?.querySelector(".faq-answer") as HTMLElement;
+      const chevron = item?.querySelector(".faq-chevron");
+      const isOpen = btn.getAttribute("aria-expanded") === "true";
+      if (isOpen) {
+        answer.style.maxHeight = "0px";
+        btn.setAttribute("aria-expanded", "false");
+        chevron?.classList.remove("rotate-180");
+      } else {
+        answer.style.maxHeight = answer.scrollHeight + "px";
+        btn.setAttribute("aria-expanded", "true");
+        chevron?.classList.add("rotate-180");
+      }
+    });
+  });
+</script>

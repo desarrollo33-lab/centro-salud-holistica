@@ -1,0 +1,151 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import HeroInner from "../../components/sections/HeroInner.astro";
+import Section from "../../components/ui/Section.astro";
+import Container from "../../components/ui/Container.astro";
+import FAQAccordion from "../../components/sections/FAQAccordion.astro";
+import CTASection from "../../components/sections/CTASection.astro";
+import ServiceGrid from "../../components/sections/ServiceGrid.astro";
+import Button from "../../components/ui/Button.astro";
+import SchemaBreadcrumb from "../../components/seo/SchemaBreadcrumb.astro";
+import SchemaService from "../../components/seo/SchemaService.astro";
+import SchemaFAQ from "../../components/seo/SchemaFAQ.astro";
+import { services, getRelatedServices, siteConfig } from "../../data/site";
+
+export function getStaticPaths() {
+  return services.map((service) => ({
+    params: { slug: service.slug },
+    props: { service },
+  }));
+}
+
+const { service } = Astro.props;
+const related = getRelatedServices(service.relatedServices);
+---
+
+<BaseLayout title={service.metaTitle} description={service.metaDescription}>
+  <SchemaBreadcrumb items={[
+    { name: "Inicio", url: "/" },
+    { name: "Servicios", url: "/servicios" },
+    { name: service.name, url: `/servicios/${service.slug}` },
+  ]} />
+  <SchemaService
+    serviceName={`${service.name} en Santiago`}
+    serviceDescription={service.description}
+    priceRange={service.priceRange}
+  />
+  <SchemaFAQ faqs={service.faqs} />
+
+  <HeroInner
+    title={service.heroHeading}
+    subtitle={service.description}
+    breadcrumbs={[
+      { label: "Inicio", href: "/" },
+      { label: "Servicios", href: "/servicios" },
+      { label: service.name, href: `/servicios/${service.slug}` },
+    ]}
+  />
+
+  <!-- Overview -->
+  <Section bg="white">
+    <Container>
+      <div class="grid lg:grid-cols-3 gap-12">
+        <div class="lg:col-span-2">
+          <h2 class="text-3xl font-bold text-neutral-900 font-heading">¿En qué consiste este tratamiento?</h2>
+          <ul class="mt-6 space-y-3">
+            {service.features.map((feature) => (
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-success mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                <span class="text-neutral-700">{feature}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Sidebar -->
+        <div>
+          <div class="bg-neutral-50 rounded-xl p-6 sticky top-24">
+            <h3 class="text-xl font-bold text-neutral-900 font-heading mb-4">Información clave</h3>
+            <dl class="space-y-4">
+              <div>
+                <dt class="text-sm text-neutral-500">Rango de precio</dt>
+                <dd class="font-semibold text-neutral-900">{service.priceRange}</dd>
+              </div>
+              <div>
+                <dt class="text-sm text-neutral-500">Enfoque</dt>
+                <dd class="font-semibold text-neutral-900">Biocompatible y holístico</dd>
+              </div>
+            </dl>
+            <div class="mt-6">
+              <Button href="/contacto" variant="primary" class="w-full">Solicitar evaluación →</Button>
+            </div>
+            <div class="mt-4 text-center">
+              <a href="/sobre" class="text-sm text-neutral-500 hover:text-primary-600 no-underline">
+                Conoce al doctor →
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Container>
+  </Section>
+
+  <!-- Process -->
+  <Section>
+    <Container>
+      <h2 class="text-3xl font-bold text-neutral-900 font-heading text-center mb-12">Nuestro proceso</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        {service.process.map((step, index) => (
+          <div class="text-center">
+            <div class="w-12 h-12 mx-auto rounded-full bg-primary-600 text-white flex items-center justify-center text-lg font-bold mb-4">
+              {index + 1}
+            </div>
+            <h3 class="font-semibold text-neutral-900 font-heading">{step.step}</h3>
+            <p class="mt-2 text-sm text-neutral-600 leading-relaxed">{step.description}</p>
+          </div>
+        ))}
+      </div>
+    </Container>
+  </Section>
+
+  <!-- Common Issues -->
+  <Section bg="white">
+    <Container>
+      <h2 class="text-3xl font-bold text-neutral-900 font-heading text-center mb-8">
+        Problemas que tratamos con este servicio
+      </h2>
+      <div class="grid sm:grid-cols-2 gap-4 max-w-4xl mx-auto">
+        {service.commonIssues.map((issue) => (
+          <div class="flex items-start gap-3 bg-neutral-50 rounded-lg p-4">
+            <svg class="w-5 h-5 text-primary-600 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+            </svg>
+            <span class="text-sm text-neutral-700">{issue}</span>
+          </div>
+        ))}
+      </div>
+    </Container>
+  </Section>
+
+  <!-- Related Services -->
+  {related.length > 0 && (
+    <Section>
+      <Container>
+        <ServiceGrid services={related} heading="Tratamientos relacionados" />
+      </Container>
+    </Section>
+  )}
+
+  <!-- FAQs -->
+  {service.faqs.length > 0 && (
+    <Section bg="white">
+      <Container>
+        <FAQAccordion faqs={service.faqs} heading={`${service.name}: Preguntas Frecuentes`} />
+      </Container>
+    </Section>
+  )}
+
+  <CTASection heading={`¿Es este tratamiento para ti?`} subtitle="Agenda una primera consulta sin compromiso. Te evaluamos y te decimos qué opciones tienes." />
+</BaseLayout>

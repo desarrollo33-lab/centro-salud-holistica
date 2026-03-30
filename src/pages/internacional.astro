@@ -1,0 +1,122 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import HeroInner from "../components/sections/HeroInner.astro";
+import Section from "../components/ui/Section.astro";
+import Container from "../components/ui/Container.astro";
+import CTASection from "../components/sections/CTASection.astro";
+import Badge from "../components/ui/Badge.astro";
+---
+
+<BaseLayout
+  title="Pacientes Internacionales — Centro de Salud Holística"
+  description="Programa dedicado a pacientes de otros países. Tratamientos dentales en Santiago, Chile, con ahorros de 40-80% vs USA y Europa."
+>
+  <HeroInner
+    title="Pacientes Internacionales"
+    subtitle="Tratamientos dentales de excelencia en Chile, con ahorros de 40-80%"
+    breadcrumbs={[{ label: "Inicio", href: "/" }, { label: "Internacionales", href: "/internacional" }]}
+  />
+
+  <Section>
+    <Container>
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <Badge variant="secondary">🌍 Pacientes internacionales</Badge>
+          <h2 class="font-heading font-bold text-3xl text-neutral-900 mt-4 mb-4">
+            Tu tratamiento dental en Chile
+          </h2>
+          <p class="text-neutral-600 leading-relaxed mb-8">
+            Ahorra entre un 40% y un 80% comparado con Estados Unidos o Europa, en odontología de excelencia con un enfoque biológico y holístico. Combina tu tratamiento con la experiencia de conocer Chile.
+          </p>
+
+          <div class="space-y-4">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center shrink-0 text-xl">💰</div>
+              <div>
+                <h3 class="font-semibold text-neutral-900 mb-1">Ahorro significativo</h3>
+                <p class="text-neutral-500 text-sm">40-80% menos que USA, Canadá o Europa para tratamientos similares de alta calidad.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center shrink-0 text-xl">🏥</div>
+              <div>
+                <h3 class="font-semibold text-neutral-900 mb-1">Calidad de excelencia</h3>
+                <p class="text-neutral-500 text-sm">Universidad de Chile, Loma Linda, protocolos internacionales IAOMT y materiales de primera línea.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center shrink-0 text-xl">🌎</div>
+              <div>
+                <h3 class="font-semibold text-neutral-900 mb-1">Un país hermoso</h3>
+                <p class="text-neutral-500 text-sm">Santiago, la Patagonia, la tierra de origen. Combina tu tratamiento con turismo.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center shrink-0 text-xl">🗣️</div>
+              <div>
+                <h3 class="font-semibold text-neutral-900 mb-1">Español o inglés</h3>
+                <p class="text-neutral-500 text-sm">Atención en español e inglés. Coordinamos con tu idioma.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-neutral-50 rounded-2xl p-8 border border-neutral-200">
+          <h3 class="font-heading font-bold text-xl text-neutral-900 mb-6">¿Cómo funciona?</h3>
+          <div class="space-y-6">
+            <div class="flex gap-4">
+              <div class="w-10 h-10 bg-primary-600 rounded-full flex items-center justify-center shrink-0 text-white font-bold">1</div>
+              <div>
+                <h4 class="font-semibold text-neutral-900">Contacto inicial</h4>
+                <p class="text-neutral-500 text-sm mt-1">Envíanos tus radiografías y tu historia clínica por email. Te respondemos en 24-48 horas con un plan tentativo.</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="w-10 h-10 bg-primary-600 rounded-full flex items-center justify-center shrink-0 text-white font-bold">2</div>
+              <div>
+                <h4 class="font-semibold text-neutral-900">Planificación</h4>
+                <p class="text-neutral-500 text-sm mt-1">Definimos el tratamiento, el número de viajes necesarios y te damos un presupuesto detallado.</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="w-10 h-10 bg-primary-600 rounded-full flex items-center justify-center shrink-0 text-white font-bold">3</div>
+              <div>
+                <h4 class="font-semibold text-neutral-900">Tu viaje a Chile</h4>
+                <p class="text-neutral-500 text-sm mt-1">Te ayudamos con recomendaciones de alojamiento, transporte y coordinamos cada cita.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Container>
+  </Section>
+
+  <Section bg="white">
+    <Container>
+      <h2 class="font-heading font-bold text-3xl text-neutral-900 mb-8 text-center">Tratamientos más solicitados por pacientes internacionales</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">
+        {[
+          { icon: "⚕️", name: "Eliminación de amalgamas", saving: "Ahorro ~60%" },
+          { icon: "🦴", name: "Implantes cerámicos", saving: "Ahorro ~50%" },
+          { icon: "✨", name: "Odontología biomimética", saving: "Ahorro ~55%" },
+          { icon: "💆", name: "Tratamiento ATM", saving: "Ahorro ~65%" },
+          { icon: "😁", name: "Ortodoncia / Invisalign", saving: "Ahorro ~50%" },
+          { icon: "💉", name: "Estética facial", saving: "Ahorro ~60%" },
+        ].map((t) => (
+          <div class="bg-neutral-50 rounded-xl p-4 flex items-center gap-3">
+            <span class="text-2xl">{t.icon}</span>
+            <div>
+              <p class="font-medium text-neutral-900 text-sm">{t.name}</p>
+              <p class="text-primary-600 text-xs font-medium">{t.saving}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </Container>
+  </Section>
+
+  <CTASection
+    heading="¿Estás fuera de Chile?"
+    subtitle="Escríbenos con tus radiografías y te contestamos en 24-48 horas con un plan tentativo."
+  />
+</BaseLayout>

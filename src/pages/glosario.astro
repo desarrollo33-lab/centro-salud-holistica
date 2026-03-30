@@ -1,0 +1,46 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import HeroInner from "../components/sections/HeroInner.astro";
+import Section from "../components/ui/Section.astro";
+import Container from "../components/ui/Container.astro";
+---
+
+<BaseLayout
+  title="Glosario de Odontología Holística — Centro de Salud Holística"
+  description="Glosario de términos de odontología holística y biológica. Encuentra definiciones claras de términos como amalgama, biomimética, IAOMT, ozonoterapia y más."
+>
+  <HeroInner
+    title="Glosario"
+    subtitle="Términos de odontología holística explicados de forma sencilla"
+    breadcrumbs={[{ label: "Inicio", href: "/" }, { label: "Glosario", href: "/glosario" }]}
+  />
+
+  <Section>
+    <Container>
+      <div class="max-w-3xl mx-auto space-y-6">
+        {[
+          { term: "Amalgama", def: "Empaste dental de color plateado compuesto aproximadamente por 50% de mercurio y 50% de otros metales (plata, estaño, cobre). Es el material de restauración más debatido en odontología biológica debido a la toxicidad del mercurio." },
+          { term: "Biocompatibilidad", def: "Capacidad de un material de interactuar con el cuerpo humano sin provocar reacciones adversas, rechazo o toxicidad. En odontología, se busca que los materiales restauradores sean biocompatibles con cada paciente." },
+          { term: "Biomimética", def: "Rama de la odontología que busca imitar la estructura y función natural del diente. Las restauraciones biomiméticas sellan, fortalecen y preservan el diente en lugar de cortarlo y reemplazarlo." },
+          { term: "Cerámica (implante)", def: "Implante dental hecho de óxido de circonio (ZrO₂), 100% libre de metal. También llamado implantes cerámicos o de circonia. Biocompatible, estético y sin riesgo de corrosión galvánica." },
+          { term: "Corrosión galvánica", def: "Reacción electroquímica entre diferentes metales en la boca (por ejemplo, amalgama y coronas de metal). Produce pequeñas corrientes eléctricas que pueden causar sensibilidad, gusto metálico y otros síntomas." },
+          { term: "Goma dique", def: "Lámina de látex que se coloca sobre los dientes durante los procedimientos dentales para aislar el área de trabajo, proteger las vías respiratorias del paciente y mantener el campo seco." },
+          { term: "Holística", def: "Enfoque médico que considera al ser humano como un todo: cuerpo, mente y contexto vital. No trata síntomas aislados sino la causa raíz en armonía con el sistema completo del paciente." },
+          { term: "IAOMT", def: "International Academy of Oral Medicine and Toxicology. Organización que promueve la eliminación segura de amalgamas de mercurio y establece protocolos científicos para la protección del paciente y del equipo dental." },
+          { term: "Mercurio", def: "Metal pesado tóxico presente en las amalgamas dentales. Libera vapores especialmente durante la remoción. Puede acumularse en órganos vitales y está asociado con problemas neurológicos, inmunológicos y renales." },
+          { term: "Ozonoterapia", def: "Aplicación de ozono médico (O₃) en Odontología. Tiene propiedades antimicrobianas de amplio espectro, acelera la cicatrización y reduce la inflamación sin efectos secundarios." },
+          { term: "Osteointegración", def: "Proceso biológico por el cual el hueso se fusiona directamente con la superficie del implante dental. Es la base del éxito de los implantes modernos." },
+          { term: "Protocolo IAOMT", def: "Procedimiento certificado para la remoción segura de amalgamas. Incluye: goma dique, oxígeno nasal, aspiración de alta potencia, herramienta de corte específica y suplementos de soporte." },
+          { term: "Sensibilidad metálica", def: "Reacción adversa del sistema inmune a los metales presentes en restauraciones dentales. Síntomas incluyen: sensación de sabor metálico, ardor, fatiga crónica, dolores de cabeza y más." },
+          { term: "Terapia neural", def: "Técnica de tratamiento que utiliza anestésicos locales infiltrados en puntos específicos para нормализовать el sistema nervioso y aliviar dolores crónicos, incluyendo los relacionados con la ATM." },
+          { term: "Titanio", def: "Metal ampliamente usado en implantes dentales. Biocompatible en la mayoría de los pacientes, pero en algunos puede causar sensibilidad, reacciones autoinmunes o rechazo. Los implantes cerámicos son la alternativa sin metal." },
+        ].map((item) => (
+          <div class="bg-white rounded-xl border border-neutral-200 p-6">
+            <h3 class="font-heading font-semibold text-lg text-primary-700 mb-2">{item.term}</h3>
+            <p class="text-neutral-600 text-sm leading-relaxed">{item.def}</p>
+          </div>
+        ))}
+      </div>
+    </Container>
+  </Section>
+</BaseLayout>
