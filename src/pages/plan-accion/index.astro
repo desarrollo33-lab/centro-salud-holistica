@@ -1,0 +1,19 @@
+---
+import Layout from '../../Layout.astro';
+import PlanAccionApp from '../../components/PlanAccion';
+---
+
+<Layout title="Plan de Acción Personalizado | Centro de Salud Holística">
+  <main class="min-h-screen bg-gray-50 py-12">
+    <div class="max-w-3xl mx-auto px-4">
+      <div class="text-center mb-8">
+        <h1 class="text-3xl font-serif text-gray-900 mb-2">Plan de Acción Personalizado</h1>
+        <p class="text-gray-600">Completa el cuestionario para recibir recomendaciones basadas en tu perfil</p>
+      </div>
+
+      <div class="bg-white rounded-xl shadow-lg p-8">
+        <PlanAccionApp client:load />
+      </div>
+    </div>
+  </main>
+</Layout>

@@ -1,0 +1,19 @@
+---
+import Layout from '../../Layout.astro';
+---
+
+<Layout title="Cerrando Sesión...">
+  <main class="min-h-screen bg-gray-50 flex items-center justify-center">
+    <div class="text-center">
+      <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-teal-700 mx-auto mb-4"></div>
+      <p class="text-gray-600">Cerrando sesión...</p>
+    </div>
+  </main>
+
+  <script>
+    import PocketBase from 'pocketbase';
+    const pb = new PocketBase('http://64.176.16.231:8090');
+    pb.authStore.clear();
+    window.location.href = '/';
+  </script>
+</Layout>

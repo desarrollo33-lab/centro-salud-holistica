@@ -1,5 +1,3 @@
 name = "centro-salud-holistica"
 compatibility_date = "2025-01-01"
-
-[[pages]]
-dir = "dist"
+pages_build_output_dir = "dist"
