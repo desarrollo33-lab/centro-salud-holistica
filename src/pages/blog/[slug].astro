@@ -1,5 +1,5 @@
 ---
-import Layout from '../../Layout.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
 import PocketBase from 'pocketbase';
 
 export async function getStaticPaths() {
@@ -24,72 +24,76 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 ---
 
-<Layout title={post ? `${post.title} | Blog` : 'Artículo no encontrado'} description={post?.excerpt}>
-  <main class="min-h-screen bg-gray-50">
-    {!post && (
-      <div class="min-h-screen flex items-center justify-center">
-        <div class="text-center">
-          <div class="text-6xl mb-4">📝</div>
-          <h1 class="text-2xl font-serif text-gray-900 mb-4">Artículo no encontrado</h1>
-          <a href="/blog/" class="text-emerald-700 hover:text-emerald-800">← Volver al blog</a>
+<BaseLayout
+  title={post ? `${post.title} | Blog` : 'Artículo no encontrado'}
+  description={post?.excerpt || 'Artículo del blog del Dr. Ipinza'}
+>
+  {!post && (
+    <div class="min-h-[60vh] flex items-center justify-center">
+      <div class="text-center">
+        <div class="text-6xl mb-4">📝</div>
+        <h1 class="text-2xl font-bold text-neutral-900 font-heading mb-4">Artículo no encontrado</h1>
+        <a href="/blog" class="text-primary-600 hover:text-primary-700 font-medium">← Volver al blog</a>
+      </div>
+    </div>
+  )}
+
+  {post && (
+    <article>
+      <header class="bg-primary-700 text-white py-16">
+        <div class="max-w-3xl mx-auto px-4">
+          <nav class="mb-6">
+            <ol class="flex items-center gap-2 text-sm">
+              <li><a href="/" class="text-white/70 hover:text-white">Inicio</a></li>
+              <li><span class="text-white/50">/</span></li>
+              <li><a href="/blog" class="text-white/70 hover:text-white">Blog</a></li>
+              <li><span class="text-white/50">/</span></li>
+              <li><span class="text-white/90 font-medium truncate max-w-[200px]">{post.title}</span></li>
+            </ol>
+          </nav>
+          <div class="flex items-center gap-3 mb-4">
+            <span class={`px-3 py-1 text-sm font-medium rounded ${
+              post.author_type === 'doctor' 
+                ? 'bg-primary-600 text-white' 
+                : 'bg-secondary-600 text-white'
+            }`}>
+              {post.author_type === 'doctor' ? 'Dr. Ipinza' : 'Automatizado'}
+            </span>
+            <span class="text-sm text-white/70">
+              {new Date(post.published_at).toLocaleDateString('es-CL', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+              })}
+            </span>
+          </div>
+          <h1 class="text-3xl md:text-4xl font-bold font-heading">{post.title}</h1>
+          {post.excerpt && (
+            <p class="mt-4 text-lg text-white/80">{post.excerpt}</p>
+          )}
+        </div>
+      </header>
+
+      <div class="max-w-3xl mx-auto px-4 py-12">
+        <div class="bg-white rounded-xl shadow-sm border border-neutral-200 p-8 md:p-12 prose prose-lg max-w-none">
+          <div set:html={
+            post.content_markdown
+              .replace(/## (.+)/g, '<h2>$1</h2>')
+              .replace(/### (.+)/g, '<h3>$1</h3>')
+              .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+              .replace(/\n\n/g, '</p><p>')
+              .replace(/\n/g, '<br>')
+          } />
+        </div>
+
+        <div class="mt-12 bg-secondary-50 rounded-xl p-8 text-center border border-secondary-100">
+          <h3 class="text-2xl font-bold text-neutral-900 font-heading mb-4">¿Quieres un plan personalizado?</h3>
+          <p class="text-neutral-600 mb-6">Completa nuestro cuestionario y recibe recomendaciones basadas en tu perfil.</p>
+          <a href="/auth/registro/" class="inline-flex items-center gap-2 bg-primary-600 text-white font-semibold px-8 py-4 rounded-xl hover:bg-primary-700 transition-colors no-underline">
+            Crear Mi Plan Gratis →
+          </a>
         </div>
       </div>
-    )}
-
-    {post && (
-      <article>
-        <!-- Hero -->
-        <header class="bg-emerald-900 text-white py-16">
-          <div class="max-w-3xl mx-auto px-4">
-            <a href="/blog/" class="inline-flex items-center gap-2 text-emerald-200 hover:text-white mb-6 no-underline">
-              ← Volver al blog
-            </a>
-            <div class="flex items-center gap-3 mb-4">
-              <span class={`px-3 py-1 text-sm font-medium rounded ${
-                post.author_type === 'doctor' 
-                  ? 'bg-emerald-700 text-emerald-100' 
-                  : 'bg-blue-700 text-blue-100'
-              }`}>
-                {post.author_type === 'doctor' ? 'Dr. Ipinza' : 'Automatizado'}
-              </span>
-              <span class="text-sm text-emerald-200">
-                {new Date(post.published_at).toLocaleDateString('es-CL', {
-                  year: 'numeric',
-                  month: 'long',
-                  day: 'numeric'
-                })}
-              </span>
-            </div>
-            <h1 class="text-3xl sm:text-4xl font-serif mb-4">{post.title}</h1>
-            {post.excerpt && (
-              <p class="text-xl text-emerald-200">{post.excerpt}</p>
-            )}
-          </div>
-        </header>
-
-        <!-- Content -->
-        <div class="max-w-3xl mx-auto px-4 py-12">
-          <div class="bg-white rounded-xl shadow-lg p-8 md:p-12">
-            <div class="prose prose-lg max-w-none" set:html={
-              post.content_markdown
-                .replace(/## (.+)/g, '<h2>$1</h2>')
-                .replace(/### (.+)/g, '<h3>$1</h3>')
-                .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-                .replace(/\n\n/g, '</p><p>')
-                .replace(/\n/g, '<br>')
-            } />
-          </div>
-
-          <!-- CTA -->
-          <div class="mt-12 bg-emerald-50 rounded-xl p-8 text-center">
-            <h3 class="text-2xl font-serif text-gray-900 mb-4">¿Quieres un plan personalizado?</h3>
-            <p class="text-gray-600 mb-6">Completa nuestro cuestionario y recibe recomendaciones basadas en tu perfil.</p>
-            <a href="/auth/registro/" class="inline-flex items-center gap-2 bg-emerald-700 text-white px-6 py-3 rounded-lg font-medium hover:bg-emerald-800 no-underline">
-              Crear Mi Plan Gratis →
-            </a>
-          </div>
-        </div>
-      </article>
-    )}
-  </main>
-</Layout>
+    </article>
+  )}
+</BaseLayout>

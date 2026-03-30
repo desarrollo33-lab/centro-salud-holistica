@@ -1,134 +1,91 @@
 ---
-import Layout from '../../Layout.astro';
-import { getBlogPosts } from '../../lib/pocketbase';
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import HeroInner from "../../components/sections/HeroInner.astro";
+import Section from "../../components/ui/Section.astro";
+import Container from "../../components/ui/Container.astro";
+import { getBlogPosts } from "../../lib/pocketbase";
 
 let posts = [];
-let error = null;
-
 try {
   posts = await getBlogPosts();
-  console.log('Blog posts fetched:', posts.length);
 } catch (e) {
-  error = e.message;
-  console.error('Error fetching blog posts:', e.message);
+  console.error('Error loading blog posts:', e);
 }
 ---
 
-<Layout title="Blog | Centro de Salud Holística">
-  <main class="min-h-screen bg-gray-50">
-    {error && (
-      <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 m-4 rounded">
-        <p>Error: {error}</p>
-      </div>
-    )}
-    
-    <!-- Hero -->
-    <section class="bg-emerald-900 text-white py-16">
-      <div class="max-w-4xl mx-auto px-4">
-        <h1 class="text-4xl font-serif mb-4">Blog de Salud Evolutiva</h1>
-        <p class="text-emerald-200 text-lg max-w-2xl">
-          Artículos del Dr. Ipinza y contenido automatizado sobre odontología holística, 
-          nutrición evolutiva y bienestar general.
-        </p>
-      </div>
-    </section>
+<BaseLayout
+  title="Blog de Salud Evolutiva | Centro de Salud Holística"
+  description="Artículos del Dr. Ipinza sobre odontología holística, nutrición evolutiva, prevención y bienestar general. Contenido educativo gratuito."
+>
+  <HeroInner
+    title="Blog de Salud Evolutiva"
+    subtitle="Artículos del Dr. Ipinza y contenido automatizado sobre odontología holística, nutrición evolutiva y bienestar general."
+    breadcrumbs={[
+      { label: "Inicio", href: "/" },
+      { label: "Blog", href: "/blog" },
+    ]}
+  />
 
-    <!-- Filter Tabs -->
-    <section class="bg-white border-b border-gray-200 sticky top-16 z-40">
-      <div class="max-w-4xl mx-auto px-4">
-        <div class="flex gap-6 py-4 overflow-x-auto">
-          <a href="/blog" class="text-sm font-medium text-emerald-700 border-b-2 border-emerald-700 pb-3 whitespace-nowrap">
-            Todos
-          </a>
-          <a href="/blog/?topic=nutricion" class="text-sm font-medium text-gray-600 hover:text-emerald-700 pb-3 whitespace-nowrap">
-            Nutrición
-          </a>
-          <a href="/blog/?topic=prevencion" class="text-sm font-medium text-gray-600 hover:text-emerald-700 pb-3 whitespace-nowrap">
-            Prevención
-          </a>
-          <a href="/blog/?topic=tratamientos" class="text-sm font-medium text-gray-600 hover:text-emerald-700 pb-3 whitespace-nowrap">
-            Tratamientos
-          </a>
-          <a href="/blog/?topic=estilo-vida" class="text-sm font-medium text-gray-600 hover:text-emerald-700 pb-3 whitespace-nowrap">
-            Estilo de Vida
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Posts Grid -->
-    <section class="py-12">
-      <div class="max-w-4xl mx-auto px-4">
-        <div class="grid md:grid-cols-2 gap-8">
+  <Section>
+    <Container>
+      {posts.length > 0 ? (
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {posts.map((post) => (
-            <article class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition">
-              {post.cover_image && (
-                <div class="aspect-video bg-gray-200 overflow-hidden">
-                  <img 
-                    src={post.cover_image} 
-                    alt={post.title}
-                    class="w-full h-full object-cover"
-                  />
-                </div>
-              )}
+            <a href={`/blog/${post.slug}/`} class="group block bg-white rounded-xl shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-200 overflow-hidden border border-neutral-200 hover:border-primary-300">
               <div class="p-6">
                 <div class="flex items-center gap-2 mb-3">
                   <span class={`px-2 py-1 text-xs font-medium rounded ${
                     post.author_type === 'doctor' 
-                      ? 'bg-emerald-100 text-emerald-700' 
-                      : 'bg-blue-100 text-blue-700'
+                      ? 'bg-primary-100 text-primary-700' 
+                      : 'bg-secondary-100 text-secondary-700'
                   }`}>
                     {post.author_type === 'doctor' ? 'Dr. Ipinza' : 'Automatizado'}
                   </span>
-                  <span class="text-xs text-gray-500">
+                  <span class="text-xs text-neutral-500">
                     {new Date(post.published_at).toLocaleDateString('es-CL', {
                       year: 'numeric',
-                      month: 'long',
+                      month: 'short',
                       day: 'numeric'
                     })}
                   </span>
                 </div>
-                <h2 class="text-xl font-serif text-gray-900 mb-2">{post.title}</h2>
-                <p class="text-gray-600 text-sm mb-4 line-clamp-3">{post.excerpt}</p>
-                <a 
-                  href={`/blog/${post.slug}/`}
-                  class="inline-flex items-center gap-2 text-emerald-700 font-medium hover:text-emerald-800"
-                >
+                <h3 class="text-lg font-semibold text-neutral-900 font-heading group-hover:text-primary-700 transition-colors mb-2">
+                  {post.title}
+                </h3>
+                <p class="text-sm text-neutral-500 line-clamp-3 mb-4">
+                  {post.excerpt || 'Sin descripción disponible'}
+                </p>
+                <span class="inline-flex items-center gap-1 text-primary-600 font-medium text-sm group-hover:gap-2 transition-all">
                   Leer más
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                   </svg>
-                </a>
+                </span>
               </div>
-            </article>
+            </a>
           ))}
         </div>
+      ) : (
+        <div class="text-center py-12">
+          <div class="text-5xl mb-4">📝</div>
+          <h3 class="text-xl font-semibold text-neutral-900 font-heading mb-2">Próximamente</h3>
+          <p class="text-neutral-500">Estamos preparando contenido nuevo para ti.</p>
+        </div>
+      )}
+    </Container>
+  </Section>
 
-        {posts.length === 0 && !error && (
-          <div class="text-center py-12">
-            <div class="text-5xl mb-4">📝</div>
-            <h3 class="text-xl font-serif text-gray-900 mb-2">Próximamente</h3>
-            <p class="text-gray-600">Estamos preparando contenido nuevo para ti.</p>
-          </div>
-        )}
-      </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="bg-emerald-50 py-12">
-      <div class="max-w-4xl mx-auto px-4 text-center">
-        <h3 class="text-2xl font-serif text-gray-900 mb-4">¿Listo para empezar tu camino?</h3>
-        <p class="text-gray-600 mb-6">
-          Crea tu cuenta gratuita y recibe un plan de acción personalizado basado en el libro 
-          "Salud Evolutiva" del Dr. Ipinza.
+  <Section bg="secondary">
+    <Container>
+      <div class="text-center max-w-2xl mx-auto">
+        <h2 class="text-3xl font-bold text-neutral-900 font-heading mb-4">¿Listo para empezar tu camino?</h2>
+        <p class="text-neutral-600 mb-8">
+          Crea tu cuenta gratuita y recibe un plan de acción personalizado basado en el libro "Salud Evolutiva" del Dr. Ipinza.
         </p>
-        <a 
-          href="/auth/registro/"
-          class="inline-flex items-center gap-2 bg-emerald-700 text-white px-6 py-3 rounded-lg font-medium hover:bg-emerald-800"
-        >
-          Crear Cuenta Gratis
+        <a href="/auth/registro/" class="inline-flex items-center gap-2 bg-primary-600 text-white font-semibold px-8 py-4 rounded-xl hover:bg-primary-700 transition-colors no-underline text-lg">
+          Crear Cuenta Gratis →
         </a>
       </div>
-    </section>
-  </main>
-</Layout>
+    </Container>
+  </Section>
+</BaseLayout>
