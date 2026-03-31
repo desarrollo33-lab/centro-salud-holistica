@@ -1,6 +1,6 @@
 import PocketBase from 'pocketbase';
 
-export const pb = new PocketBase('http://64.176.16.231:8090');
+export const pb = new PocketBase(import.meta.env.POCKETBASE_URL || 'http://64.176.16.231:8090');
 
 export interface Chapter {
   id: string;

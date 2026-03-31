@@ -20,7 +20,7 @@ const next = idx < sorted.length - 1 ? { slug: sorted[idx + 1].slug, title: sort
 const readTime = Math.max(1, Math.round((word_count || 200) / 250));
 ---
 
-<BaseLayout title={`${title} — Salud Evolutiva`} description={`${title} — Capitulo del libro Salud Evolutiva del Dr. Ipinza. ${readTime} min de lectura.`}>
+<BaseLayout title={`${title} — Salud Evolutiva`} description={`${title} — Capítulo del libro Salud Evolutiva del Dr. Ipinza. ${readTime} min de lectura.`}>
   <article class="max-w-3xl mx-auto px-4 sm:px-6 py-12 md:py-16">
     <nav class="text-sm text-neutral-500 mb-8 flex items-center gap-1.5 flex-wrap">
       <a href="/" class="hover:text-primary-700 no-underline text-neutral-500">Inicio</a>
@@ -31,7 +31,7 @@ const readTime = Math.max(1, Math.round((word_count || 200) / 250));
     </nav>
     <header class="mb-10">
       <div class="flex items-center gap-3 mb-4 flex-wrap">
-        {chapter_num ? <span class="badge-chapter">Capitulo {chapter_num}</span> : <span class="badge-chapter">Libro</span>}
+        {chapter_num ? <span class="badge-chapter">Capítulo {chapter_num}</span> : <span class="badge-chapter">Libro</span>}
         <span class="text-sm text-neutral-400">{word_count?.toLocaleString()} palabras</span>
         <span class="text-sm text-neutral-400">·</span>
         <span class="text-sm text-neutral-400">{readTime} min de lectura</span>

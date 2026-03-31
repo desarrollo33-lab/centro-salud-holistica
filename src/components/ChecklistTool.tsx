@@ -27,7 +27,7 @@ const TOOLS: Record<string, {
       { q: "Mi lengua tiene un color rosado uniforme (no blanca ni con parches)", cat: "Síntomas" },
     ],
     results: {
-      high: { label: "¡Excelente!", color: "text-emerald-600", desc: "Tus hábitos reflejan un buen cuidado de tu salud bucal. Continúa así y no olvides mantener tus chequeos regulares." },
+      high: { label: "¡Excelente!", color: "text-primary-600", desc: "Tus hábitos reflejan un buen cuidado de tu salud bucal. Continúa así y no olvides mantener tus chequeos regulares." },
       mid: { label: "Buen punto de partida", color: "text-amber-600", desc: "Vas por buen camino, pero hay áreas que puedes mejorar. Revisa los ítems que no marcaste y considera pequeños cambios." },
       low: { label: "Hay oportunidades de mejora", color: "text-red-600", desc: "Varios de tus hábitos podrían estar afectando tu salud bucal. Te recomendamos consultar con un profesional." },
     }
@@ -45,7 +45,7 @@ const TOOLS: Record<string, {
       { q: "Entiendo que el retiro es opcional y que amalgamas intactas pueden no requerir extracción inmediata", cat: "Información" },
     ],
     results: {
-      high: { label: "Listo para proceder", color: "text-emerald-600", desc: "Has evaluado todos los aspectos importantes. Elige un profesional con experiencia en protocolos de retiro seguro." },
+      high: { label: "Listo para proceder", color: "text-primary-600", desc: "Has evaluado todos los aspectos importantes. Elige un profesional con experiencia en protocolos de retiro seguro." },
       mid: { label: "Casi listo", color: "text-amber-600", desc: "Te faltan algunos puntos. Revisa los ítems que no marcaste antes de proceder." },
       low: { label: "Necesitas más información", color: "text-red-600", desc: "Hay varios aspectos sin evaluar. Lee el Capítulo 4 y consulta con un profesional." },
     }
@@ -67,7 +67,7 @@ const TOOLS: Record<string, {
       { q: "Planeo la primera visita dental del bebé ~6 meses o al salir el primer diente", cat: "Planificación" },
     ],
     results: {
-      high: { label: "¡Excelente cuidado!", color: "text-emerald-600", desc: "Estás tomando todas las precauciones. Tu salud bucal y la de tu bebé están en buenas manos." },
+      high: { label: "¡Excelente cuidado!", color: "text-primary-600", desc: "Estás tomando todas las precauciones. Tu salud bucal y la de tu bebé están en buenas manos." },
       mid: { label: "Buen enfoque", color: "text-amber-600", desc: "Vas bien, pero hay puntos que podrías fortalecer. Las encías son especialmente sensibles durante el embarazo." },
       low: { label: "Atención necesaria", color: "text-red-600", desc: "La salud bucal durante el embarazo afecta al bebé. Agenda una visita dental pronto." },
     }
@@ -178,7 +178,7 @@ export default function ChecklistTool() {
           className={`inline-flex items-center justify-center font-semibold px-8 py-3.5 rounded-lg text-white transition-all duration-150 ${
             checked === 0
               ? 'bg-neutral-300 cursor-not-allowed'
-              : 'bg-emerald-600 hover:bg-emerald-700 hover:shadow-md hover:-translate-y-0.5'
+              : 'bg-primary-600 hover:bg-emerald-700 hover:shadow-md hover:-translate-y-0.5'
           }`}>
           {showResults ? 'Actualizar resultado' : 'Ver mi resultado'}
         </button>

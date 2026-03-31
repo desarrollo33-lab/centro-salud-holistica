@@ -39,38 +39,38 @@ export default function PlanAccionApp() {
 
   if (step === 1) return (
     <div>
-      <h2 className="text-xl font-semibold text-gray-900 mb-6">¿Cuáles son tus principales preocupaciones?</h2>
-      <textarea value={concerns} onChange={e => setConcerns(e.target.value)} className="w-full px-4 py-3 border border-gray-300 rounded-lg mb-6" rows={4} placeholder="Ej: Quiero mejorar mi salud dental..." />
-      <button onClick={() => setStep(2)} className="w-full bg-teal-700 text-white py-3 rounded-lg font-medium hover:bg-teal-800">Continuar</button>
+      <h2 className="text-xl font-semibold text-neutral-900 mb-6">¿Cuáles son tus principales preocupaciones?</h2>
+      <textarea value={concerns} onChange={e => setConcerns(e.target.value)} className="w-full px-4 py-3 border border-neutral-300 rounded-lg mb-6" rows={4} placeholder="Ej: Quiero mejorar mi salud dental..." />
+      <button onClick={() => setStep(2)} className="w-full bg-teal-700 text-white py-3 rounded-lg font-medium hover:bg-primary-700">Continuar</button>
     </div>
   );
 
   if (step === 2) return (
     <div>
-      <h2 className="text-xl font-semibold text-gray-900 mb-6">Síntomas Actuales</h2>
-      <p className="text-gray-600 mb-4">Selecciona los que apliquen:</p>
+      <h2 className="text-xl font-semibold text-neutral-900 mb-6">Síntomas Actuales</h2>
+      <p className="text-neutral-600 mb-4">Selecciona los que apliquen:</p>
       <div className="grid md:grid-cols-2 gap-3 mb-6">
         {symptomOptions.map(s => (
-          <label key={s} className="flex items-center gap-3 p-3 border border-gray-200 rounded-lg cursor-pointer hover:border-teal-300">
-            <input type="checkbox" checked={symptoms.includes(s)} onChange={() => toggleSymptom(s)} className="w-5 h-5 text-teal-600 rounded" />
+          <label key={s} className="flex items-center gap-3 p-3 border border-neutral-200 rounded-lg cursor-pointer hover:border-primary-300">
+            <input type="checkbox" checked={symptoms.includes(s)} onChange={() => toggleSymptom(s)} className="w-5 h-5 text-primary-600 rounded" />
             <span>{s}</span>
           </label>
         ))}
       </div>
       <div className="flex gap-4">
-        <button onClick={() => setStep(1)} className="flex-1 border border-gray-300 py-3 rounded-lg hover:bg-gray-50">Atrás</button>
-        <button onClick={() => setStep(3)} className="flex-1 bg-teal-700 text-white py-3 rounded-lg font-medium hover:bg-teal-800">Continuar</button>
+        <button onClick={() => setStep(1)} className="flex-1 border border-neutral-300 py-3 rounded-lg hover:bg-neutral-50">Atrás</button>
+        <button onClick={() => setStep(3)} className="flex-1 bg-primary-600 text-white py-3 rounded-lg font-medium hover:bg-primary-700">Continuar</button>
       </div>
     </div>
   );
 
   if (step === 3) return (
     <div>
-      <h2 className="text-xl font-semibold text-gray-900 mb-6">Estilo de Vida</h2>
+      <h2 className="text-xl font-semibold text-neutral-900 mb-6">Estilo de Vida</h2>
       <div className="space-y-6 mb-6">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">Alimentación</label>
-          <select value={nutrition} onChange={e => setNutrition(e.target.value)} className="w-full px-4 py-3 border border-gray-300 rounded-lg">
+          <label className="block text-sm font-medium text-neutral-700 mb-2">Alimentación</label>
+          <select value={nutrition} onChange={e => setNutrition(e.target.value)} className="w-full px-4 py-3 border border-neutral-300 rounded-lg">
             <option value="">Seleccionar</option>
             <option value="excellent">Excelente</option>
             <option value="good">Buena</option>
@@ -79,8 +79,8 @@ export default function PlanAccionApp() {
           </select>
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">Ejercicio</label>
-          <select value={exercise} onChange={e => setExercise(e.target.value)} className="w-full px-4 py-3 border border-gray-300 rounded-lg">
+          <label className="block text-sm font-medium text-neutral-700 mb-2">Ejercicio</label>
+          <select value={exercise} onChange={e => setExercise(e.target.value)} className="w-full px-4 py-3 border border-neutral-300 rounded-lg">
             <option value="">Seleccionar</option>
             <option value="daily">Diario</option>
             <option value="often">3-5 veces/semana</option>
@@ -89,24 +89,24 @@ export default function PlanAccionApp() {
           </select>
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">Nivel de estrés: {stress}</label>
+          <label className="block text-sm font-medium text-neutral-700 mb-2">Nivel de estrés: {stress}</label>
           <input type="range" min="low" max="high" value={stress} onChange={e => setStress(e.target.value)} className="w-full" />
         </div>
       </div>
       <div className="flex gap-4">
-        <button onClick={() => setStep(2)} className="flex-1 border border-gray-300 py-3 rounded-lg hover:bg-gray-50">Atrás</button>
-        <button onClick={() => setStep(4)} className="flex-1 bg-teal-700 text-white py-3 rounded-lg font-medium hover:bg-teal-800">Continuar</button>
+        <button onClick={() => setStep(2)} className="flex-1 border border-neutral-300 py-3 rounded-lg hover:bg-neutral-50">Atrás</button>
+        <button onClick={() => setStep(4)} className="flex-1 bg-primary-600 text-white py-3 rounded-lg font-medium hover:bg-primary-700">Continuar</button>
       </div>
     </div>
   );
 
   if (step === 4) return (
     <div>
-      <h2 className="text-xl font-semibold text-gray-900 mb-6">Tus Objetivos</h2>
-      <textarea value={goals} onChange={e => setGoals(e.target.value)} className="w-full px-4 py-3 border border-gray-300 rounded-lg mb-6" rows={4} placeholder="¿Qué quieres lograr?" />
+      <h2 className="text-xl font-semibold text-neutral-900 mb-6">Tus Objetivos</h2>
+      <textarea value={goals} onChange={e => setGoals(e.target.value)} className="w-full px-4 py-3 border border-neutral-300 rounded-lg mb-6" rows={4} placeholder="¿Qué quieres lograr?" />
       <div className="flex gap-4">
-        <button onClick={() => setStep(3)} className="flex-1 border border-gray-300 py-3 rounded-lg hover:bg-gray-50">Atrás</button>
-        <button onClick={generatePlan} disabled={loading} className="flex-1 bg-teal-700 text-white py-3 rounded-lg font-medium hover:bg-teal-800 disabled:opacity-50">
+        <button onClick={() => setStep(3)} className="flex-1 border border-neutral-300 py-3 rounded-lg hover:bg-neutral-50">Atrás</button>
+        <button onClick={generatePlan} disabled={loading} className="flex-1 bg-primary-600 text-white py-3 rounded-lg font-medium hover:bg-primary-700 disabled:opacity-50">
           {loading ? 'Generando...' : 'Generar Mi Plan'}
         </button>
       </div>
@@ -117,14 +117,14 @@ export default function PlanAccionApp() {
     <div>
       <div className="text-center mb-8">
         <div className="text-5xl mb-4">🎉</div>
-        <h2 className="text-2xl font-serif text-gray-900 mb-2">¡Tu Plan está Listo!</h2>
+        <h2 className="text-2xl font-heading text-neutral-900 mb-2">¡Tu Plan está Listo!</h2>
       </div>
       {plan.readings?.length > 0 && (
         <div className="mb-8">
           <h3 className="text-lg font-semibold text-gray-900 mb-4">📚 Lecturas Recomendadas</h3>
           <div className="space-y-3">
             {plan.readings.map((r: any, i: number) => (
-              <a key={i} href={"/libro/" + r.slug + "/"} className="block p-4 border border-gray-200 rounded-lg hover:border-teal-300">
+              <a key={i} href={"/libro/" + r.slug + "/"} className="block p-4 border border-gray-200 rounded-lg hover:border-primary-300">
                 <h4 className="font-medium text-teal-700">{r.title}</h4>
                 <p className="text-sm text-gray-600">{r.reason}</p>
               </a>
@@ -143,8 +143,8 @@ export default function PlanAccionApp() {
         </div>
       )}
       <div className="flex gap-4">
-        <a href="/libro/" className="flex-1 border border-gray-300 py-3 rounded-lg text-center hover:bg-gray-50">Comenzar a Leer</a>
-        <button onClick={() => { setStep(1); setPlan(null); }} className="flex-1 bg-teal-700 text-white py-3 rounded-lg font-medium hover:bg-teal-800">Modificar</button>
+        <a href="/libro/" className="flex-1 border border-neutral-300 py-3 rounded-lg text-center hover:bg-neutral-50">Comenzar a Leer</a>
+        <button onClick={() => { setStep(1); setPlan(null); }} className="flex-1 bg-primary-600 text-white py-3 rounded-lg font-medium hover:bg-primary-700">Modificar</button>
       </div>
     </div>
   );

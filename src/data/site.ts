@@ -145,7 +145,7 @@ export const services: Service[] = [
     ],
     process: [
       { step: "Diagnóstico completo", description: "Evaluamos la mordida, los músculos masticatorios, la articulación y la postura. Radiografías, scan de la mordida y análisis del movimiento." },
-      { step: "Plan de tratamiento personalizado", description: " Diseñamos un protocolo específico para tu caso. Puede incluir aparato ortopédico, terapia manual, ejercicios y ajustes de la mordida." },
+      { step: "Plan de tratamiento personalizado", description: "Diseñamos un protocolo específico para tu caso. Puede incluir aparato ortopédico, terapia manual, ejercicios y ajustes de la mordida." },
       { step: "Tratamiento activo", description: "Terapia con aparatos removibles, fisioterapia masticatoria, terapia neural y seguimiento estrecho. Ajustamos según la respuesta de tu cuerpo." },
       { step: "Estabilización", description: "Cuando el dolor cede, trabajamos en la estabilización de la mordida para prevenir recaídas. Evaluamos si se necesitan restauraciones definitivas." },
     ],
@@ -187,7 +187,7 @@ export const services: Service[] = [
     ],
     faqs: [
       { question: "¿Es seguro el ozono?", answer: "Sí. El ozono médico se aplica en concentraciones controladas y es completamente biocompatible. Es una de las sustancias más naturales y seguras usadas en medicina. No causa resistencia bacteriana como los antibióticos." },
-      { question: "¿Para qué problemas sirve la ozonoterapia?", answer: "Tratamos encías sangrantes, periodontitis, aftas, herpes, canales infected, heridas post-operatorias y más. Es especialmente útil cuando los antibióticos no son deseados o están contraindicados." },
+      { question: "¿Para qué problemas sirve la ozonoterapia?", answer: "Tratamos encías sangrantes, periodontitis, aftas, herpes, canales infectados, heridas post-operatorias y más. Es especialmente útil cuando los antibióticos no son deseados o están contraindicados." },
     ],
     priceRange: "Desde $40.000 por sesión",
     commonIssues: [
@@ -252,7 +252,7 @@ export const services: Service[] = [
     ],
     process: [
       { step: "Evaluación facial", description: "Analizamos tu rostro completo: expresión, volumen, simetría y relación con tu sonrisa. Diseñamos un plan de armonización que luce natural." },
-      { step: "Planificación", description: "Definimos los puntos exactos, cantidades y productos. Priorizamos resultados sutiles que mantengan tu expresion natural." },
+      { step: "Planificación", description: "Definimos los puntos exactos, cantidades y productos. Priorizamos resultados sutiles que mantengan tu expresión natural." },
       { step: "Aplicación", description: "Procedimientos mínimos invasivos con materiales de primera calidad. El procedimiento es rápido, con mínimas molestias." },
     ],
     faqs: [
@@ -285,7 +285,7 @@ export const services: Service[] = [
       "Coordinación con tu equipo médico",
     ],
     process: [
-      { step: "Evaluación nutricional", description: "Revision de hábitos alimentarios, historial médico y su relación con tu salud bucal. Identificamos los cambios con mayor impacto." },
+      { step: "Evaluación nutricional", description: "Revisión de hábitos alimentarios, historial médico y su relación con tu salud bucal. Identificamos los cambios con mayor impacto." },
       { step: "Plan personalizado", description: "Diseño de un plan alimentario práctico, realista y adaptado a tu vida. No dietas extremas: cambios sostenibles que sostienen resultados." },
       { step: "Seguimiento", description: "Monitoreo del impacto en tu salud bucal. Ajustes según la respuesta de tus encías y tu bienestar general." },
     ],
@@ -341,11 +341,11 @@ export const services: Service[] = [
 export const siteConfig = {
   name: "Centro de Salud Holística Dr. Ipinza",
   shortName: "Centro de Salud Holística",
-  url: "https://centrodesaludholistica.cl",
+  url: "https://saludevolutiva.cl",
   doctor: "Dr. Joaquín Ipinza Hofmann",
   phone: "+56 9 XXXX XXXX",
   phoneTel: "+569XXXXXXXX",
-  email: "contacto@centrodesaludholistica.cl",
+  email: "contacto@saludevolutiva.cl",
   address: {
     street: "Los Dominicos, Las Condes",
     city: "Santiago",

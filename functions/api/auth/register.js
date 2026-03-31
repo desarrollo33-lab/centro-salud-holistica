@@ -1,8 +1,9 @@
 export async function onRequestPost({ request, env }) {
   try {
     const { email, password, passwordConfirm, name } = await request.json();
+    const pbUrl = env.POCKETBASE_URL || 'http://64.176.16.231:8090';
     
-    const createResponse = await fetch('https://venue-glenn-elected-paris.trycloudflare.com/api/collections/users/records', {
+    const createResponse = await fetch(`${pbUrl}/api/collections/users/records`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, password, passwordConfirm, name })
@@ -18,7 +19,7 @@ export async function onRequestPost({ request, env }) {
       });
     }
     
-    const loginResponse = await fetch('https://venue-glenn-elected-paris.trycloudflare.com/api/collections/users/auth-with-password', {
+    const loginResponse = await fetch(`${pbUrl}/api/collections/users/auth-with-password`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ identity: email, password })
@@ -42,14 +43,11 @@ export async function onRequestPost({ request, env }) {
       user: loginData.record
     }), {
       status: 200,
-      headers: { 
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
-      }
+      headers: { 'Content-Type': 'application/json' }
     });
   } catch (error) {
     console.error('Register error:', error);
-    return new Response(JSON.stringify({ error: 'Error del servidor: ' + error.message }), {
+    return new Response(JSON.stringify({ error: 'Error del servidor' }), {
       status: 500,
       headers: { 'Content-Type': 'application/json' }
     });

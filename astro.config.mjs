@@ -6,7 +6,7 @@ import sitemap from "@astrojs/sitemap";
 export default defineConfig({
   site: "https://saludevolutiva.cl",
   integrations: [react(), sitemap()],
-  output: "static",
+  // output: "static"  // default in Astro 5 — Cloudflare Functions run separately via functions/
   vite: {
     plugins: [tailwindcss()],
   },

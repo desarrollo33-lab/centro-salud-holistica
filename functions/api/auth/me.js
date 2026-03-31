@@ -9,7 +9,8 @@ export async function onRequestGet({ request, env }) {
   }
   
   try {
-    const response = await fetch('https://venue-glenn-elected-paris.trycloudflare.com/api/collections/users/auth-refresh', {
+    const pbUrl = env.POCKETBASE_URL || 'http://64.176.16.231:8090';
+    const response = await fetch(`${pbUrl}/api/collections/users/auth-refresh`, {
       method: 'POST',
       headers: { 
         'Content-Type': 'application/json',
@@ -32,10 +33,7 @@ export async function onRequestGet({ request, env }) {
       token: data.token
     }), {
       status: 200,
-      headers: { 
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
-      }
+      headers: { 'Content-Type': 'application/json' }
     });
   } catch (error) {
     console.error('Auth check error:', error);

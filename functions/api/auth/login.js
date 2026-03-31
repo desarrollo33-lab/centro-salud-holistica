@@ -1,8 +1,9 @@
 export async function onRequestPost({ request, env }) {
   try {
     const { identity, password } = await request.json();
+    const pbUrl = env.POCKETBASE_URL || 'http://64.176.16.231:8090';
     
-    const response = await fetch('https://venue-glenn-elected-paris.trycloudflare.com/api/collections/users/auth-with-password', {
+    const response = await fetch(`${pbUrl}/api/collections/users/auth-with-password`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ identity, password })
@@ -23,14 +24,11 @@ export async function onRequestPost({ request, env }) {
       user: data.record
     }), {
       status: 200,
-      headers: { 
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
-      }
+      headers: { 'Content-Type': 'application/json' }
     });
   } catch (error) {
     console.error('Login error:', error);
-    return new Response(JSON.stringify({ error: 'Error del servidor: ' + error.message }), {
+    return new Response(JSON.stringify({ error: 'Error del servidor' }), {
       status: 500,
       headers: { 'Content-Type': 'application/json' }
     });

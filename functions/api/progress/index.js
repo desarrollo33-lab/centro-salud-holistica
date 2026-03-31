@@ -9,10 +9,9 @@ export async function onRequestGet({ request, env }) {
   }
   
   try {
-    const response = await fetch('https://venue-glenn-elected-paris.trycloudflare.com/api/collections/user_progress/records?perPage=100', {
-      headers: { 
-        'Authorization': authHeader
-      }
+    const pbUrl = env.POCKETBASE_URL || 'http://64.176.16.231:8090';
+    const response = await fetch(`${pbUrl}/api/collections/user_progress/records?perPage=100`, {
+      headers: { 'Authorization': authHeader }
     });
     
     if (!response.ok) {
@@ -26,10 +25,7 @@ export async function onRequestGet({ request, env }) {
     
     return new Response(JSON.stringify(data), {
       status: 200,
-      headers: { 
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
-      }
+      headers: { 'Content-Type': 'application/json' }
     });
   } catch (error) {
     console.error('Progress error:', error);

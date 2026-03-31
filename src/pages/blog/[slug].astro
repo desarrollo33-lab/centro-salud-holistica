@@ -1,10 +1,8 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import PocketBase from 'pocketbase';
+import { pb } from '../../lib/pocketbase';
 
 export async function getStaticPaths() {
-  const pb = new PocketBase('http://64.176.16.231:8090');
-  
   try {
     const records = await pb.collection('blog').getList(1, 50, {
       filter: 'status="published"',
@@ -22,6 +20,19 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props;
+
+function simpleMarkdown(text) {
+  if (!text) return '';
+  return text
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/## (.+)/g, '<h2>$1</h2>')
+    .replace(/### (.+)/g, '<h3>$1</h3>')
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\n\n/g, '</p><p>')
+    .replace(/\n/g, '<br>');
+}
 ---
 
 <BaseLayout
@@ -75,16 +86,7 @@ const { post } = Astro.props;
       </header>
 
       <div class="max-w-3xl mx-auto px-4 py-12">
-        <div class="bg-white rounded-xl shadow-sm border border-neutral-200 p-8 md:p-12 prose prose-lg max-w-none">
-          <div set:html={
-            post.content_markdown
-              .replace(/## (.+)/g, '<h2>$1</h2>')
-              .replace(/### (.+)/g, '<h3>$1</h3>')
-              .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-              .replace(/\n\n/g, '</p><p>')
-              .replace(/\n/g, '<br>')
-          } />
-        </div>
+        <div class="bg-white rounded-xl shadow-sm border border-neutral-200 p-8 md:p-12 prose-evolutiva" set:html={simpleMarkdown(post.content_markdown)} />
 
         <div class="mt-12 bg-secondary-50 rounded-xl p-8 text-center border border-secondary-100">
           <h3 class="text-2xl font-bold text-neutral-900 font-heading mb-4">¿Quieres un plan personalizado?</h3>

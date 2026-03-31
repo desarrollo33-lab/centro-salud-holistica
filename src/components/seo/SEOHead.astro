@@ -7,7 +7,7 @@ interface Props {
   ogType?: string;
   noindex?: boolean;
 }
-const { title, description, canonical = Astro.url.href, ogImage = "/images/og-default.jpg", ogType = "website", noindex = false } = Astro.props;
+const { title, description, canonical = Astro.url.href, ogImage = "/images/og-default.svg", ogType = "website", noindex = false } = Astro.props;
 import { siteConfig } from "../../data/site";
 const fullOgImage = ogImage.startsWith("http") ? ogImage : `${siteConfig.url}${ogImage}`;
 ---
