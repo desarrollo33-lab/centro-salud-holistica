@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Circle, Check, Sparkles, ThumbsUp, Flame, Hourglass } from 'lucide-react';
 
 const SLUG = typeof window !== 'undefined' ? window.location.pathname.split('/').pop() : '';
 
@@ -90,7 +91,7 @@ export default function ChecklistTool() {
     return (
       <div className="flex items-center justify-center py-16">
         <div className="text-center">
-          <div className="text-4xl mb-3 animate-pulse">⏳</div>
+          <Hourglass className="w-10 h-10 text-neutral-300 mx-auto mb-3 animate-pulse" />
           <p className="text-neutral-500 text-sm">Cargando checklist...</p>
         </div>
       </div>
@@ -114,8 +115,9 @@ export default function ChecklistTool() {
     setShowResults(false);
   };
 
-  const getIcon = () => pct >= 80 ? '🎉' : pct >= 50 ? '👍' : '💪';
+  const getIcon = () => pct >= 80 ? Sparkles : pct >= 50 ? ThumbsUp : Flame;
   const getBorder = () => pct >= 80 ? 'border-emerald-300 bg-emerald-50' : pct >= 50 ? 'border-amber-300 bg-amber-50' : 'border-red-300 bg-red-50';
+  const ResultIcon = getIcon();
 
   return (
     <div>
@@ -187,7 +189,7 @@ export default function ChecklistTool() {
       {/* Results */}
       {showResults && (
         <div className={`rounded-xl border-2 p-6 text-center ${getBorder()}`}>
-          <div className="text-4xl mb-3">{getIcon()}</div>
+          <div className="mb-3 flex justify-center"><ResultIcon className="w-10 h-10" /></div>
           <div className="text-sm text-neutral-500 mb-1">Tu puntaje: {checked}/{total} ({pct}%)</div>
           <h3 className={`text-xl font-bold mb-2 ${getResult().color}`}>
             {getResult().label}
@@ -204,7 +206,7 @@ export default function ChecklistTool() {
                   if (answers[key]) return null;
                   return (
                     <li key={key} className="flex items-start gap-2">
-                      <span className="text-neutral-400 mt-0.5 shrink-0">○</span>
+                      <Circle className="w-3.5 h-3.5 text-neutral-400 mt-0.5 shrink-0" />
                       <span>{item.q}</span>
                     </li>
                   );

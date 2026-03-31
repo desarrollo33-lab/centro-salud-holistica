@@ -1,4 +1,5 @@
 ---
+import { Icon } from "astro-icon/components";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 
@@ -19,9 +20,9 @@ const readTime = Math.max(1, Math.round((word_count || 200) / 250));
   <article class="max-w-3xl mx-auto px-4 sm:px-6 py-12 md:py-16">
     <nav class="text-sm text-neutral-500 mb-8 flex items-center gap-1.5 flex-wrap">
       <a href="/" class="hover:text-primary-700 no-underline text-neutral-500">Inicio</a>
-      <span class="text-neutral-300">›</span>
+      <Icon name="lucide:chevron-right" class="w-3.5 h-3.5 text-neutral-300" />
       <a href="/aprende" class="hover:text-primary-700 no-underline text-neutral-500">Aprende</a>
-      <span class="text-neutral-300">›</span>
+      <Icon name="lucide:chevron-right" class="w-3.5 h-3.5 text-neutral-300" />
       <span class="text-neutral-800 font-medium truncate max-w-[200px]">{title}</span>
     </nav>
     <header class="mb-10">
@@ -36,7 +37,9 @@ const readTime = Math.max(1, Math.round((word_count || 200) / 250));
     </header>
     <div class="prose-evolutiva"><Content /></div>
     <div class="mt-12 pt-8 border-t border-neutral-200">
-      <a href="/aprende" class="text-sm font-medium text-primary-700 hover:text-primary-800 no-underline">← Ver todas las guías</a>
+      <a href="/aprende" class="text-sm font-medium text-primary-700 hover:text-primary-800 no-underline inline-flex items-center gap-1">
+        <Icon name="lucide:arrow-left" class="w-4 h-4" /> Ver todas las guías
+      </a>
     </div>
   </article>
 </BaseLayout>

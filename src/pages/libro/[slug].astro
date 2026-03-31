@@ -1,4 +1,5 @@
 ---
+import { Icon } from "astro-icon/components";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 
@@ -24,9 +25,9 @@ const readTime = Math.max(1, Math.round((word_count || 200) / 250));
   <article class="max-w-3xl mx-auto px-4 sm:px-6 py-12 md:py-16">
     <nav class="text-sm text-neutral-500 mb-8 flex items-center gap-1.5 flex-wrap">
       <a href="/" class="hover:text-primary-700 no-underline text-neutral-500">Inicio</a>
-      <span class="text-neutral-300">›</span>
+      <Icon name="lucide:chevron-right" class="w-3.5 h-3.5 text-neutral-300" />
       <a href="/libro" class="hover:text-primary-700 no-underline text-neutral-500">Libro</a>
-      <span class="text-neutral-300">›</span>
+      <Icon name="lucide:chevron-right" class="w-3.5 h-3.5 text-neutral-300" />
       <span class="text-neutral-800 font-medium truncate max-w-[200px]">{title}</span>
     </nav>
     <header class="mb-10">
@@ -42,20 +43,20 @@ const readTime = Math.max(1, Math.round((word_count || 200) / 250));
     <nav class="chapter-nav">
       {prev ? (
         <a href={`/libro/${prev.slug}`}>
-          <span class="nav-label">← Anterior</span>
+          <span class="nav-label inline-flex items-center gap-1"><Icon name="lucide:arrow-left" class="w-4 h-4" /> Anterior</span>
           <span class="nav-title">{prev.title}</span>
         </a>
       ) : <span />}
       {next ? (
         <a href={`/libro/${next.slug}`}>
-          <span class="nav-label">Siguiente →</span>
+          <span class="nav-label inline-flex items-center gap-1">Siguiente <Icon name="lucide:arrow-right" class="w-4 h-4" /></span>
           <span class="nav-title">{next.title}</span>
         </a>
       ) : <span />}
     </nav>
   </article>
   <button id="scroll-top-btn" class="fixed bottom-6 right-6 w-11 h-11 bg-primary-600 text-white rounded-full shadow-lg flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-200 hover:bg-primary-700 no-underline" aria-label="Volver arriba">
-    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"/></svg>
+    <Icon name="lucide:arrow-up" class="w-5 h-5" />
   </button>
   <script define:vars={{ prev: prev ? prev.slug : null, next: next ? next.slug : null }}>
     const btn = document.getElementById("scroll-top-btn");

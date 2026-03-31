@@ -1,4 +1,5 @@
 ---
+import { Icon } from "astro-icon/components";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import HeroInner from "../../components/sections/HeroInner.astro";
 import Section from "../../components/ui/Section.astro";
@@ -15,60 +16,40 @@ import Container from "../../components/ui/Container.astro";
         </div>
         <div class="divide-y divide-neutral-100">
           <a href="/libro/palabras-del-autor" class="flex items-start gap-4 py-5 no-underline group hover:bg-primary-50/50 -mx-4 px-4 rounded-lg transition-colors">
-            <span class="text-2xl font-heading font-bold text-primary-300 mt-0.5 shrink-0">✦</span>
+            <span class="text-2xl font-heading font-bold text-primary-300 mt-0.5 shrink-0 flex items-center justify-center w-8 h-8">
+              <Icon name="lucide:sparkles" class="w-5 h-5" />
+            </span>
             <div class="flex-1 min-w-0">
               <h2 class="font-heading font-semibold text-neutral-900 group-hover:text-primary-700 transition-colors">Palabras del Autor</h2>
               <p class="text-sm text-neutral-500 mt-0.5">Prólogo</p>
             </div>
-            <span class="text-neutral-300 mt-1 shrink-0 group-hover:text-primary-500 transition-colors">→</span>
+            <Icon name="lucide:arrow-right" class="w-4 h-4 text-neutral-300 mt-1 shrink-0 group-hover:text-primary-500 transition-colors" />
           </a>
-          <a href="/libro/capitulo-1" class="flex items-start gap-4 py-5 no-underline group hover:bg-primary-50/50 -mx-4 px-4 rounded-lg transition-colors">
-            <span class="text-2xl font-heading font-bold text-primary-300 mt-0.5 shrink-0">1</span>
-            <div class="flex-1 min-w-0">
-              <h2 class="font-heading font-semibold text-neutral-900 group-hover:text-primary-700 transition-colors">Evolucion Cultural vs Natural</h2>
-              <p class="text-sm text-neutral-500 mt-0.5">Capítulo 1</p>
-            </div>
-            <span class="text-neutral-300 mt-1 shrink-0 group-hover:text-primary-500 transition-colors">→</span>
-          </a>
-          <a href="/libro/capitulo-2" class="flex items-start gap-4 py-5 no-underline group hover:bg-primary-50/50 -mx-4 px-4 rounded-lg transition-colors">
-            <span class="text-2xl font-heading font-bold text-primary-300 mt-0.5 shrink-0">2</span>
-            <div class="flex-1 min-w-0">
-              <h2 class="font-heading font-semibold text-neutral-900 group-hover:text-primary-700 transition-colors">Salud Bucal: La Enfermedad de la Civilizacion</h2>
-              <p class="text-sm text-neutral-500 mt-0.5">Capítulo 2</p>
-            </div>
-            <span class="text-neutral-300 mt-1 shrink-0 group-hover:text-primary-500 transition-colors">→</span>
-          </a>
-          <a href="/libro/capitulo-3" class="flex items-start gap-4 py-5 no-underline group hover:bg-primary-50/50 -mx-4 px-4 rounded-lg transition-colors">
-            <span class="text-2xl font-heading font-bold text-primary-300 mt-0.5 shrink-0">3</span>
-            <div class="flex-1 min-w-0">
-              <h2 class="font-heading font-semibold text-neutral-900 group-hover:text-primary-700 transition-colors">El Tripode de la Salud</h2>
-              <p class="text-sm text-neutral-500 mt-0.5">Capítulo 3</p>
-            </div>
-            <span class="text-neutral-300 mt-1 shrink-0 group-hover:text-primary-500 transition-colors">→</span>
-          </a>
-          <a href="/libro/capitulo-4" class="flex items-start gap-4 py-5 no-underline group hover:bg-primary-50/50 -mx-4 px-4 rounded-lg transition-colors">
-            <span class="text-2xl font-heading font-bold text-primary-300 mt-0.5 shrink-0">4</span>
-            <div class="flex-1 min-w-0">
-              <h2 class="font-heading font-semibold text-neutral-900 group-hover:text-primary-700 transition-colors">Materiales Dentales y Toxicidad</h2>
-              <p class="text-sm text-neutral-500 mt-0.5">Capítulo 4</p>
-            </div>
-            <span class="text-neutral-300 mt-1 shrink-0 group-hover:text-primary-500 transition-colors">→</span>
-          </a>
-          <a href="/libro/capitulo-5" class="flex items-start gap-4 py-5 no-underline group hover:bg-primary-50/50 -mx-4 px-4 rounded-lg transition-colors">
-            <span class="text-2xl font-heading font-bold text-primary-300 mt-0.5 shrink-0">5</span>
-            <div class="flex-1 min-w-0">
-              <h2 class="font-heading font-semibold text-neutral-900 group-hover:text-primary-700 transition-colors">Salud Bucal a lo Largo de la Vida</h2>
-              <p class="text-sm text-neutral-500 mt-0.5">Capítulo 5</p>
-            </div>
-            <span class="text-neutral-300 mt-1 shrink-0 group-hover:text-primary-500 transition-colors">→</span>
-          </a>
+          {[
+            { slug: "capitulo-1", num: "1", title: "Evolucion Cultural vs Natural", sub: "Capítulo 1" },
+            { slug: "capitulo-2", num: "2", title: "Salud Bucal: La Enfermedad de la Civilizacion", sub: "Capítulo 2" },
+            { slug: "capitulo-3", num: "3", title: "El Tripode de la Salud", sub: "Capítulo 3" },
+            { slug: "capitulo-4", num: "4", title: "Materiales Dentales y Toxicidad", sub: "Capítulo 4" },
+            { slug: "capitulo-5", num: "5", title: "Salud Bucal a lo Largo de la Vida", sub: "Capítulo 5" },
+          ].map((ch) => (
+            <a href={`/libro/${ch.slug}`} class="flex items-start gap-4 py-5 no-underline group hover:bg-primary-50/50 -mx-4 px-4 rounded-lg transition-colors">
+              <span class="text-2xl font-heading font-bold text-primary-300 mt-0.5 shrink-0">{ch.num}</span>
+              <div class="flex-1 min-w-0">
+                <h2 class="font-heading font-semibold text-neutral-900 group-hover:text-primary-700 transition-colors">{ch.title}</h2>
+                <p class="text-sm text-neutral-500 mt-0.5">{ch.sub}</p>
+              </div>
+              <Icon name="lucide:arrow-right" class="w-4 h-4 text-neutral-300 mt-1 shrink-0 group-hover:text-primary-500 transition-colors" />
+            </a>
+          ))}
           <a href="/libro/epilogo" class="flex items-start gap-4 py-5 no-underline group hover:bg-primary-50/50 -mx-4 px-4 rounded-lg transition-colors">
-            <span class="text-2xl font-heading font-bold text-primary-300 mt-0.5 shrink-0">✦</span>
+            <span class="text-2xl font-heading font-bold text-primary-300 mt-0.5 shrink-0 flex items-center justify-center w-8 h-8">
+              <Icon name="lucide:sparkles" class="w-5 h-5" />
+            </span>
             <div class="flex-1 min-w-0">
               <h2 class="font-heading font-semibold text-neutral-900 group-hover:text-primary-700 transition-colors">Epílogo</h2>
               <p class="text-sm text-neutral-500 mt-0.5">Cierre</p>
             </div>
-            <span class="text-neutral-300 mt-1 shrink-0 group-hover:text-primary-500 transition-colors">→</span>
+            <Icon name="lucide:arrow-right" class="w-4 h-4 text-neutral-300 mt-1 shrink-0 group-hover:text-primary-500 transition-colors" />
           </a>
         </div>
       </div>

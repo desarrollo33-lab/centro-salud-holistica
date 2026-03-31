@@ -1,4 +1,5 @@
 ---
+import { Icon } from "astro-icon/components";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import HeroInner from "../../components/sections/HeroInner.astro";
 import Section from "../../components/ui/Section.astro";
@@ -57,9 +58,7 @@ try {
                 </p>
                 <span class="inline-flex items-center gap-1 text-primary-600 font-medium text-sm group-hover:gap-2 transition-all">
                   Leer más
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                  </svg>
+                  <Icon name="lucide:arrow-right" class="w-4 h-4" />
                 </span>
               </div>
             </a>
@@ -67,7 +66,7 @@ try {
         </div>
       ) : (
         <div class="text-center py-12">
-          <div class="text-5xl mb-4">📝</div>
+          <Icon name="lucide:file-text" class="w-12 h-12 text-neutral-300 mx-auto mb-4" />
           <h3 class="text-xl font-semibold text-neutral-900 font-heading mb-2">Próximamente</h3>
           <p class="text-neutral-500">Estamos preparando contenido nuevo para ti.</p>
         </div>
@@ -83,7 +82,7 @@ try {
           Crea tu cuenta gratuita y recibe un plan de acción personalizado basado en el libro "Salud Evolutiva" del Dr. Ipinza.
         </p>
         <a href="/auth/registro/" class="inline-flex items-center gap-2 bg-primary-600 text-white font-semibold px-8 py-4 rounded-xl hover:bg-primary-700 transition-colors no-underline text-lg">
-          Crear Cuenta Gratis →
+          Crear Cuenta Gratis <Icon name="lucide:arrow-right" class="w-5 h-5" />
         </a>
       </div>
     </Container>

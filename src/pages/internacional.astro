@@ -1,4 +1,5 @@
 ---
+import { Icon } from "astro-icon/components";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import HeroInner from "../components/sections/HeroInner.astro";
 import Section from "../components/ui/Section.astro";
@@ -21,7 +22,9 @@ import Badge from "../components/ui/Badge.astro";
     <Container>
       <div class="grid lg:grid-cols-2 gap-12 items-center">
         <div>
-          <Badge variant="secondary">🌍 Pacientes internacionales</Badge>
+          <Badge variant="secondary" class="inline-flex items-center gap-1.5">
+            <Icon name="lucide:globe-2" class="w-4 h-4" /> Pacientes internacionales
+          </Badge>
           <h2 class="font-heading font-bold text-3xl text-neutral-900 mt-4 mb-4">
             Tu tratamiento dental en Chile
           </h2>
@@ -31,28 +34,36 @@ import Badge from "../components/ui/Badge.astro";
 
           <div class="space-y-4">
             <div class="flex items-start gap-4">
-              <div class="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center shrink-0 text-xl">💰</div>
+              <div class="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center shrink-0">
+                <Icon name="lucide:coins" class="w-5 h-5 text-primary-600" />
+              </div>
               <div>
                 <h3 class="font-semibold text-neutral-900 mb-1">Ahorro significativo</h3>
                 <p class="text-neutral-500 text-sm">40-80% menos que USA, Canadá o Europa para tratamientos similares de alta calidad.</p>
               </div>
             </div>
             <div class="flex items-start gap-4">
-              <div class="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center shrink-0 text-xl">🏥</div>
+              <div class="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center shrink-0">
+                <Icon name="lucide:building-2" class="w-5 h-5 text-primary-600" />
+              </div>
               <div>
                 <h3 class="font-semibold text-neutral-900 mb-1">Calidad de excelencia</h3>
                 <p class="text-neutral-500 text-sm">Universidad de Chile, Loma Linda, protocolos internacionales IAOMT y materiales de primera línea.</p>
               </div>
             </div>
             <div class="flex items-start gap-4">
-              <div class="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center shrink-0 text-xl">🌎</div>
+              <div class="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center shrink-0">
+                <Icon name="lucide:globe" class="w-5 h-5 text-primary-600" />
+              </div>
               <div>
                 <h3 class="font-semibold text-neutral-900 mb-1">Un país hermoso</h3>
                 <p class="text-neutral-500 text-sm">Santiago, la Patagonia, la tierra de origen. Combina tu tratamiento con turismo.</p>
               </div>
             </div>
             <div class="flex items-start gap-4">
-              <div class="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center shrink-0 text-xl">🗣️</div>
+              <div class="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center shrink-0">
+                <Icon name="lucide:languages" class="w-5 h-5 text-primary-600" />
+              </div>
               <div>
                 <h3 class="font-semibold text-neutral-900 mb-1">Español o inglés</h3>
                 <p class="text-neutral-500 text-sm">Atención en español e inglés. Coordinamos con tu idioma.</p>
@@ -96,15 +107,17 @@ import Badge from "../components/ui/Badge.astro";
       <h2 class="font-heading font-bold text-3xl text-neutral-900 mb-8 text-center">Tratamientos más solicitados por pacientes internacionales</h2>
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">
         {[
-          { icon: "⚕️", name: "Eliminación de amalgamas", saving: "Ahorro ~60%" },
-          { icon: "🦴", name: "Implantes cerámicos", saving: "Ahorro ~50%" },
-          { icon: "✨", name: "Odontología biomimética", saving: "Ahorro ~55%" },
-          { icon: "💆", name: "Tratamiento ATM", saving: "Ahorro ~65%" },
-          { icon: "😁", name: "Ortodoncia / Invisalign", saving: "Ahorro ~50%" },
-          { icon: "💉", name: "Estética facial", saving: "Ahorro ~60%" },
+          { icon: "lucide:shield-plus", name: "Eliminación de amalgamas", saving: "Ahorro ~60%" },
+          { icon: "lucide:bone", name: "Implantes cerámicos", saving: "Ahorro ~50%" },
+          { icon: "lucide:sparkles", name: "Odontología biomimética", saving: "Ahorro ~55%" },
+          { icon: "lucide:hand", name: "Tratamiento ATM", saving: "Ahorro ~65%" },
+          { icon: "lucide:smile", name: "Ortodoncia / Invisalign", saving: "Ahorro ~50%" },
+          { icon: "lucide:syringe", name: "Estética facial", saving: "Ahorro ~60%" },
         ].map((t) => (
           <div class="bg-neutral-50 rounded-xl p-4 flex items-center gap-3">
-            <span class="text-2xl">{t.icon}</span>
+            <div class="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center shrink-0">
+              <Icon name={t.icon} class="w-5 h-5 text-primary-600" />
+            </div>
             <div>
               <p class="font-medium text-neutral-900 text-sm">{t.name}</p>
               <p class="text-primary-600 text-xs font-medium">{t.saving}</p>

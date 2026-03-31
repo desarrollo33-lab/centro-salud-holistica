@@ -1,4 +1,5 @@
 ---
+import { Icon } from "astro-icon/components";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import HeroInner from "../components/sections/HeroInner.astro";
 import Section from "../components/ui/Section.astro";
@@ -22,13 +23,16 @@ import Badge from "../components/ui/Badge.astro";
       <div class="grid md:grid-cols-2 gap-8">
         <div class="bg-gradient-to-br from-primary-100 to-secondary-50 rounded-2xl aspect-video flex items-center justify-center">
           <div class="text-center">
-            <p class="text-primary-700 font-medium">📷 Foto de la clínica</p>
+            <Icon name="lucide:camera" class="w-12 h-12 text-primary-400 mx-auto mb-2" />
+            <p class="text-primary-700 font-medium">Foto de la clínica</p>
             <p class="text-primary-600 text-sm">Por confirmar con sesión fotográfica</p>
           </div>
         </div>
         <div class="space-y-6">
           <div>
-            <Badge variant="primary">📍 Ubicación</Badge>
+            <Badge variant="primary" class="inline-flex items-center gap-1.5">
+              <Icon name="lucide:map-pin" class="w-4 h-4" /> Ubicación
+            </Badge>
             <p class="text-neutral-600 mt-2 leading-relaxed">
               Los Dominicos, Las Condes<br />
               Santiago, Chile<br /><br />
@@ -36,7 +40,9 @@ import Badge from "../components/ui/Badge.astro";
             </p>
           </div>
           <div>
-            <Badge variant="primary">🕐 Horarios</Badge>
+            <Badge variant="primary" class="inline-flex items-center gap-1.5">
+              <Icon name="lucide:clock" class="w-4 h-4" /> Horarios
+            </Badge>
             <p class="text-neutral-600 mt-2 leading-relaxed">
               Lunes a Viernes: 9:00 — 18:00<br />
               Sábado y Domingo: Cerrado<br />
@@ -53,22 +59,30 @@ import Badge from "../components/ui/Badge.astro";
       <h2 class="font-heading font-bold text-3xl text-neutral-900 mb-8 text-center">Infraestructura y tecnología</h2>
       <div class="grid sm:grid-cols-2 gap-6">
         <div class="bg-neutral-50 rounded-xl p-6 border border-neutral-200">
-          <div class="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center mb-4 text-xl">🔬</div>
+          <div class="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center mb-4">
+            <Icon name="lucide:microscope" class="w-5 h-5 text-primary-600" />
+          </div>
           <h3 class="font-heading font-semibold text-neutral-900 mb-2">Tecnología de vanguardia</h3>
           <p class="text-neutral-500 text-sm leading-relaxed">Rayos X digitales de baja radiación, tomógrafo 3D para planificación de implantes, escaneo intraoral digital y cirugía guiada por computadora.</p>
         </div>
         <div class="bg-neutral-50 rounded-xl p-6 border border-neutral-200">
-          <div class="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center mb-4 text-xl">✅</div>
+          <div class="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center mb-4">
+            <Icon name="lucide:circle-check" class="w-5 h-5 text-primary-600" />
+          </div>
           <h3 class="font-heading font-semibold text-neutral-900 mb-2">Bioseguridad certificada</h3>
           <p class="text-neutral-500 text-sm leading-relaxed">Pabellón certificado, esterilización autoclave clase B, descontaminación de aire HEPA y protocolos IAOMT para amalgamas.</p>
         </div>
         <div class="bg-neutral-50 rounded-xl p-6 border border-neutral-200">
-          <div class="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center mb-4 text-xl">🌿</div>
+          <div class="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center mb-4">
+            <Icon name="lucide:leaf" class="w-5 h-5 text-primary-600" />
+          </div>
           <h3 class="font-heading font-semibold text-neutral-900 mb-2">Ambiente de calma</h3>
           <p class="text-neutral-500 text-sm leading-relaxed">Música ambiental, aromaterapia, espacios diseñados para reducir la ansiedad dental. La odontología puede ser una experiencia tranquila.</p>
         </div>
         <div class="bg-neutral-50 rounded-xl p-6 border border-neutral-200">
-          <div class="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center mb-4 text-xl">🦷</div>
+          <div class="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center mb-4">
+            <Icon name="lucide:stethoscope" class="w-5 h-5 text-primary-600" />
+          </div>
           <h3 class="font-heading font-semibold text-neutral-900 mb-2">Materiales biocompatibles</h3>
           <p class="text-neutral-500 text-sm leading-relaxed">Implantes cerámicos, composites sin Bisfenol-A, restauraciones libres de metales. Todo pensado para tu cuerpo y tu salud.</p>
         </div>

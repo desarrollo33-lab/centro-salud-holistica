@@ -51,7 +51,7 @@ export const services: Service[] = [
       "Deterioro estructural del diente por corrosión del amalgam",
     ],
     relatedServices: ["implantes-ceramicos", "odontologia-biomimetica", "ozonoterapia"],
-    icon: "⚕️",
+    icon: "lucide:shield-plus",
     color: "teal",
   },
   {
@@ -88,7 +88,7 @@ export const services: Service[] = [
       "Pérdida ósea por reacción inflamatoria a metales",
     ],
     relatedServices: ["eliminacion-amalgamas", "odontologia-biomimetica", "estetica-facial"],
-    icon: "🦴",
+    icon: "lucide:bone",
     color: "teal",
   },
   {
@@ -125,7 +125,7 @@ export const services: Service[] = [
       "Sensibilidad térmica por falta de sellado hermético",
     ],
     relatedServices: ["implantes-ceramicos", "tratamiento-atm", "ozonoterapia"],
-    icon: "✨",
+    icon: "lucide:sparkles",
     color: "teal",
   },
   {
@@ -162,7 +162,7 @@ export const services: Service[] = [
       "Dolor de cuello y hombros por tensión mandibular",
     ],
     relatedServices: ["odontologia-biomimetica", "acupuntura", "nutricion"],
-    icon: "💆",
+    icon: "lucide:hand",
     color: "teal",
   },
   {
@@ -197,7 +197,7 @@ export const services: Service[] = [
       "Resistencia a antibióticos que complica tratamientos",
     ],
     relatedServices: ["tratamiento-atm", "eliminacion-amalgamas", "odontologia-biomimetica"],
-    icon: "🌬️",
+    icon: "lucide:wind",
     color: "teal",
   },
   {
@@ -232,7 +232,7 @@ export const services: Service[] = [
       "Recidiva por falta de retención post-tratamiento",
     ],
     relatedServices: ["tratamiento-atm", "odontologia-biomimetica", "estetica-facial"],
-    icon: "😁",
+    icon: "lucide:smile",
     color: "teal",
   },
   {
@@ -266,7 +266,7 @@ export const services: Service[] = [
       "Sonrisa que no coincide con la expresión facial",
     ],
     relatedServices: ["implantes-ceramicos", "odontologia-biomimetica", "ortodoncia-funcional"],
-    icon: "💉",
+    icon: "lucide:syringe",
     color: "teal",
   },
   {
@@ -299,7 +299,7 @@ export const services: Service[] = [
       "Cicatrización lenta después de cirugías",
     ],
     relatedServices: ["tratamiento-atm", "ozonoterapia", "acupuntura"],
-    icon: "🥗",
+    icon: "lucide:apple",
     color: "teal",
   },
   {
@@ -333,7 +333,7 @@ export const services: Service[] = [
       "Recuperación lenta después de cirugías",
     ],
     relatedServices: ["tratamiento-atm", "ozonoterapia", "nutricion"],
-    icon: "🪡",
+    icon: "lucide:activity",
     color: "teal",
   },
 ];

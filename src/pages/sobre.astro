@@ -1,4 +1,5 @@
 ---
+import { Icon } from "astro-icon/components";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import HeroInner from "../components/sections/HeroInner.astro";
 import Section from "../components/ui/Section.astro";
@@ -22,7 +23,9 @@ import { siteConfig } from "../data/site";
     <Container>
       <div class="grid md:grid-cols-2 gap-12 items-start">
         <div>
-          <Badge variant="secondary">👨‍⚕️ El Doctor</Badge>
+          <Badge variant="secondary" class="inline-flex items-center gap-1.5">
+            <Icon name="lucide:user-round" class="w-4 h-4" /> El Doctor
+          </Badge>
           <h2 class="font-heading font-bold text-3xl text-neutral-900 mt-4 mb-4">
             {siteConfig.doctor}
           </h2>
@@ -36,30 +39,19 @@ import { siteConfig } from "../data/site";
           <div class="bg-neutral-50 rounded-xl p-6 mb-8">
             <h3 class="font-heading font-semibold text-lg text-neutral-900 mb-4">Credenciales y formación</h3>
             <div class="space-y-3">
-              <div class="flex items-start gap-3">
-                <svg class="w-5 h-5 text-primary-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                <p class="text-neutral-600 text-sm"><strong class="text-neutral-800">Cirujano Dentista</strong> — Universidad de Chile</p>
-              </div>
-              <div class="flex items-start gap-3">
-                <svg class="w-5 h-5 text-primary-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                <p class="text-neutral-600 text-sm"><strong class="text-neutral-800">Especialista en Periodoncia</strong> — Sociedad de Periodoncia de Chile</p>
-              </div>
-              <div class="flex items-start gap-3">
-                <svg class="w-5 h-5 text-primary-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                <p class="text-neutral-600 text-sm"><strong class="text-neutral-800">Especialista en Implantología Buco-Maxilo-Facial</strong></p>
-              </div>
-              <div class="flex items-start gap-3">
-                <svg class="w-5 h-5 text-primary-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                <p class="text-neutral-600 text-sm"><strong class="text-neutral-800">Formación continua</strong> — Loma Linda University, California</p>
-              </div>
-              <div class="flex items-start gap-3">
-                <svg class="w-5 h-5 text-primary-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                <p class="text-neutral-600 text-sm"><strong class="text-neutral-800">Miembro activo</strong> — Holistic Dental Association</p>
-              </div>
-              <div class="flex items-start gap-3">
-                <svg class="w-5 h-5 text-primary-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                <p class="text-neutral-600 text-sm"><strong class="text-neutral-800">Miembro activo</strong> — Sociedad de Odontología Integrativa de Chile (SIOCH)</p>
-              </div>
+              {[
+                { t: "Cirujano Dentista", s: "Universidad de Chile" },
+                { t: "Especialista en Periodoncia", s: "Sociedad de Periodoncia de Chile" },
+                { t: "Especialista en Implantología Buco-Maxilo-Facial", s: "" },
+                { t: "Formación continua", s: "Loma Linda University, California" },
+                { t: "Miembro activo", s: "Holistic Dental Association" },
+                { t: "Miembro activo", s: "Sociedad de Odontología Integrativa de Chile (SIOCH)" },
+              ].map((c) => (
+                <div class="flex items-start gap-3">
+                  <Icon name="lucide:check" class="w-5 h-5 text-primary-500 mt-0.5 shrink-0" />
+                  <p class="text-neutral-600 text-sm"><strong class="text-neutral-800">{c.t}</strong>{c.s ? ` — ${c.s}` : ""}</p>
+                </div>
+              ))}
             </div>
           </div>
 
@@ -73,7 +65,9 @@ import { siteConfig } from "../data/site";
         <div>
           <div class="bg-gradient-to-br from-primary-100 to-secondary-50 rounded-2xl aspect-square flex items-center justify-center sticky top-24">
             <div class="text-center px-8">
-              <div class="w-32 h-32 bg-primary-200 rounded-full mx-auto mb-4 flex items-center justify-center text-6xl">👨‍⚕️</div>
+              <div class="w-32 h-32 bg-primary-200 rounded-full mx-auto mb-4 flex items-center justify-center">
+                <Icon name="lucide:user-round" class="w-16 h-16 text-primary-400" />
+              </div>
               <p class="text-primary-700 text-sm font-medium">Foto profesional<br />por confirmar</p>
             </div>
           </div>
@@ -105,7 +99,7 @@ import { siteConfig } from "../data/site";
           Compilé años de investigación en el libro "{siteConfig.bookTitle}", de lectura gratuita. 129 páginas sobre por qué tenemos las enfermedades que tenemos — y qué hacer al respecto.
         </p>
         <a href="/libro" class="inline-flex items-center gap-2 bg-primary-600 text-white font-semibold px-8 py-4 rounded-xl hover:bg-primary-700 transition-colors no-underline">
-          📖 Leer el libro gratuito →
+          <Icon name="lucide:book-open" class="w-5 h-5" /> Leer el libro gratuito <Icon name="lucide:arrow-right" class="w-4 h-4" />
         </a>
       </div>
     </Container>

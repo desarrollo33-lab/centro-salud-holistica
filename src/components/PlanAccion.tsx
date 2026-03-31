@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { BookOpen, ClipboardList, PartyPopper } from 'lucide-react';
 
 export default function PlanAccionApp() {
   const [step, setStep] = useState(1);
@@ -116,12 +117,12 @@ export default function PlanAccionApp() {
   if (step === 5 && plan) return (
     <div>
       <div className="text-center mb-8">
-        <div className="text-5xl mb-4">🎉</div>
+        <div className="mb-4 flex justify-center"><PartyPopper className="w-12 h-12 text-primary-500" /></div>
         <h2 className="text-2xl font-heading text-neutral-900 mb-2">¡Tu Plan está Listo!</h2>
       </div>
       {plan.readings?.length > 0 && (
         <div className="mb-8">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">📚 Lecturas Recomendadas</h3>
+          <h3 className="text-lg font-semibold text-gray-900 mb-4 inline-flex items-center gap-2"><BookOpen className="w-5 h-5 text-primary-500" /> Lecturas Recomendadas</h3>
           <div className="space-y-3">
             {plan.readings.map((r: any, i: number) => (
               <a key={i} href={"/libro/" + r.slug + "/"} className="block p-4 border border-gray-200 rounded-lg hover:border-primary-300">
@@ -134,7 +135,7 @@ export default function PlanAccionApp() {
       )}
       {plan.supplements?.length > 0 && (
         <div className="mb-8">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">💊 Suplementos</h3>
+          <h3 className="text-lg font-semibold text-gray-900 mb-4 inline-flex items-center gap-2"><ClipboardList className="w-5 h-5 text-primary-500" /> Suplementos</h3>
           <div className="bg-teal-50 border border-teal-200 rounded-lg p-4">
             {plan.supplements.map((s: any, i: number) => (
               <p key={i}>• <strong>{s.name}</strong> — {s.reason}</p>

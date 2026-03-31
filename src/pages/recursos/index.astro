@@ -1,4 +1,5 @@
 ---
+import { Icon } from "astro-icon/components";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import HeroInner from "../../components/sections/HeroInner.astro";
 import Section from "../../components/ui/Section.astro";
@@ -10,7 +11,9 @@ import Container from "../../components/ui/Container.astro";
   <Section>
     <Container>
       <div class="max-w-3xl mx-auto">
-        <h2 class="text-sm font-semibold text-neutral-400 uppercase tracking-wider mb-4">✅ Checklists</h2>
+        <h2 class="text-sm font-semibold text-neutral-400 uppercase tracking-wider mb-4 inline-flex items-center gap-2">
+          <Icon name="lucide:circle-check" class="w-4 h-4" /> Checklists
+        </h2>
         <div class="space-y-3 mb-10">
           {[
             { slug: "autoevaluacion-salud-bucal", title: "Autoevaluacion de Salud Bucal", desc: "Evalua el estado de tu salud bucal con este checklist completo." },
@@ -23,7 +26,9 @@ import Container from "../../components/ui/Container.astro";
             </a>
           ))}
         </div>
-        <h2 class="text-sm font-semibold text-neutral-400 uppercase tracking-wider mb-4">📋 Planificadores</h2>
+        <h2 class="text-sm font-semibold text-neutral-400 uppercase tracking-wider mb-4 inline-flex items-center gap-2">
+          <Icon name="lucide:clipboard-list" class="w-4 h-4" /> Planificadores
+        </h2>
         <div class="space-y-3 mb-10">
           {[{ slug: "plan-nutricional-semana-dental", title: "Plan Nutricional Semanal para Dientes Sanos", desc: "Menu semanal completo con lista de compras y recetas simples." }].map((t) => (
             <a href={`/recursos/${t.slug}`} class="group block bg-white rounded-xl p-5 border border-neutral-200 hover:border-primary-300 hover:shadow-md transition-all no-underline">
@@ -32,7 +37,9 @@ import Container from "../../components/ui/Container.astro";
             </a>
           ))}
         </div>
-        <h2 class="text-sm font-semibold text-neutral-400 uppercase tracking-wider mb-4">📖 Guias paso a paso</h2>
+        <h2 class="text-sm font-semibold text-neutral-400 uppercase tracking-wider mb-4 inline-flex items-center gap-2">
+          <Icon name="lucide:book-open" class="w-4 h-4" /> Guias paso a paso
+        </h2>
         <div class="space-y-3">
           {[
             { slug: "guia-manejo-estres", title: "Guia Practica de Manejo del Estres para tu Salud Bucal", desc: "Tecnicas de relajacion y habitos que protegen tus encias." },
