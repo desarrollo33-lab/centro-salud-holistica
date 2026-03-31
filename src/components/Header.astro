@@ -7,8 +7,12 @@ import { services } from "../data/site";
 <header id="site-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-[72px]">
-      <a href="/" class="flex items-center no-underline">
-        <img src="/images/logo.webp" alt="Salud Evolutiva" class="header-logo h-9 w-auto" />
+      <a href="/" class="flex items-center gap-3 no-underline">
+        <img src="/images/logo.webp" alt="Logo" class="header-logo h-11 w-auto" />
+        <div class="hidden sm:block">
+          <span class="header-logo-text font-heading font-bold text-sm text-white leading-tight block">Centro de Salud</span>
+          <span class="header-logo-sub font-heading text-xs text-white/70 leading-tight block">Evolutiva</span>
+        </div>
       </a>
 
       <nav class="hidden lg:flex items-center gap-1">
