@@ -1,6 +1,7 @@
 ---
 import { Icon } from "astro-icon/components";
 import Button from "../ui/Button.astro";
+import Container from "../ui/Container.astro";
 import { siteConfig } from "../../data/site";
 ---
 
@@ -18,7 +19,7 @@ import { siteConfig } from "../../data/site";
     <div class="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent"></div>
   </div>
 
-  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 lg:pt-28">
+  <Container class="relative pt-20 lg:pt-28">
     <div class="max-w-2xl">
       <div class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-8">
         <span class="w-2 h-2 bg-secondary-400 rounded-full animate-pulse"></span>
@@ -52,5 +53,5 @@ import { siteConfig } from "../../data/site";
         </span>
       </div>
     </div>
-  </div>
+  </Container>
 </section>
