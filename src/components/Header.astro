@@ -18,9 +18,30 @@ import { services } from "../data/site";
 
       <!-- Nav centered -->
       <nav class="hidden lg:flex items-center gap-1 absolute left-1/2 -translate-x-1/2">
-        <a href="/clinica" class="nav-link font-medium text-white px-3 py-2 rounded-md hover:bg-white/10 transition-colors no-underline text-sm">
-          Clínica
-        </a>
+        <div class="relative group">
+          <a href="/clinica" class="nav-link font-medium text-white flex items-center gap-1 px-3 py-2 rounded-md hover:bg-white/10 transition-colors no-underline text-sm">
+            Clínica
+            <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </a>
+          <div class="nav-dropdown absolute top-full left-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+            <div class="bg-white rounded-lg shadow-lg border border-neutral-200 p-4 w-[220px] space-y-1">
+              <a href="/sobre" class="px-3 py-2 rounded-md text-sm text-neutral-700 hover:bg-primary-50 hover:text-primary-700 transition-colors no-underline flex items-center gap-2">
+                <Icon name="lucide:user-round" class="w-4 h-4 text-primary-500 shrink-0" />
+                Doctor
+              </a>
+              <a href="/clinica#equipo" class="px-3 py-2 rounded-md text-sm text-neutral-700 hover:bg-primary-50 hover:text-primary-700 transition-colors no-underline flex items-center gap-2">
+                <Icon name="lucide:users" class="w-4 h-4 text-primary-500 shrink-0" />
+                Equipo
+              </a>
+              <a href="/clinica#tecnologia" class="px-3 py-2 rounded-md text-sm text-neutral-700 hover:bg-primary-50 hover:text-primary-700 transition-colors no-underline flex items-center gap-2">
+                <Icon name="lucide:microscope" class="w-4 h-4 text-primary-500 shrink-0" />
+                Tecnología
+              </a>
+            </div>
+          </div>
+        </div>
 
         <div class="relative group">
           <a href="/servicios" class="nav-link font-medium text-white flex items-center gap-1 px-3 py-2 rounded-md hover:bg-white/10 transition-colors no-underline text-sm">
