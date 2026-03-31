@@ -7,15 +7,17 @@ import { services } from "../data/site";
 <header id="site-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-[72px]">
-      <a href="/" class="flex items-center gap-2 no-underline">
+      <!-- Logo -->
+      <a href="/" class="flex items-center gap-2 no-underline shrink-0">
         <img src="/images/logo.webp" alt="Logo" class="h-14 w-auto" />
         <div class="hidden sm:block">
-          <span class="font-heading font-bold text-sm text-white leading-tight block">Centro de Salud</span>
-          <span class="font-heading text-xs text-white/70 leading-tight block">Evolutiva</span>
+          <span class="logo-title font-heading font-bold text-sm text-white leading-tight block">Centro de Salud</span>
+          <span class="logo-sub font-heading text-xs text-white/70 leading-tight block">Evolutiva</span>
         </div>
       </a>
 
-      <nav class="hidden lg:flex items-center gap-1">
+      <!-- Nav centered -->
+      <nav class="hidden lg:flex items-center gap-1 absolute left-1/2 -translate-x-1/2">
         <a href="/clinica" class="nav-link font-medium text-white px-3 py-2 rounded-md hover:bg-white/10 transition-colors no-underline text-sm">
           Clínica
         </a>
@@ -53,7 +55,7 @@ import { services } from "../data/site";
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
             </svg>
           </a>
-          <div class="nav-dropdown absolute top-full left-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+          <div class="nav-dropdown absolute top-full right-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
             <div class="bg-white rounded-lg shadow-lg border border-neutral-200 p-4 w-[220px] space-y-1">
               <a href="/libro" class="px-3 py-2 rounded-md text-sm text-neutral-700 hover:bg-primary-50 hover:text-primary-700 transition-colors no-underline flex items-center gap-2">
                 <Icon name="lucide:book-open" class="w-4 h-4 text-primary-500 shrink-0" />
@@ -78,16 +80,15 @@ import { services } from "../data/site";
             </div>
           </div>
         </div>
-
-        <a href="/mi-cuenta" class="nav-btn-primary ml-2 inline-flex items-center px-4 py-2 bg-primary-600 text-white font-semibold rounded-md hover:bg-primary-700 hover:shadow-md transition-all duration-150 text-sm no-underline">
-          <Icon name="lucide:clipboard-list" class="w-4 h-4" />
-          Mi Consulta
-        </a>
-        <a href="/contacto" class="nav-btn-cta ml-1 inline-flex items-center px-4 py-2 bg-white text-primary-700 font-semibold rounded-md hover:bg-primary-50 hover:shadow-md transition-all duration-150 text-sm no-underline">
-          Agendar Hora
-        </a>
       </nav>
 
+      <!-- Right: Mi Consulta button -->
+      <a href="/mi-cuenta" class="hidden lg:inline-flex items-center gap-2 px-5 py-2 bg-primary-600 text-white font-semibold rounded-md hover:bg-primary-700 hover:shadow-md transition-all duration-150 text-sm no-underline shrink-0">
+        <Icon name="lucide:clipboard-list" class="w-4 h-4" />
+        Mi Consulta
+      </a>
+
+      <!-- Mobile hamburger -->
       <button id="mobile-menu-btn" class="mobile-hamburger lg:hidden text-white p-2 rounded-md hover:bg-white/10" aria-label="Abrir menú">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
@@ -108,12 +109,8 @@ import { services } from "../data/site";
   </div>
   <nav class="px-4 py-6 overflow-y-auto max-h-[calc(100vh-64px)]">
     <div class="space-y-1">
-      <a href="/" class="block px-4 py-3 text-base font-medium text-neutral-900 hover:bg-primary-50 rounded-md no-underline">
-        Inicio
-      </a>
-      <a href="/clinica" class="block px-4 py-3 text-base font-medium text-neutral-900 hover:bg-primary-50 rounded-md no-underline">
-        Clínica
-      </a>
+      <a href="/" class="block px-4 py-3 text-base font-medium text-neutral-900 hover:bg-primary-50 rounded-md no-underline">Inicio</a>
+      <a href="/clinica" class="block px-4 py-3 text-base font-medium text-neutral-900 hover:bg-primary-50 rounded-md no-underline">Clínica</a>
       <p class="px-4 pt-4 pb-2 text-xs font-semibold text-neutral-500 uppercase tracking-wider">Servicios</p>
       {services.map((svc) => (
         <a href={`/servicios/${svc.slug}`} class="block px-4 py-2 text-neutral-700 hover:bg-primary-50 rounded-md no-underline flex items-center gap-2.5">
@@ -121,32 +118,17 @@ import { services } from "../data/site";
           {svc.name}
         </a>
       ))}
-      <a href="/sobre" class="block px-4 py-3 text-base font-medium text-neutral-900 hover:bg-primary-50 rounded-md no-underline">
-        Doctor
-      </a>
+      <a href="/sobre" class="block px-4 py-3 text-base font-medium text-neutral-900 hover:bg-primary-50 rounded-md no-underline">Doctor</a>
       <div class="border-t border-neutral-200 mt-4 pt-4 space-y-1">
         <p class="px-4 pb-2 text-xs font-semibold text-neutral-500 uppercase tracking-wider">Salud Evolutiva</p>
-        <a href="/libro" class="block px-4 py-3 text-base font-medium text-neutral-900 hover:bg-primary-50 rounded-md no-underline flex items-center gap-2.5">
-          <Icon name="lucide:book-open" class="w-5 h-5 text-primary-500" /> Libro gratuito
-        </a>
-        <a href="/aprende" class="block px-4 py-3 text-base font-medium text-neutral-900 hover:bg-primary-50 rounded-md no-underline flex items-center gap-2.5">
-          <Icon name="lucide:graduation-cap" class="w-5 h-5 text-primary-500" /> Aprende
-        </a>
-        <a href="/blog" class="block px-4 py-3 text-base font-medium text-neutral-900 hover:bg-primary-50 rounded-md no-underline flex items-center gap-2.5">
-          <Icon name="lucide:newspaper" class="w-5 h-5 text-primary-500" /> Blog
-        </a>
-        <a href="/recursos" class="block px-4 py-3 text-base font-medium text-neutral-900 hover:bg-primary-50 rounded-md no-underline flex items-center gap-2.5">
-          <Icon name="lucide:folder-open" class="w-5 h-5 text-primary-500" /> Recursos
-        </a>
-        <a href="/glosario" class="block px-4 py-3 text-base font-medium text-neutral-900 hover:bg-primary-50 rounded-md no-underline flex items-center gap-2.5">
-          <Icon name="lucide:book-text" class="w-5 h-5 text-primary-500" /> Glosario
-        </a>
+        <a href="/libro" class="block px-4 py-3 text-base font-medium text-neutral-900 hover:bg-primary-50 rounded-md no-underline">Libro gratuito</a>
+        <a href="/aprende" class="block px-4 py-3 text-base font-medium text-neutral-900 hover:bg-primary-50 rounded-md no-underline">Aprende</a>
+        <a href="/blog" class="block px-4 py-3 text-base font-medium text-neutral-900 hover:bg-primary-50 rounded-md no-underline">Blog</a>
+        <a href="/recursos" class="block px-4 py-3 text-base font-medium text-neutral-900 hover:bg-primary-50 rounded-md no-underline">Recursos</a>
+        <a href="/glosario" class="block px-4 py-3 text-base font-medium text-neutral-900 hover:bg-primary-50 rounded-md no-underline">Glosario</a>
       </div>
       <div class="mt-6 px-4 space-y-3">
-        <a href="/contacto" class="block w-full bg-primary-600 text-white font-semibold py-3 rounded-md hover:bg-primary-700 transition-colors no-underline text-center">
-          Agendar Hora
-        </a>
-        <a href="/mi-cuenta" class="block w-full bg-white text-primary-700 font-semibold py-3 rounded-md hover:bg-primary-50 transition-colors no-underline text-center border border-primary-600">
+        <a href="/mi-cuenta" class="block w-full bg-primary-600 text-white font-semibold py-3 rounded-md hover:bg-primary-700 transition-colors no-underline text-center">
           Mi Consulta
         </a>
       </div>
