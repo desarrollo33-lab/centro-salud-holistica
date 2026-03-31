@@ -15,7 +15,7 @@ const featuredServices = services.slice(0, 6);
 const testimonials = [
   { quote: "Nunca había ido al dentista sin sentir miedo. El Dr. Ipinza me explicó todo con una paciencia increíble. La eliminación de amalgamas fue mucho más tranquila de lo que esperaba.", author: "María José R.", location: "Las Condes, Santiago" },
   { quote: "Después de años con problemas de ATM, por fin encontré un enfoque integral. No solo me trataron la mandíbula, sino que entendieron que mi problema venía de más abajo.", author: "Andrés L.", location: "Providencia, Santiago" },
-  { quote: "Los implantes cerámicos fueron la mejor decisión. Aucune sensibilité, et le résultat est parfaitement naturel. Je recommande à 100%.", author: "Catherine D.", location: "Francia (paciente internacional)" },
+  { quote: "Les implants céramiques ont été la meilleure décision. Aucune sensibilité, et le résultat est parfaitement naturel. Je recommande à 100%.", author: "Catherine D.", location: "Francia (paciente internacional)" },
 ];
 ---
 
@@ -28,10 +28,10 @@ const testimonials = [
   <!-- USP Badges -->
   <Section bg="white">
     <Container>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+      <div data-stagger class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
         {siteConfig.usps.map((usp) => (
-          <div class="text-center">
-            <div class="w-14 h-14 mx-auto rounded-full bg-primary-50 flex items-center justify-center mb-3">
+          <div class="text-center group">
+            <div class="w-14 h-14 mx-auto rounded-full bg-primary-50 flex items-center justify-center mb-3 group-hover:bg-primary-100 group-hover:scale-110 transition-all duration-300">
               <Icon name="lucide:check" class="w-6 h-6 text-primary-600" />
             </div>
             <h3 class="font-semibold text-neutral-900 font-heading text-sm">{usp.title}</h3>
@@ -45,11 +45,19 @@ const testimonials = [
   <!-- Services -->
   <Section>
     <Container>
-      <ServiceGrid services={featuredServices} />
-      <div class="text-center mt-10">
-        <a href="/servicios" class="inline-flex items-center gap-2 text-primary-600 font-semibold hover:text-primary-800 no-underline">
+      <div data-animate="fade-up">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-neutral-900 font-heading">Nuestros Servicios</h2>
+          <p class="mt-3 text-lg text-neutral-500 max-w-2xl mx-auto">Tratamientos biocompatibles diseñados para tu salud integral</p>
+        </div>
+      </div>
+      <div data-stagger>
+        <ServiceGrid services={featuredServices} />
+      </div>
+      <div data-animate="fade-up" class="text-center mt-10">
+        <a href="/servicios" class="inline-flex items-center gap-2 text-primary-600 font-semibold hover:text-primary-800 no-underline group">
           Ver todos los servicios ({services.length})
-          <Icon name="lucide:arrow-right" class="w-5 h-5" />
+          <Icon name="lucide:arrow-right" class="w-5 h-5 group-hover:translate-x-1 transition-transform" />
         </a>
       </div>
     </Container>
@@ -59,7 +67,7 @@ const testimonials = [
   <Section bg="white">
     <Container>
       <div class="grid md:grid-cols-2 gap-12 items-center">
-        <div>
+        <div data-animate="fade-left">
           <Badge variant="secondary" class="inline-flex items-center gap-1.5">
             <Icon name="lucide:user-round" class="w-4 h-4" /> El Doctor
           </Badge>
@@ -74,16 +82,18 @@ const testimonials = [
               <Badge variant="neutral">{cert}</Badge>
             ))}
           </div>
-          <a href="/sobre" class="inline-flex items-center gap-2 text-primary-600 font-semibold hover:text-primary-800 no-underline">
-            Conoce más sobre el doctor <Icon name="lucide:arrow-right" class="w-4 h-4" />
+          <a href="/sobre" class="inline-flex items-center gap-2 text-primary-600 font-semibold hover:text-primary-800 no-underline group">
+            Conoce más sobre el doctor <Icon name="lucide:arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </a>
         </div>
-        <div class="bg-gradient-to-br from-primary-100 to-secondary-50 rounded-3xl aspect-square flex items-center justify-center">
-          <div class="text-center">
-            <div class="w-32 h-32 bg-primary-200 rounded-full mx-auto mb-4 flex items-center justify-center">
-              <Icon name="lucide:user-round" class="w-16 h-16 text-primary-400" />
+        <div data-animate="fade-right">
+          <div class="bg-gradient-to-br from-primary-100 to-secondary-50 rounded-3xl aspect-square flex items-center justify-center">
+            <div class="text-center">
+              <div class="w-32 h-32 bg-primary-200 rounded-full mx-auto mb-4 flex items-center justify-center animate-float">
+                <Icon name="lucide:user-round" class="w-16 h-16 text-primary-400" />
+              </div>
+              <p class="text-primary-700 text-sm font-medium">Foto profesional<br />por confirmar</p>
             </div>
-            <p class="text-primary-700 text-sm font-medium">Foto profesional<br />por confirmar</p>
           </div>
         </div>
       </div>
@@ -94,7 +104,7 @@ const testimonials = [
   <Section bg="secondary">
     <Container>
       <div class="grid md:grid-cols-2 gap-12 items-center">
-        <div>
+        <div data-animate="fade-left">
           <Badge variant="secondary" class="inline-flex items-center gap-1.5">
             <Icon name="lucide:book-open" class="w-4 h-4" /> Contenido educativo gratuito
           </Badge>
@@ -118,19 +128,21 @@ const testimonials = [
               Referencias científicas verificables
             </li>
           </ul>
-          <a href="/libro" class="inline-flex items-center gap-2 bg-primary-600 text-white font-semibold px-6 py-3 rounded-xl hover:bg-primary-700 transition-colors no-underline">
+          <a href="/libro" class="inline-flex items-center gap-2 bg-primary-600 text-white font-semibold px-6 py-3 rounded-xl hover:bg-primary-700 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 no-underline">
             <Icon name="lucide:book-open" class="w-5 h-5" /> Leer el libro completo <Icon name="lucide:arrow-right" class="w-4 h-4" />
           </a>
         </div>
-        <div class="bg-white rounded-2xl shadow-lg p-8 border border-neutral-200">
-          <div class="text-center">
-            <div class="w-28 h-40 bg-gradient-to-br from-primary-700 to-primary-600 rounded-xl mx-auto mb-6 flex flex-col items-center justify-center shadow-xl">
-              <span class="text-white text-xs font-bold leading-tight px-3">SALUD</span>
-              <span class="text-white text-2xl font-bold leading-tight mt-1">EVOLUTIVA</span>
+        <div data-animate="fade-right">
+          <div class="bg-white rounded-2xl shadow-lg p-8 border border-neutral-200 hover:shadow-xl transition-shadow duration-300">
+            <div class="text-center">
+              <div class="w-28 h-40 bg-gradient-to-br from-primary-700 to-primary-600 rounded-xl mx-auto mb-6 flex flex-col items-center justify-center shadow-xl animate-float-delay">
+                <span class="text-white text-xs font-bold leading-tight px-3">SALUD</span>
+                <span class="text-white text-2xl font-bold leading-tight mt-1">EVOLUTIVA</span>
+              </div>
+              <h3 class="font-heading font-bold text-lg text-neutral-900">{siteConfig.bookTitle}</h3>
+              <p class="text-sm text-neutral-500 mb-1">{siteConfig.doctor}</p>
+              <p class="text-xs text-neutral-400">129 páginas · 38,000 palabras · Gratuito</p>
             </div>
-            <h3 class="font-heading font-bold text-lg text-neutral-900">{siteConfig.bookTitle}</h3>
-            <p class="text-sm text-neutral-500 mb-1">{siteConfig.doctor}</p>
-            <p class="text-xs text-neutral-400">129 páginas · 38,000 palabras · Gratuito</p>
           </div>
         </div>
       </div>
@@ -140,14 +152,16 @@ const testimonials = [
   <!-- Testimonials -->
   <Section bg="white">
     <Container>
-      <Testimonials testimonials={testimonials} />
+      <div data-animate="fade-up">
+        <Testimonials testimonials={testimonials} />
+      </div>
     </Container>
   </Section>
 
   <!-- Stats -->
   <Section bg="primary">
     <Container>
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+      <div data-stagger class="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
         <div>
           <p class="text-4xl font-bold text-white font-heading">{siteConfig.stats.yearsOfExperience}+</p>
           <p class="mt-1 text-white/70 text-sm">Años de experiencia</p>
@@ -160,4 +174,13 @@ const testimonials = [
           <p class="text-4xl font-bold text-white font-heading">{siteConfig.stats.treatmentsCompleted}+</p>
           <p class="mt-1 text-white/70 text-sm">Tratamientos completados</p>
         </div>
-        <div
+        <div>
+          <p class="text-4xl font-bold text-white font-heading">{siteConfig.stats.certifications}</p>
+          <p class="mt-1 text-white/70 text-sm">Certificaciones</p>
+        </div>
+      </div>
+    </Container>
+  </Section>
+
+  <CTASection />
+</BaseLayout>

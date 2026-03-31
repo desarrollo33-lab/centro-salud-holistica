@@ -4,7 +4,7 @@ import { siteConfig } from "../data/site";
 import { services } from "../data/site";
 ---
 
-<header id="site-header" class="fixed top-0 left-0 right-0 z-50 bg-primary-700 shadow-lg transition-all duration-300">
+<header id="site-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-transparent">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-[72px]">
       <a href="/" class="flex items-center gap-2.5 no-underline">
@@ -118,4 +118,39 @@ import { services } from "../data/site";
         </a>
       </div>
       <div class="mt-6 px-4 space-y-3">
-        <a href="/contacto" class="block w-full te
+        <a href="/contacto" class="block w-full bg-primary-600 text-white font-semibold py-3 rounded-md hover:bg-primary-700 transition-colors no-underline text-center">
+          Agendar Hora
+        </a>
+      </div>
+    </nav>
+  </div>
+</div>
+
+<script>
+  // Mobile menu
+  const mobileBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const mobileClose = document.getElementById('mobile-menu-close');
+  mobileBtn?.addEventListener('click', () => mobileMenu?.classList.remove('translate-x-full'));
+  mobileClose?.addEventListener('click', () => mobileMenu?.classList.add('translate-x-full'));
+  mobileMenu?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu?.classList.add('translate-x-full')));
+
+  // Glassmorphism on scroll
+  const header = document.getElementById('site-header');
+  let ticking = false;
+  function updateHeader() {
+    if (window.scrollY > 40) {
+      header.classList.remove('bg-transparent');
+      header.classList.add('bg-primary-700/95', 'backdrop-blur-xl', 'shadow-lg');
+    } else {
+      header.classList.add('bg-transparent');
+      header.classList.remove('bg-primary-700/95', 'backdrop-blur-xl', 'shadow-lg');
+    }
+    ticking = false;
+  }
+  window.addEventListener('scroll', () => {
+    if (!ticking) { requestAnimationFrame(updateHeader); ticking = true; }
+  }, { passive: true });
+  updateHeader();
+</script>
+</header>

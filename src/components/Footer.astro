@@ -4,7 +4,9 @@ import { siteConfig } from "../data/site";
 import { services } from "../data/site";
 ---
 
-<footer class="bg-neutral-900 text-neutral-300">
+<footer class="bg-neutral-900 text-neutral-300 relative overflow-hidden">
+  <!-- Subtle top decoration -->
+  <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary-500 via-secondary-400 to-primary-500"></div>
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-8">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
       <div>
