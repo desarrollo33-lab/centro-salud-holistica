@@ -179,51 +179,45 @@ const testimonials = [
   <!-- Book Section -->
   <Section bg="secondary">
     <Container>
-      <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
         <div data-animate="fade-left">
-          <Badge variant="secondary" class="inline-flex items-center gap-1.5">
-            <Icon name="lucide:book-open" class="w-4 h-4" /> Contenido educativo gratuito
+          <Badge variant="primary" class="inline-flex items-center gap-1.5 mb-6">
+            <Icon name="lucide:book-open" class="w-4 h-4" /> Libro Gratuito
           </Badge>
-          <h2 class="font-heading font-bold text-3xl text-neutral-900 mt-4 mb-4">
-            {siteConfig.bookTitle}: el libro que cambia perspectiva
+          <h2 class="font-heading font-bold text-3xl text-neutral-900 mb-4">
+            {siteConfig.bookTitle}
           </h2>
-          <p class="text-neutral-700 leading-relaxed mb-6">
-            {siteConfig.bookDescription} Escrito para que cualquier persona lo entienda, sin ser odontólogo.
+          <p class="text-neutral-600 leading-relaxed mb-6">
+            {siteConfig.bookDescription} Escrito para que cualquier persona lo entienda — sin ser odontólogo.
           </p>
-          <ul class="space-y-2 mb-8">
-            <li class="flex items-center gap-2 text-sm text-neutral-600">
+          <ul class="space-y-2.5 mb-8">
+            <li class="flex items-center gap-2.5 text-sm text-neutral-600">
               <Icon name="lucide:check" class="w-4 h-4 text-success shrink-0" />
-              Gratuito para leer online, completo y sin registro
+              129 páginas basadas en evidencia científica verificable
             </li>
-            <li class="flex items-center gap-2 text-sm text-neutral-600">
+            <li class="flex items-center gap-2.5 text-sm text-neutral-600">
               <Icon name="lucide:check" class="w-4 h-4 text-success shrink-0" />
-              5 capítulos sobre evolución, nutrición y salud bucal
+              Evolución, nutrición ancestral y salud bucal explicadas con claridad
             </li>
-            <li class="flex items-center gap-2 text-sm text-neutral-600">
+            <li class="flex items-center gap-2.5 text-sm text-neutral-600">
               <Icon name="lucide:check" class="w-4 h-4 text-success shrink-0" />
-              Referencias científicas verificables
+              Completo, sin registro y sin costo
             </li>
           </ul>
           <a href="/libro" class="inline-flex items-center gap-2 bg-primary-600 text-white font-semibold px-6 py-3 rounded-lg hover:bg-primary-700 hover:shadow-md hover:-translate-y-px transition-all duration-150 no-underline">
-            <Icon name="lucide:book-open" class="w-5 h-5" /> Leer el libro completo <Icon name="lucide:arrow-right" class="w-4 h-4" />
+            Leer el libro completo <Icon name="lucide:arrow-right" class="w-4 h-4" />
           </a>
         </div>
-        <div data-animate="fade-right">
-          <div class="bg-white rounded-lg shadow-sm p-8">
-            <div class="text-center">
-              <img
-                src="/images/portada-libro.webp"
-                alt="Portada del libro {siteConfig.bookTitle} — {siteConfig.doctor}"
-                width="800"
-                height="874"
-                class="w-52 h-auto mx-auto mb-6 rounded-lg shadow-md"
-                loading="eager"
-                decoding="async"
-              />
-              <h3 class="font-heading font-bold text-lg text-neutral-900">{siteConfig.bookTitle}</h3>
-              <p class="text-sm text-neutral-500 mb-1">{siteConfig.doctor}</p>
-              <p class="text-xs text-neutral-400">129 páginas · 38,000 palabras · Gratuito</p>
-            </div>
+        <div data-animate="fade-right" class="flex justify-center lg:justify-end">
+          <div class="bg-white/50 backdrop-blur rounded-2xl p-6 md:p-8 border border-secondary-200">
+            <img
+              src="/images/portada_libro-light.webp"
+              alt="Portada del libro {siteConfig.bookTitle} — {siteConfig.doctor}"
+              width="280"
+              height="280"
+              class="w-full max-w-[280px] aspect-square object-contain"
+              loading="eager"
+            />
           </div>
         </div>
       </div>
