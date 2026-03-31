@@ -6,7 +6,6 @@ import { siteConfig } from "../../data/site";
 ---
 
 <section data-hero class="relative min-h-[600px] lg:min-h-[85vh] flex items-start overflow-hidden">
-  <!-- Background image -->
   <div class="absolute inset-0">
     <img
       src="/images/hero-home.webp"
@@ -15,7 +14,6 @@ import { siteConfig } from "../../data/site";
       loading="eager"
       decoding="async"
     />
-    <!-- Simple gradient: only on the left side for text readability -->
     <div class="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent"></div>
   </div>
 
@@ -37,7 +35,7 @@ import { siteConfig } from "../../data/site";
 
       <div class="mt-8 flex flex-wrap gap-4">
         <Button href="/contacto" variant="white" size="lg">Agendar mi primera consulta</Button>
-        <Button href="/libro" variant="ghost" size="lg" class="text-white hover:bg-white/10 border border-white/30 inline-flex items-center gap-2">
+        <Button href="/libro" variant="ghost" size="lg" class="text-white hover:bg-white/10">
           <Icon name="lucide:book-open" class="w-5 h-5" /> Leer el libro gratuito
         </Button>
       </div>

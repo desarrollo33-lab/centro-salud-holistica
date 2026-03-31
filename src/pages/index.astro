@@ -4,6 +4,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import HeroHome from "../components/sections/HeroHome.astro";
 import Section from "../components/ui/Section.astro";
 import Container from "../components/ui/Container.astro";
+import Button from "../components/ui/Button.astro";
 import ServiceGrid from "../components/sections/ServiceGrid.astro";
 import Testimonials from "../components/sections/Testimonials.astro";
 import CTASection from "../components/sections/CTASection.astro";
@@ -108,9 +109,9 @@ const testimonials = [
 
       <!-- CTA -->
       <div data-animate="fade-up" class="text-center">
-        <a href="/sobre" class="inline-flex items-center gap-2 bg-primary-600 text-white font-semibold px-6 py-3 rounded-lg hover:bg-primary-700 hover:shadow-md hover:-translate-y-px transition-all duration-150 no-underline">
+        <Button href="/sobre" variant="primary">
           Conoce nuestra filosofía <Icon name="lucide:arrow-right" class="w-4 h-4" />
-        </a>
+        </Button>
       </div>
     </Container>
   </Section>
@@ -129,10 +130,10 @@ const testimonials = [
         <ServiceGrid services={featuredServices} />
       </div>
       <div data-animate="fade-up" class="text-center mt-10">
-        <a href="/servicios" class="inline-flex items-center gap-2 border-2 border-primary-600 text-primary-600 font-semibold px-6 py-3 rounded-lg hover:bg-primary-600 hover:text-white hover:shadow-md hover:-translate-y-px transition-all duration-150 no-underline">
+        <Button href="/servicios" variant="outline">
           Ver todos los servicios ({services.length})
           <Icon name="lucide:arrow-right" class="w-4 h-4" />
-        </a>
+        </Button>
       </div>
     </Container>
   </Section>
@@ -156,9 +157,9 @@ const testimonials = [
               <Badge variant="neutral">{cert}</Badge>
             ))}
           </div>
-          <a href="/sobre" class="inline-flex items-center gap-2 border-2 border-primary-600 text-primary-600 font-semibold px-6 py-3 rounded-lg hover:bg-primary-600 hover:text-white hover:shadow-md hover:-translate-y-px transition-all duration-150 no-underline">
+          <Button href="/sobre" variant="outline">
             Conoce más sobre el doctor <Icon name="lucide:arrow-right" class="w-4 h-4" />
-          </a>
+          </Button>
         </div>
         <div data-animate="fade-right" class="flex justify-center lg:justify-end">
           <div class="w-full max-w-[340px] aspect-square rounded-xl shadow-sm overflow-hidden">
@@ -215,9 +216,9 @@ const testimonials = [
               129 páginas, sin jerga médica, sin costo y sin registro
             </li>
           </ul>
-          <a href="/libro" class="inline-flex items-center gap-2 bg-primary-600 text-white font-semibold px-6 py-3 rounded-lg hover:bg-primary-700 hover:shadow-md hover:-translate-y-px transition-all duration-150 no-underline">
+          <Button href="/libro" variant="primary">
             Leer el libro completo <Icon name="lucide:arrow-right" class="w-4 h-4" />
-          </a>
+          </Button>
         </div>
       </div>
     </Container>

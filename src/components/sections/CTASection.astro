@@ -1,6 +1,8 @@
 ---
 import { Icon } from "astro-icon/components";
 import Button from "../ui/Button.astro";
+import Section from "../ui/Section.astro";
+import Container from "../ui/Container.astro";
 import { siteConfig } from "../../data/site";
 
 interface Props {
@@ -16,12 +18,12 @@ const {
 } = Astro.props;
 ---
 
-<section class="bg-gradient-to-r from-primary-700 via-primary-600 to-secondary-600 py-16 md:py-20">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+<Section class="bg-gradient-to-r from-primary-700 via-primary-600 to-secondary-600">
+  <Container class="text-center">
     <h2 class="text-3xl font-bold text-white font-heading">{heading}</h2>
     <p class="mt-4 text-lg text-white/80 max-w-xl mx-auto">{subtitle}</p>
     <div class="mt-8 flex flex-wrap justify-center gap-4">
-      <Button href="/contacto" variant="white" size="lg" class="inline-flex items-center gap-2">
+      <Button href="/contacto" variant="white" size="lg">
         Agendar mi consulta <Icon name="lucide:arrow-right" class="w-5 h-5" />
       </Button>
       {showPhone && (
@@ -30,5 +32,5 @@ const {
         </Button>
       )}
     </div>
-  </div>
-</section>
+  </Container>
+</Section>
