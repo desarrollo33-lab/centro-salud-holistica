@@ -25,19 +25,88 @@ const testimonials = [
 >
   <HeroHome />
 
-  <!-- USP Badges -->
-  <Section bg="white">
+  <!-- Filosofía y Diferenciación -->
+  <Section bg="secondary" id="filosofia">
     <Container>
-      <div data-stagger class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
-        {siteConfig.usps.map((usp) => (
-          <div class="text-center">
-            <div class="w-12 h-12 mx-auto rounded-lg bg-primary-50 flex items-center justify-center mb-3">
-              <Icon name="lucide:check" class="w-6 h-6 text-primary-600" />
-            </div>
-            <h3 class="font-semibold text-neutral-900 font-heading text-sm">{usp.title}</h3>
-            <p class="mt-1 text-xs text-neutral-500 leading-relaxed">{usp.description}</p>
+      <div data-animate="fade-up" class="max-w-3xl mx-auto text-center mb-12">
+        <Badge variant="secondary" class="inline-flex items-center gap-1.5 mb-6">
+          <Icon name="lucide:sparkles" class="w-4 h-4" /> Nuestra filosofía
+        </Badge>
+        <h2 class="font-heading font-bold text-3xl md:text-4xl text-neutral-900 mb-4">
+          ¿Por qué enferman nuestros dientes si la evolución nos diseñó sanos?
+        </h2>
+        <p class="text-lg text-neutral-600 leading-relaxed">
+          Las enfermedades bucales son <strong class="text-neutral-800">enfermedades de la civilización</strong>. Nuestra odontología vuelve a sincronizar tu boca con la lógica de la vida.
+        </p>
+      </div>
+
+      <!-- Logo como sello -->
+      <div data-animate="fade-up" class="flex justify-center mb-12">
+        <img
+          src="/images/logo_horizontal_saludEvolutiva.png"
+          alt="Salud Evolutiva — Odontología Holística Dr. Ipinza"
+          width="320"
+          height="auto"
+          class="h-12 md:h-14 w-auto opacity-90"
+          loading="eager"
+        />
+      </div>
+
+      <!-- 4 Pilares -->
+      <div data-stagger class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        <!-- Pilar 1 -->
+        <div class="bg-white rounded-xl p-6 border border-secondary-200 hover:shadow-md transition-shadow duration-200">
+          <div class="w-11 h-11 rounded-lg bg-secondary-50 border border-secondary-200 flex items-center justify-center mb-4">
+            <Icon name="lucide:layers" class="w-5 h-5 text-secondary-600" />
           </div>
-        ))}
+          <h3 class="font-heading font-semibold text-neutral-900 mb-2">Nivel 3 Terapéutico</h3>
+          <p class="text-sm text-neutral-600 leading-relaxed">
+            La odontología tradicional se queda en el diente (Nivel&nbsp;1). Nosotros conectamos <strong>boca‑cuerpo</strong> (Nivel&nbsp;2) y <strong>persona‑entorno</strong> (Nivel&nbsp;3). Tu salud bucal es parte de tu salud integral.
+          </p>
+        </div>
+
+        <!-- Pilar 2 -->
+        <div class="bg-white rounded-xl p-6 border border-secondary-200 hover:shadow-md transition-shadow duration-200">
+          <div class="w-11 h-11 rounded-lg bg-primary-50 border border-primary-200 flex items-center justify-center mb-4">
+            <Icon name="lucide:shield-check" class="w-5 h-5 text-primary-600" />
+          </div>
+          <h3 class="font-heading font-semibold text-neutral-900 mb-2">Cero Metales Pesados</h3>
+          <p class="text-sm text-neutral-600 leading-relaxed">
+            Protocolo <strong>IAOMT</strong> certificado para la remoción segura de amalgamas. Usamos solo materiales biocompatibles — cerámica, circonio, composite. Tu sistema inmune agradece.
+          </p>
+        </div>
+
+        <!-- Pilar 3 -->
+        <div class="bg-white rounded-xl p-6 border border-secondary-200 hover:shadow-md transition-shadow duration-200">
+          <div class="w-11 h-11 rounded-lg bg-primary-50 border border-primary-200 flex items-center justify-center mb-4">
+            <Icon name="lucide:leaf" class="w-5 h-5 text-primary-600" />
+          </div>
+          <h3 class="font-heading font-semibold text-neutral-900 mb-2">Ciencia + Naturaleza</h3>
+          <p class="text-sm text-neutral-600 leading-relaxed">
+            Combinamos evidencia científica con nutrición ancestral. No tratamos solo síntomas — abordamos la <strong>raíz evolutiva</strong> de las enfermedades bucales, como demostró Weston Price.
+          </p>
+        </div>
+
+        <!-- Pilar 4 -->
+        <div class="bg-white rounded-xl p-6 border border-secondary-200 hover:shadow-md transition-shadow duration-200">
+          <div class="w-11 h-11 rounded-lg bg-secondary-50 border border-secondary-200 flex items-center justify-center mb-4">
+            <Icon name="lucide:heart-handshake" class="w-5 h-5 text-secondary-600" />
+          </div>
+          <h3 class="font-heading font-semibold text-neutral-900 mb-2">Persona, No Diente</h3>
+          <p class="text-sm text-neutral-600 leading-relaxed">
+            Acupuntura, nutrición, ozonoterapia y terapia neural integradas al tratamiento dental. Porque <strong>detrás de cada sonrisa hay una historia</strong>, emociones y un entorno que cuidar.
+          </p>
+        </div>
+      </div>
+
+      <!-- Cita del epílogo -->
+      <div data-animate="fade-up" class="mt-12 text-center">
+        <blockquote class="max-w-2xl mx-auto">
+          <p class="text-neutral-600 italic leading-relaxed text-sm md:text-base">
+            "La odontología del futuro no es la que inventa más máquinas, sino la que escucha más profundamente la biología y la sabiduría ancestral."
+          </p>
+          <cite class="block mt-3 text-xs text-neutral-400 not-italic font-medium">— Dr. Joaquín Ipinza, <em>Salud Evolutiva</em></cite>
+        </blockquote>
       </div>
     </Container>
   </Section>
