@@ -52,10 +52,10 @@ const testimonials = [
               loading="eager"
             />
           </div>
-          <p class="text-sm text-neutral-500 italic leading-relaxed mt-3 max-w-[340px] mx-auto">
+          <p class="text-sm text-neutral-600 italic leading-relaxed mt-3 max-w-[340px] mx-auto font-medium">
             "La odontología del futuro no es la que inventa más máquinas, sino la que escucha más profundamente la biología y la sabiduría ancestral."
           </p>
-          <span class="block mt-1 text-xs text-neutral-400 font-medium max-w-[340px] mx-auto">— Dr. Joaquín Ipinza, <em>Salud Evolutiva</em></span>
+          <span class="block mt-1 text-xs text-neutral-500 font-semibold max-w-[340px] mx-auto">— Dr. Joaquín Ipinza, <em>Salud Evolutiva</em></span>
         </div>
       </div>
 
@@ -195,23 +195,24 @@ const testimonials = [
             <Icon name="lucide:book-open" class="w-4 h-4" /> Libro Gratuito
           </Badge>
           <h2 class="font-heading font-bold text-3xl text-neutral-900 mb-4">
-            {siteConfig.bookTitle}
+            {siteConfig.bookTitle}<br />
+            <span class="text-lg font-normal text-neutral-500">La clave para tener dientes sanos — y de paso, todo lo demás</span>
           </h2>
           <p class="text-neutral-600 leading-relaxed mb-6">
-            {siteConfig.bookDescription} Escrito para que cualquier persona lo entienda — sin ser odontólogo.
+            Un odontólogo recorrió los museos de cinco continentes y descubrió algo que la universidad nunca le enseñó: <strong class="text-neutral-800">nuestros ancestros casi no tenían caries ni enfermedades de encías</strong>. Este libro es el puente entre ese hallazgo y tu salud de hoy.
           </p>
           <ul class="space-y-2.5 mb-8">
             <li class="flex items-center gap-2.5 text-sm text-neutral-600">
               <Icon name="lucide:check" class="w-4 h-4 text-success shrink-0" />
-              129 páginas basadas en evidencia científica verificable
+              Por qué tus enfermedades orales no son naturales — son enfermedades de la civilización
             </li>
             <li class="flex items-center gap-2.5 text-sm text-neutral-600">
               <Icon name="lucide:check" class="w-4 h-4 text-success shrink-0" />
-              Evolución, nutrición ancestral y salud bucal explicadas con claridad
+              El trípode de la salud: nutrición, ejercicio y manejo del estrés — explicados con evidencia
             </li>
             <li class="flex items-center gap-2.5 text-sm text-neutral-600">
               <Icon name="lucide:check" class="w-4 h-4 text-success shrink-0" />
-              Completo, sin registro y sin costo
+              129 páginas, sin jerga médica, sin costo y sin registro
             </li>
           </ul>
           <a href="/libro" class="inline-flex items-center gap-2 bg-primary-600 text-white font-semibold px-6 py-3 rounded-lg hover:bg-primary-700 hover:shadow-md hover:-translate-y-px transition-all duration-150 no-underline">
