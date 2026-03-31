@@ -19,7 +19,7 @@ import Container from "../../components/ui/Container.astro";
             { slug: "estres-y-salud-dental", topic: "Bienestar", title: "Estres y salud dental: la conexion que nadie te conto", desc: "Como el estres cronico destruye tus encias, causa bruxismo y afecta tu boca." },
             { slug: "nutricion-para-dientes-sanos", topic: "Alimentacion", title: "Nutricion para dientes sanos: que comer segun la ciencia evolutiva", desc: "Vitamina K2, vitamina D y los alimentos que protegen tu boca." },
           ].map((guide) => (
-            <a href={`/aprende/${guide.slug}`} class="group block bg-white rounded-xl p-6 border border-neutral-200 hover:border-primary-300 hover:shadow-md transition-all no-underline">
+            <a href={`/aprende/${guide.slug}`} class="group block bg-white rounded-lg p-6 shadow-sm hover:shadow-md transition-all duration-200 no-underline">
               <div class="flex items-start justify-between gap-4">
                 <div>
                   <span class="badge-guide text-xs">{guide.topic}</span>

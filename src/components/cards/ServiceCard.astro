@@ -10,19 +10,16 @@ interface Props {
 const { name, slug, description, icon } = Astro.props;
 ---
 
-<a href={`/servicios/${slug}`} class="group block bg-white rounded-2xl shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 overflow-hidden border border-neutral-100 hover:border-primary-200 relative">
-  <!-- Subtle gradient overlay on hover -->
-  <div class="absolute inset-0 bg-gradient-to-br from-primary-50/0 to-secondary-50/0 group-hover:from-primary-50/50 group-hover:to-secondary-50/30 transition-all duration-300 pointer-events-none"></div>
-
-  <div class="p-6 relative">
-    <div class="w-14 h-14 bg-primary-50 rounded-2xl flex items-center justify-center mb-5 group-hover:bg-primary-600 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-primary-600/25 transition-all duration-300">
-      <Icon name={icon} class="w-7 h-7 text-primary-600 group-hover:text-white transition-all duration-300" />
+<a href={`/servicios/${slug}`} class="group block bg-white rounded-lg shadow-sm hover:shadow-md hover:-translate-y-4 transition-all duration-200 overflow-hidden relative">
+  <div class="p-6">
+    <div class="w-14 h-14 bg-primary-50 rounded-lg flex items-center justify-center mb-5 group-hover:bg-primary-600 transition-colors duration-200">
+      <Icon name={icon} class="w-7 h-7 text-primary-600 group-hover:text-white transition-colors duration-200" />
     </div>
-    <h3 class="text-lg font-semibold text-neutral-900 font-heading group-hover:text-primary-700 transition-colors">{name}</h3>
-    <p class="mt-2 text-sm text-neutral-500 line-clamp-2 leading-relaxed group-hover:text-neutral-600 transition-colors">{description}</p>
-    <span class="mt-5 inline-flex items-center gap-1.5 text-primary-600 font-medium text-sm group-hover:gap-3 transition-all duration-300">
+    <h3 class="text-xl font-semibold text-neutral-900 font-heading group-hover:text-primary-700 transition-colors duration-150">{name}</h3>
+    <p class="mt-2 text-base text-neutral-600 line-clamp-2 leading-relaxed">{description}</p>
+    <span class="mt-5 inline-flex items-center gap-1.5 text-accent font-medium text-base group-hover:gap-3 transition-all duration-200">
       Conocer más
-      <Icon name="lucide:arrow-right" class="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+      <Icon name="lucide:arrow-right" class="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-200" />
     </span>
   </div>
 </a>

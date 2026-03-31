@@ -30,8 +30,8 @@ const testimonials = [
     <Container>
       <div data-stagger class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
         {siteConfig.usps.map((usp) => (
-          <div class="text-center group">
-            <div class="w-14 h-14 mx-auto rounded-full bg-primary-50 flex items-center justify-center mb-3 group-hover:bg-primary-100 group-hover:scale-110 transition-all duration-300">
+          <div class="text-center">
+            <div class="w-12 h-12 mx-auto rounded-lg bg-primary-50 flex items-center justify-center mb-3">
               <Icon name="lucide:check" class="w-6 h-6 text-primary-600" />
             </div>
             <h3 class="font-semibold text-neutral-900 font-heading text-sm">{usp.title}</h3>
@@ -48,16 +48,16 @@ const testimonials = [
       <div data-animate="fade-up">
         <div class="text-center mb-12">
           <h2 class="text-3xl font-bold text-neutral-900 font-heading">Nuestros Servicios</h2>
-          <p class="mt-3 text-lg text-neutral-500 max-w-2xl mx-auto">Tratamientos biocompatibles diseñados para tu salud integral</p>
+          <p class="mt-4 text-lg text-neutral-500 max-w-2xl mx-auto">Tratamientos biocompatibles diseñados para tu salud integral</p>
         </div>
       </div>
       <div data-stagger>
         <ServiceGrid services={featuredServices} />
       </div>
-      <div data-animate="fade-up" class="text-center mt-10">
-        <a href="/servicios" class="inline-flex items-center gap-2 text-primary-600 font-semibold hover:text-primary-800 no-underline group">
+      <div data-animate="fade-up" class="text-center mt-12">
+        <a href="/servicios" class="inline-flex items-center gap-2 text-accent font-semibold no-underline group">
           Ver todos los servicios ({services.length})
-          <Icon name="lucide:arrow-right" class="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+          <Icon name="lucide:arrow-right" class="w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
         </a>
       </div>
     </Container>
@@ -74,7 +74,7 @@ const testimonials = [
           <h2 class="font-heading font-bold text-3xl text-neutral-900 mt-4 mb-4">
             {siteConfig.doctor}
           </h2>
-          <p class="text-neutral-600 leading-relaxed mb-6">
+          <p class="text-neutral-700 leading-relaxed mb-6">
             Cirujano dentista de la Universidad de Chile, con especialización en Periodoncia e Implantología. Formación adicional en Loma Linda University, California. Su enfoque holístico integra nutrición, acupuntura y ozonoterapia con la odontología.
           </p>
           <div class="flex flex-wrap gap-2 mb-8">
@@ -82,14 +82,14 @@ const testimonials = [
               <Badge variant="neutral">{cert}</Badge>
             ))}
           </div>
-          <a href="/sobre" class="inline-flex items-center gap-2 text-primary-600 font-semibold hover:text-primary-800 no-underline group">
-            Conoce más sobre el doctor <Icon name="lucide:arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          <a href="/sobre" class="inline-flex items-center gap-2 text-accent font-semibold no-underline group">
+            Conoce más sobre el doctor <Icon name="lucide:arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
           </a>
         </div>
         <div data-animate="fade-right">
-          <div class="bg-gradient-to-br from-primary-100 to-secondary-50 rounded-3xl aspect-square flex items-center justify-center">
+          <div class="bg-gradient-to-br from-primary-100 to-secondary-50 rounded-lg aspect-square flex items-center justify-center">
             <div class="text-center">
-              <div class="w-32 h-32 bg-primary-200 rounded-full mx-auto mb-4 flex items-center justify-center animate-float">
+              <div class="w-32 h-32 bg-primary-200 rounded-full mx-auto mb-4 flex items-center justify-center">
                 <Icon name="lucide:user-round" class="w-16 h-16 text-primary-400" />
               </div>
               <p class="text-primary-700 text-sm font-medium">Foto profesional<br />por confirmar</p>
@@ -111,7 +111,7 @@ const testimonials = [
           <h2 class="font-heading font-bold text-3xl text-neutral-900 mt-4 mb-4">
             {siteConfig.bookTitle}: el libro que cambia perspectiva
           </h2>
-          <p class="text-neutral-600 leading-relaxed mb-6">
+          <p class="text-neutral-700 leading-relaxed mb-6">
             {siteConfig.bookDescription} Escrito para que cualquier persona lo entienda, sin ser odontólogo.
           </p>
           <ul class="space-y-2 mb-8">
@@ -128,19 +128,19 @@ const testimonials = [
               Referencias científicas verificables
             </li>
           </ul>
-          <a href="/libro" class="inline-flex items-center gap-2 bg-primary-600 text-white font-semibold px-6 py-3 rounded-xl hover:bg-primary-700 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 no-underline">
+          <a href="/libro" class="inline-flex items-center gap-2 bg-primary-600 text-white font-semibold px-6 py-3 rounded-lg hover:bg-primary-700 hover:shadow-md hover:-translate-y-px transition-all duration-150 no-underline">
             <Icon name="lucide:book-open" class="w-5 h-5" /> Leer el libro completo <Icon name="lucide:arrow-right" class="w-4 h-4" />
           </a>
         </div>
         <div data-animate="fade-right">
-          <div class="bg-white rounded-2xl shadow-lg p-8 border border-neutral-200 hover:shadow-xl transition-shadow duration-300">
+          <div class="bg-white rounded-lg shadow-sm p-8">
             <div class="text-center">
               <img
                 src="/images/portada-libro.webp"
                 alt="Portada del libro {siteConfig.bookTitle} — {siteConfig.doctor}"
                 width="800"
                 height="874"
-                class="w-52 h-auto mx-auto mb-6 rounded-xl shadow-xl animate-float-delay"
+                class="w-52 h-auto mx-auto mb-6 rounded-lg shadow-md"
                 loading="eager"
                 decoding="async"
               />

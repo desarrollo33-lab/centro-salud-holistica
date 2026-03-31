@@ -7,7 +7,7 @@ import { services } from "../data/site";
 <footer class="bg-neutral-900 text-neutral-300 relative overflow-hidden">
   <!-- Subtle top decoration -->
   <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary-500 via-secondary-400 to-primary-500"></div>
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-8">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
       <div>
         <a href="/" class="flex items-center gap-2.5 mb-4 no-underline">
@@ -33,7 +33,7 @@ import { services } from "../data/site";
       </div>
 
       <div>
-        <h3 class="font-heading font-semibold text-white text-base mb-4">Servicios</h3>
+        <h3 class="font-heading font-semibold text-white text-lg mb-4">Servicios</h3>
         <ul class="space-y-2">
           {services.slice(0,6).map((svc) => (
             <li>
@@ -52,7 +52,7 @@ import { services } from "../data/site";
       </div>
 
       <div>
-        <h3 class="font-heading font-semibold text-white text-base mb-4">Navegación</h3>
+        <h3 class="font-heading font-semibold text-white text-lg mb-4">Navegación</h3>
         <ul class="space-y-2">
           <li><a href="/libro" class="text-sm text-neutral-300 hover:text-primary-400 transition-colors no-underline inline-flex items-center gap-2"><Icon name="lucide:book-open" class="w-4 h-4 text-primary-400 shrink-0" /> Libro gratuito</a></li>
           <li><a href="/aprende" class="text-sm text-neutral-300 hover:text-primary-400 transition-colors no-underline inline-flex items-center gap-2"><Icon name="lucide:graduation-cap" class="w-4 h-4 text-primary-400 shrink-0" /> Aprende</a></li>
@@ -65,7 +65,7 @@ import { services } from "../data/site";
       </div>
 
       <div>
-        <h3 class="font-heading font-semibold text-white text-base mb-4">Contacto</h3>
+        <h3 class="font-heading font-semibold text-white text-lg mb-4">Contacto</h3>
         <ul class="space-y-3 text-sm">
           <li class="flex items-start gap-3">
             <Icon name="lucide:map-pin" class="w-5 h-5 text-primary-400 mt-0.5 shrink-0" />

@@ -10,7 +10,7 @@ const { faqs, heading = "Preguntas Frecuentes" } = Astro.props;
   {heading && (
     <h2 class="text-3xl font-bold text-neutral-900 font-heading text-center mb-12">{heading}</h2>
   )}
-  <div class="bg-white rounded-xl shadow-sm divide-y divide-neutral-200">
+  <div class="bg-white rounded-lg shadow-sm divide-y divide-neutral-200">
     {faqs.map((faq) => (
       <div class="faq-item">
         <button

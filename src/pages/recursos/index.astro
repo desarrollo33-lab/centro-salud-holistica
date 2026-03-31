@@ -20,7 +20,7 @@ import Container from "../../components/ui/Container.astro";
             { slug: "checklist-retiro-amalgamas", title: "Checklist para Retiro Seguro de Amalgamas", desc: "Todo lo que debes considerar antes de retirar empastes de amalgama." },
             { slug: "checklist-embarazo-dental", title: "Checklist Dental para el Embarazo", desc: "Cuidados bucales esenciales durante cada trimestre del embarazo." },
           ].map((t) => (
-            <a href={`/recursos/${t.slug}`} class="group block bg-white rounded-xl p-5 border border-neutral-200 hover:border-primary-300 hover:shadow-md transition-all no-underline">
+            <a href={`/recursos/${t.slug}`} class="group block bg-white rounded-lg p-5 shadow-sm hover:border-primary-300 hover:shadow-md transition-all no-underline">
               <h3 class="font-semibold text-neutral-900 group-hover:text-primary-700 transition-colors">{t.title}</h3>
               <p class="text-sm text-neutral-500 mt-1">{t.desc}</p>
             </a>
@@ -31,7 +31,7 @@ import Container from "../../components/ui/Container.astro";
         </h2>
         <div class="space-y-3 mb-10">
           {[{ slug: "plan-nutricional-semana-dental", title: "Plan Nutricional Semanal para Dientes Sanos", desc: "Menu semanal completo con lista de compras y recetas simples." }].map((t) => (
-            <a href={`/recursos/${t.slug}`} class="group block bg-white rounded-xl p-5 border border-neutral-200 hover:border-primary-300 hover:shadow-md transition-all no-underline">
+            <a href={`/recursos/${t.slug}`} class="group block bg-white rounded-lg p-5 shadow-sm hover:border-primary-300 hover:shadow-md transition-all no-underline">
               <h3 class="font-semibold text-neutral-900 group-hover:text-primary-700 transition-colors">{t.title}</h3>
               <p class="text-sm text-neutral-500 mt-1">{t.desc}</p>
             </a>
@@ -47,7 +47,7 @@ import Container from "../../components/ui/Container.astro";
             { slug: "guia-salud-dental-ninez", title: "Salud Dental Infantil: Guia por Edad", desc: "Recomendaciones desde el nacimiento hasta la adolescencia." },
             { slug: "guia-salud-dental-vejez", title: "Salud Dental en la Vejez: Guia Completa", desc: "Cuidados especificos para mantener una boca sana en la tercera edad." },
           ].map((t) => (
-            <a href={`/recursos/${t.slug}`} class="group block bg-white rounded-xl p-5 border border-neutral-200 hover:border-primary-300 hover:shadow-md transition-all no-underline">
+            <a href={`/recursos/${t.slug}`} class="group block bg-white rounded-lg p-5 shadow-sm hover:border-primary-300 hover:shadow-md transition-all no-underline">
               <h3 class="font-semibold text-neutral-900 group-hover:text-primary-700 transition-colors">{t.title}</h3>
               <p class="text-sm text-neutral-500 mt-1">{t.desc}</p>
             </a>

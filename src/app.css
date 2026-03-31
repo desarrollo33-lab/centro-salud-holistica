@@ -94,6 +94,44 @@
 }
 
 @layer components {
+  /* Header scrolled state */
+  .header-scrolled {
+    background: rgba(255,255,255,0.97);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);
+  }
+  .header-scrolled a,
+  .header-scrolled button,
+  .header-scrolled span {
+    color: var(--color-neutral-900) !important;
+  }
+  .header-scrolled .header-cta-btn {
+    background: var(--color-primary-600);
+    color: white !important;
+  }
+  .header-scrolled .header-cta-btn:hover {
+    background: var(--color-primary-700);
+  }
+  .header-scrolled .header-nav-link:hover {
+    background: var(--color-primary-50);
+  }
+  .header-scrolled .header-logo-text {
+    color: var(--color-neutral-900) !important;
+  }
+  .header-scrolled .header-logo-sub {
+    color: var(--color-primary-600) !important;
+  }
+  .header-scrolled .header-icon {
+    color: var(--color-neutral-900) !important;
+  }
+  .header-scrolled .header-dropdown {
+    opacity: 0;
+    visibility: hidden;
+  }
+  .header-scrolled .header-logo-box {
+    background: var(--color-primary-50) !important;
+  }
+
   /* Book prose */
   .prose-evolutiva { max-width: 72ch; font-size: 1.0625rem; line-height: 1.8; }
   .prose-evolutiva p { margin-bottom: 1.375rem; color: var(--color-neutral-700); }
