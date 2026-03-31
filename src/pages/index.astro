@@ -135,10 +135,15 @@ const testimonials = [
         <div data-animate="fade-right">
           <div class="bg-white rounded-2xl shadow-lg p-8 border border-neutral-200 hover:shadow-xl transition-shadow duration-300">
             <div class="text-center">
-              <div class="w-28 h-40 bg-gradient-to-br from-primary-700 to-primary-600 rounded-xl mx-auto mb-6 flex flex-col items-center justify-center shadow-xl animate-float-delay">
-                <span class="text-white text-xs font-bold leading-tight px-3">SALUD</span>
-                <span class="text-white text-2xl font-bold leading-tight mt-1">EVOLUTIVA</span>
-              </div>
+              <img
+                src="/images/portada-libro.webp"
+                alt="Portada del libro {siteConfig.bookTitle} — {siteConfig.doctor}"
+                width="800"
+                height="874"
+                class="w-52 h-auto mx-auto mb-6 rounded-xl shadow-xl animate-float-delay"
+                loading="eager"
+                decoding="async"
+              />
               <h3 class="font-heading font-bold text-lg text-neutral-900">{siteConfig.bookTitle}</h3>
               <p class="text-sm text-neutral-500 mb-1">{siteConfig.doctor}</p>
               <p class="text-xs text-neutral-400">129 páginas · 38,000 palabras · Gratuito</p>
