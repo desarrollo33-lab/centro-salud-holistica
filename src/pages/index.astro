@@ -142,15 +142,15 @@ const testimonials = [
   <!-- About Doctor Teaser -->
   <Section bg="white">
     <Container>
-      <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
         <div data-animate="fade-left">
-          <Badge variant="secondary" class="inline-flex items-center gap-1.5">
+          <Badge variant="secondary" class="inline-flex items-center gap-1.5 mb-6">
             <Icon name="lucide:user-round" class="w-4 h-4" /> El Doctor
           </Badge>
-          <h2 class="font-heading font-bold text-3xl text-neutral-900 mt-4 mb-4">
+          <h2 class="font-heading font-bold text-3xl text-neutral-900 mb-4">
             {siteConfig.doctor}
           </h2>
-          <p class="text-neutral-700 leading-relaxed mb-6">
+          <p class="text-neutral-600 leading-relaxed mb-6">
             Cirujano dentista de la Universidad de Chile, con especialización en Periodoncia e Implantología. Formación adicional en Loma Linda University, California. Su enfoque holístico integra nutrición, acupuntura y ozonoterapia con la odontología.
           </p>
           <div class="flex flex-wrap gap-2 mb-8">
@@ -158,19 +158,19 @@ const testimonials = [
               <Badge variant="neutral">{cert}</Badge>
             ))}
           </div>
-          <a href="/sobre" class="inline-flex items-center gap-2 text-accent font-semibold no-underline group">
-            Conoce más sobre el doctor <Icon name="lucide:arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
+          <a href="/sobre" class="inline-flex items-center gap-2 border-2 border-primary-600 text-primary-600 font-semibold px-6 py-3 rounded-lg hover:bg-primary-600 hover:text-white hover:shadow-md hover:-translate-y-px transition-all duration-150 no-underline">
+            Conoce más sobre el doctor <Icon name="lucide:arrow-right" class="w-4 h-4" />
           </a>
         </div>
-        <div data-animate="fade-right">
-          <div class="bg-gradient-to-br from-primary-100 to-secondary-50 rounded-lg aspect-square flex items-center justify-center">
-            <div class="text-center">
-              <div class="w-32 h-32 bg-primary-200 rounded-full mx-auto mb-4 flex items-center justify-center">
-                <Icon name="lucide:user-round" class="w-16 h-16 text-primary-400" />
-              </div>
-              <p class="text-primary-700 text-sm font-medium">Foto profesional<br />por confirmar</p>
-            </div>
-          </div>
+        <div data-animate="fade-right" class="flex justify-center lg:justify-end">
+          <img
+            src="/images/doctor-retrato.webp"
+            alt="Dr. Joaquín Ipinza — Cirujano dentista y autor de Salud Evolutiva"
+            width="340"
+            height="340"
+            class="w-full max-w-[340px] aspect-square object-cover rounded-xl"
+            loading="eager"
+          />
         </div>
       </div>
     </Container>
