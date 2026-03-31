@@ -10,16 +10,14 @@ interface Props {
 const { name, slug, description, icon } = Astro.props;
 ---
 
-<a href={`/servicios/${slug}`} class="group block bg-white rounded-lg shadow-sm hover:shadow-md hover:-translate-y-4 transition-all duration-200 overflow-hidden relative">
-  <div class="p-6">
-    <div class="w-14 h-14 bg-primary-50 rounded-lg flex items-center justify-center mb-5 group-hover:bg-primary-600 transition-colors duration-200">
-      <Icon name={icon} class="w-7 h-7 text-primary-600 group-hover:text-white transition-colors duration-200" />
-    </div>
-    <h3 class="text-xl font-semibold text-neutral-900 font-heading group-hover:text-primary-700 transition-colors duration-150">{name}</h3>
-    <p class="mt-2 text-base text-neutral-600 line-clamp-2 leading-relaxed">{description}</p>
-    <span class="mt-5 inline-flex items-center gap-1.5 text-accent font-medium text-base group-hover:gap-3 transition-all duration-200">
-      Conocer más
-      <Icon name="lucide:arrow-right" class="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-200" />
-    </span>
+<a href={`/servicios/${slug}`} class="group block bg-white rounded-xl p-6 border border-neutral-200 hover:shadow-md hover:-translate-y-px transition-all duration-200">
+  <div class="w-11 h-11 bg-primary-50 border border-primary-200 rounded-lg flex items-center justify-center mb-4 group-hover:bg-primary-600 group-hover:border-primary-600 transition-colors duration-200">
+    <Icon name={icon} class="w-5 h-5 text-primary-600 group-hover:text-white transition-colors duration-200" />
   </div>
+  <h3 class="font-heading font-semibold text-neutral-900 mb-1.5 group-hover:text-primary-700 transition-colors duration-150">{name}</h3>
+  <p class="text-sm text-neutral-500 leading-relaxed line-clamp-2 mb-4">{description}</p>
+  <span class="inline-flex items-center gap-1.5 text-sm text-accent font-medium group-hover:gap-2.5 transition-all duration-200">
+    Conocer más
+    <Icon name="lucide:arrow-right" class="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-200" />
+  </span>
 </a>
