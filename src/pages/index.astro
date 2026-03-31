@@ -48,13 +48,16 @@ const testimonials = [
           </blockquote>
         </div>
         <div data-animate="fade-right" class="flex justify-center">
-          <img
-            src="/images/logo_horizontal_saludEvolutiva.webp"
-            alt="Salud Evolutiva — Odontología Holística Dr. Ipinza"
-            width="340"
-            height="340"
-            class="w-full max-w-[340px] aspect-square object-contain rounded-xl bg-secondary-50"
-            loading="eager"
+          <div class="w-full max-w-[340px] aspect-square rounded-xl shadow-sm overflow-hidden bg-secondary-50">
+            <img
+              src="/images/logo_horizontal_saludEvolutiva.webp"
+              alt="Salud Evolutiva — Odontología Holística Dr. Ipinza"
+              width="340"
+              height="340"
+              class="w-full h-full object-contain"
+              loading="eager"
+            />
+          </div>
           />
         </div>
       </div>
@@ -160,14 +163,16 @@ const testimonials = [
             Conoce más sobre el doctor <Icon name="lucide:arrow-right" class="w-4 h-4" />
           </a>
         </div>
-        <div data-animate="fade-right" class="flex justify-center lg:justify-end">
-          <img
-            src="/images/doctor-retrato.webp"
-            alt="Dr. Joaquín Ipinza — Cirujano dentista y autor de Salud Evolutiva"
-            width="340"
-            height="340"
-            class="w-full max-w-[340px] aspect-square object-cover rounded-xl shadow-sm"
-            loading="eager"
+          <div class="w-full max-w-[340px] aspect-square rounded-xl shadow-sm overflow-hidden">
+            <img
+              src="/images/doctor-retrato.webp"
+              alt="Dr. Joaquín Ipinza — Cirujano dentista y autor de Salud Evolutiva"
+              width="340"
+              height="340"
+              class="w-full h-full object-cover"
+              loading="eager"
+            />
+          </div>
           />
         </div>
       </div>
@@ -180,14 +185,16 @@ const testimonials = [
       <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
         <div data-animate="fade-right" class="flex justify-center lg:justify-start order-1 lg:order-none">
           <img
-            src="/images/portada_libro-light.webp"
-            alt="Portada del libro {siteConfig.bookTitle} — {siteConfig.doctor}"
-            width="340"
-            height="340"
-            class="w-full max-w-[340px] aspect-square object-cover rounded-xl shadow-sm"
-            loading="eager"
-          />
-        </div>
+          <div class="w-full max-w-[340px] aspect-square rounded-xl shadow-sm overflow-hidden">
+            <img
+              src="/images/portada_libro-light.webp"
+              alt="Portada del libro {siteConfig.bookTitle} — {siteConfig.doctor}"
+              width="340"
+              height="340"
+              class="w-full h-full object-cover"
+              loading="eager"
+            />
+          </div>
         <div data-animate="fade-left">
           <Badge variant="primary" class="inline-flex items-center gap-1.5 mb-6">
             <Icon name="lucide:book-open" class="w-4 h-4" /> Libro Gratuito
