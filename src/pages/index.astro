@@ -224,82 +224,129 @@ const testimonials = [
     </Container>
   </Section>
 
-  <!-- Tecnología -->
-  <Section id="tecnologia">
+  <!-- Tecnología + Instalaciones -->
+  <Section id="clinica">
     <Container>
       <div data-animate="fade-up" class="text-center mb-12">
         <Badge variant="primary" class="inline-flex items-center gap-1.5 mb-6">
           <Icon name="lucide:cpu" class="w-4 h-4" /> Tecnología e Instalaciones
         </Badge>
         <h2 class="font-heading font-bold text-3xl text-neutral-900 mb-4">
-          La odontología holística también es ciencia de avanzada
+          Donde la ciencia se pone al servicio de la biología
         </h2>
-        <p class="text-neutral-500 max-w-2xl mx-auto">Inversión constante en tecnología de última generación, integrada con criterio conservador. Ninguna de las clínicas analizadas en Chile ofrece esta combinación.</p>
+        <p class="text-neutral-500 max-w-2xl mx-auto">Odontología digital, pabellón certificado y tecnología de última generación — a pasos del metro Los Dominicos, Las Condes, Santiago.</p>
       </div>
 
-      <!-- Mosaico de imágenes -->
-      <div data-stagger class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-10">
-        <div class="col-span-2 row-span-2 rounded-xl overflow-hidden shadow-sm">
-          <img src="/images/pabellon.webp" alt="Pabellón de cirugía certificado — Centro Salud Evolutiva" class="w-full h-full object-cover" loading="lazy" />
-        </div>
-        <div class="rounded-xl overflow-hidden shadow-sm bg-white border border-neutral-200 p-5 flex flex-col items-center justify-center text-center">
-          <div class="w-11 h-11 bg-primary-50 border border-neutral-200 rounded-lg flex items-center justify-center mb-3">
-            <Icon name="lucide:scan" class="w-5 h-5 text-primary-600" />
-          </div>
-          <h3 class="font-heading font-semibold text-neutral-900 text-sm mb-1">Tomografía Cone Beam 3D</h3>
-          <p class="text-xs text-neutral-500">Diagnóstico volumétrico de alta resolución</p>
+      <!-- Mosaico 3 imágenes -->
+      <div data-stagger class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
+        <div class="rounded-xl overflow-hidden shadow-sm">
+          <img src="/images/pabellon.webp" alt="Pabellón de cirugía certificado IAOMT — Centro Salud Evolutiva, Los Dominicos" class="w-full h-full object-cover aspect-[3/4]" loading="lazy" />
         </div>
         <div class="rounded-xl overflow-hidden shadow-sm">
-          <img src="/images/clinic-monitor.webp" alt="Sistema MEDIT — radiografías, modelos 3D y diagnóstico digital" class="w-full h-full object-cover" loading="lazy" />
-        </div>
-        <div class="rounded-xl overflow-hidden shadow-sm bg-white border border-neutral-200 p-5 flex flex-col items-center justify-center text-center">
-          <div class="w-11 h-11 bg-secondary-50 border border-neutral-200 rounded-lg flex items-center justify-center mb-3">
-            <Icon name="lucide:printer" class="w-5 h-5 text-secondary-600" />
-          </div>
-          <h3 class="font-heading font-semibold text-neutral-900 text-sm mb-1">Impresión 3D</h3>
-          <p class="text-xs text-neutral-500">Cirugía guiada por computador — mínimamente invasiva</p>
+          <img src="/images/clinic-monitor.webp" alt="Sistema MEDIT con IA — diagnóstico digital 3D en Santiago" class="w-full h-full object-cover aspect-square" loading="lazy" />
         </div>
         <div class="rounded-xl overflow-hidden shadow-sm">
-          <img src="/images/edificio-hero.webp" alt="Centro Salud Evolutiva — Los Dominicos, Las Condes" class="w-full h-full object-cover" loading="lazy" />
+          <img src="/images/edificio-hero.webp" alt="Edificio Centro Salud Evolutiva — Los Dominicos, Las Condes" class="w-full h-full object-cover aspect-[3/4]" loading="lazy" />
         </div>
       </div>
 
-      <!-- Proveedores y materiales -->
-      <div data-stagger class="grid grid-cols-2 md:grid-cols-4 gap-3">
-        <div class="rounded-xl overflow-hidden shadow-sm bg-white border border-neutral-200 p-5 flex flex-col items-center justify-center text-center">
-          <div class="w-11 h-11 bg-primary-50 border border-neutral-200 rounded-lg flex items-center justify-center mb-3">
-            <Icon name="lucide:gem" class="w-5 h-5 text-primary-600" />
+      <!-- Tecnología + Mapa -->
+      <div data-animate="fade-up" class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+        <!-- Columna izquierda: tech highlights -->
+        <div>
+          <h3 class="font-heading font-semibold text-xl text-neutral-900 mb-6">Equipamiento de referencia en Chile</h3>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="flex items-start gap-3">
+              <div class="w-9 h-9 bg-primary-50 border border-neutral-200 rounded-lg flex items-center justify-center shrink-0">
+                <Icon name="lucide:scan" class="w-4 h-4 text-primary-600" />
+              </div>
+              <div>
+                <p class="font-semibold text-sm text-neutral-900">Tomografía Cone Beam 3D</p>
+                <p class="text-xs text-neutral-500 mt-0.5">Diagnóstico volumétrico</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-9 h-9 bg-primary-50 border border-neutral-200 rounded-lg flex items-center justify-center shrink-0">
+                <Icon name="lucide:brain" class="w-4 h-4 text-primary-600" />
+              </div>
+              <div>
+                <p class="font-semibold text-sm text-neutral-900">IA MEDIT + Realidad Aumentada</p>
+                <p class="text-xs text-neutral-500 mt-0.5">Escaneo intraoral digital</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-9 h-9 bg-secondary-50 border border-neutral-200 rounded-lg flex items-center justify-center shrink-0">
+                <Icon name="lucide:printer" class="w-4 h-4 text-secondary-600" />
+              </div>
+              <div>
+                <p class="font-semibold text-sm text-neutral-900">Cirugía Guiada por Computador</p>
+                <p class="text-xs text-neutral-500 mt-0.5">Impresión 3D + implantes</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-9 h-9 bg-secondary-50 border border-neutral-200 rounded-lg flex items-center justify-center shrink-0">
+                <Icon name="lucide:shield-check" class="w-4 h-4 text-secondary-600" />
+              </div>
+              <div>
+                <p class="font-semibold text-sm text-neutral-900">Pabellón Certificado IAOMT</p>
+                <p class="text-xs text-neutral-500 mt-0.5">Bioseguridad total</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-9 h-9 bg-primary-50 border border-neutral-200 rounded-lg flex items-center justify-center shrink-0">
+                <Icon name="lucide:gem" class="w-4 h-4 text-primary-600" />
+              </div>
+              <div>
+                <p class="font-semibold text-sm text-neutral-900">Implantes Cerámicos de Zirconio</p>
+                <p class="text-xs text-neutral-500 mt-0.5">100% libres de titanio</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-9 h-9 bg-secondary-50 border border-neutral-200 rounded-lg flex items-center justify-center shrink-0">
+                <Icon name="lucide:wind" class="w-4 h-4 text-secondary-600" />
+              </div>
+              <div>
+                <p class="font-semibold text-sm text-neutral-900">Ozonoterapia Médica</p>
+                <p class="text-xs text-neutral-500 mt-0.5">Desinfección natural con O₃</p>
+              </div>
+            </div>
           </div>
-          <h3 class="font-heading font-semibold text-neutral-900 text-sm mb-1">Implantes de Zirconio</h3>
-          <p class="text-xs text-neutral-500">Cerámicos monofase libres de titanio — nueva generación</p>
         </div>
-        <div class="rounded-xl overflow-hidden shadow-sm bg-white border border-neutral-200 p-5 flex flex-col items-center justify-center text-center">
-          <div class="w-11 h-11 bg-primary-50 border border-neutral-200 rounded-lg flex items-center justify-center mb-3">
-            <Icon name="lucide:wind" class="w-5 h-5 text-primary-600" />
-          </div>
-          <h3 class="font-heading font-semibold text-neutral-900 text-sm mb-1">Ozonoterapia Médica</h3>
-          <p class="text-xs text-neutral-500">O₃ antimicrobiano, antiinflamatorio y regenerativo</p>
-        </div>
-        <div class="rounded-xl overflow-hidden shadow-sm bg-white border border-neutral-200 p-5 flex flex-col items-center justify-center text-center">
-          <div class="w-11 h-11 bg-secondary-50 border border-neutral-200 rounded-lg flex items-center justify-center mb-3">
-            <Icon name="lucide:sparkles" class="w-5 h-5 text-secondary-600" />
-          </div>
-          <h3 class="font-heading font-semibold text-neutral-900 text-sm mb-1">Biomimesis Digital</h3>
-          <p class="text-xs text-neutral-500">Restauraciones de cerámica adherida que imitan la estructura natural</p>
-        </div>
-        <div class="rounded-xl overflow-hidden shadow-sm bg-white border border-neutral-200 p-5 flex flex-col items-center justify-center text-center">
-          <div class="w-11 h-11 bg-secondary-50 border border-neutral-200 rounded-lg flex items-center justify-center mb-3">
-            <Icon name="lucide:leaf" class="w-5 h-5 text-secondary-600" />
-          </div>
-          <h3 class="font-heading font-semibold text-neutral-900 text-sm mb-1">Odontología Digital</h3>
-          <p class="text-xs text-neutral-500">Sin residuos contaminantes — iluminación LED y procesos ecológicos</p>
-        </div>
-      </div>
 
-      <div data-animate="fade-up" class="text-center mt-10">
-        <Button href="/clinica#tecnologia" variant="outline">
-          Conoce nuestras instalaciones <Icon name="lucide:arrow-right" class="w-4 h-4" />
-        </Button>
+        <!-- Columna derecha: mapa + info SEO local -->
+        <div>
+          <h3 class="font-heading font-semibold text-xl text-neutral-900 mb-6">Ubicación privilegiada</h3>
+          <div class="rounded-xl overflow-hidden shadow-sm border border-neutral-200 mb-6">
+            <iframe
+              title="Centro Salud Evolutiva — Odontología Holística en Los Dominicos, Las Condes, Santiago"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3329.8!2d-70.58!3d-33.38!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c4f3b1f0f0f1%3A0x0!2sMetro+Los+Dominicos!5e0!3m2!1ses!2scl!4v1700000000000"
+              width="100%"
+              height="280"
+              style="border:0;"
+              allowfullscreen
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+          <div class="space-y-3 text-sm">
+            <div class="flex items-center gap-2 text-neutral-700">
+              <Icon name="lucide:map-pin" class="w-4 h-4 text-primary-600 shrink-0" />
+              <span>Los Dominicos, Las Condes — Santiago, Chile</span>
+            </div>
+            <div class="flex items-center gap-2 text-neutral-700">
+              <Icon name="lucide:train" class="w-4 h-4 text-primary-600 shrink-0" />
+              <span>Metro Los Dominicos — salida directa</span>
+            </div>
+            <div class="flex items-center gap-2 text-neutral-700">
+              <Icon name="lucide:clock" class="w-4 h-4 text-primary-600 shrink-0" />
+              <span>Lunes a viernes 9:00 – 18:00</span>
+            </div>
+            <div class="flex items-center gap-2 text-neutral-700">
+              <Icon name="lucide:plane" class="w-4 h-4 text-primary-600 shrink-0" />
+              <span>Pacientes internacionales — teleconsulta disponible</span>
+            </div>
+          </div>
+        </div>
       </div>
     </Container>
   </Section>
