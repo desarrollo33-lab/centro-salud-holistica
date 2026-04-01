@@ -24,14 +24,14 @@ const badgeClass: Record<string,string> = { checklist: "badge-checklist", planne
   <article class="max-w-3xl mx-auto px-4 sm:px-6 py-12 md:py-16">
     <nav class="text-sm text-neutral-500 mb-8 flex items-center gap-1.5 flex-wrap">
       <a href="/" class="hover:text-primary-700 no-underline text-neutral-500">Inicio</a>
-      <Icon name="lucide:chevron-right" class="w-3.5 h-3.5 text-neutral-300" />
+      <Icon name="lucide:chevron-right" class="w-3.5 h-3.5 text-neutral-300"  aria-hidden="true"/>
       <a href="/recursos" class="hover:text-primary-700 no-underline text-neutral-500">Recursos</a>
-      <Icon name="lucide:chevron-right" class="w-3.5 h-3.5 text-neutral-300" />
+      <Icon name="lucide:chevron-right" class="w-3.5 h-3.5 text-neutral-300"  aria-hidden="true"/>
       <span class="text-neutral-800 font-medium truncate max-w-[200px]">{title}</span>
     </nav>
     <header class="mb-8">
       <div class="flex items-center gap-3 mb-3">
-        <span class="text-2xl"><Icon name={iconMap[tool_type] || "lucide:wrench"} class="w-6 h-6" /></span>
+        <span class="text-2xl"><Icon name={iconMap[tool_type] || "lucide:wrench"} class="w-6 h-6" aria-hidden="true" /></span>
         <span class={`${badgeClass[tool_type] || "badge-tool"} text-xs`}>{labels[tool_type] || "Herramienta"}</span>
       </div>
       <h1 class="font-heading text-3xl md:text-4xl font-bold text-neutral-900 leading-tight">{title}</h1>
@@ -48,7 +48,7 @@ const badgeClass: Record<string,string> = { checklist: "badge-checklist", planne
     )}
     <div class="mt-12 pt-8 border-t border-neutral-200">
       <a href="/recursos" class="text-sm font-medium text-primary-700 hover:text-primary-800 no-underline inline-flex items-center gap-1">
-        <Icon name="lucide:arrow-left" class="w-4 h-4" /> Ver todas las herramientas
+        <Icon name="lucide:arrow-left" class="w-4 h-4"  aria-hidden="true"/> Ver todas las herramientas
       </a>
     </div>
   </article>

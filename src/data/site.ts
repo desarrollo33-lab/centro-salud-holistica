@@ -51,7 +51,7 @@ export const services: Service[] = [
       "Deterioro estructural del diente por corrosión del amalgam",
     ],
     relatedServices: ["implantes-ceramicos", "odontologia-biomimetica", "ozonoterapia"],
-    icon: "lucide:shield-plus",
+    icon: "lucide:shield-check",
     color: "teal",
   },
   {
@@ -125,7 +125,7 @@ export const services: Service[] = [
       "Sensibilidad térmica por falta de sellado hermético",
     ],
     relatedServices: ["implantes-ceramicos", "tratamiento-atm", "ozonoterapia"],
-    icon: "lucide:sparkles",
+    icon: "lucide:gem",
     color: "teal",
   },
   {
@@ -162,7 +162,7 @@ export const services: Service[] = [
       "Dolor de cuello y hombros por tensión mandibular",
     ],
     relatedServices: ["odontologia-biomimetica", "acupuntura", "nutricion"],
-    icon: "lucide:hand",
+    icon: "lucide:brain",
     color: "teal",
   },
   {
@@ -197,7 +197,7 @@ export const services: Service[] = [
       "Resistencia a antibióticos que complica tratamientos",
     ],
     relatedServices: ["tratamiento-atm", "eliminacion-amalgamas", "odontologia-biomimetica"],
-    icon: "lucide:wind",
+    icon: "lucide:zap",
     color: "teal",
   },
   {
@@ -266,7 +266,7 @@ export const services: Service[] = [
       "Sonrisa que no coincide con la expresión facial",
     ],
     relatedServices: ["implantes-ceramicos", "odontologia-biomimetica", "ortodoncia-funcional"],
-    icon: "lucide:syringe",
+    icon: "lucide:sparkles",
     color: "teal",
   },
   {
@@ -333,7 +333,7 @@ export const services: Service[] = [
       "Recuperación lenta después de cirugías",
     ],
     relatedServices: ["tratamiento-atm", "ozonoterapia", "nutricion"],
-    icon: "lucide:activity",
+    icon: "lucide:flower-2",
     color: "teal",
   },
 ];

@@ -23,7 +23,7 @@ import Badge from "../components/ui/Badge.astro";
       <div class="grid lg:grid-cols-2 gap-12 items-center">
         <div>
           <Badge variant="secondary" class="inline-flex items-center gap-1.5">
-            <Icon name="lucide:globe-2" class="w-4 h-4" /> Pacientes internacionales
+            <Icon name="lucide:globe-2" class="w-4 h-4"  aria-hidden="true"/> Pacientes internacionales
           </Badge>
           <h2 class="font-heading font-bold text-3xl text-neutral-900 mt-4 mb-4">
             Tu tratamiento dental en Chile
@@ -35,7 +35,7 @@ import Badge from "../components/ui/Badge.astro";
           <div class="space-y-4">
             <div class="flex items-start gap-4">
               <div class="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center shrink-0">
-                <Icon name="lucide:coins" class="w-5 h-5 text-primary-600" />
+                <Icon name="lucide:coins" class="w-5 h-5 text-primary-600"  aria-hidden="true"/>
               </div>
               <div>
                 <h3 class="font-semibold text-neutral-900 mb-1">Ahorro significativo</h3>
@@ -44,7 +44,7 @@ import Badge from "../components/ui/Badge.astro";
             </div>
             <div class="flex items-start gap-4">
               <div class="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center shrink-0">
-                <Icon name="lucide:building-2" class="w-5 h-5 text-primary-600" />
+                <Icon name="lucide:building-2" class="w-5 h-5 text-primary-600"  aria-hidden="true"/>
               </div>
               <div>
                 <h3 class="font-semibold text-neutral-900 mb-1">Calidad de excelencia</h3>
@@ -53,7 +53,7 @@ import Badge from "../components/ui/Badge.astro";
             </div>
             <div class="flex items-start gap-4">
               <div class="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center shrink-0">
-                <Icon name="lucide:globe" class="w-5 h-5 text-primary-600" />
+                <Icon name="lucide:globe" class="w-5 h-5 text-primary-600"  aria-hidden="true"/>
               </div>
               <div>
                 <h3 class="font-semibold text-neutral-900 mb-1">Un país hermoso</h3>
@@ -62,7 +62,7 @@ import Badge from "../components/ui/Badge.astro";
             </div>
             <div class="flex items-start gap-4">
               <div class="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center shrink-0">
-                <Icon name="lucide:languages" class="w-5 h-5 text-primary-600" />
+                <Icon name="lucide:languages" class="w-5 h-5 text-primary-600"  aria-hidden="true"/>
               </div>
               <div>
                 <h3 class="font-semibold text-neutral-900 mb-1">Español o inglés</h3>
@@ -116,7 +116,7 @@ import Badge from "../components/ui/Badge.astro";
         ].map((t) => (
           <div class="bg-neutral-50 rounded-lg p-4 flex items-center gap-3">
             <div class="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center shrink-0">
-              <Icon name={t.icon} class="w-5 h-5 text-primary-600" />
+              <Icon name={t.icon} class="w-5 h-5 text-primary-600" aria-hidden="true" />
             </div>
             <div>
               <p class="font-medium text-neutral-900 text-sm">{t.name}</p>

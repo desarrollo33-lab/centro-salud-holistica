@@ -12,7 +12,7 @@ import Container from "../../components/ui/Container.astro";
     <Container>
       <div class="max-w-3xl mx-auto">
         <h2 class="text-sm font-semibold text-neutral-400 uppercase tracking-wider mb-4 inline-flex items-center gap-2">
-          <Icon name="lucide:circle-check" class="w-4 h-4" /> Checklists
+          <Icon name="lucide:circle-check" class="w-4 h-4"  aria-hidden="true"/> Checklists
         </h2>
         <div class="space-y-3 mb-10">
           {[
@@ -27,7 +27,7 @@ import Container from "../../components/ui/Container.astro";
           ))}
         </div>
         <h2 class="text-sm font-semibold text-neutral-400 uppercase tracking-wider mb-4 inline-flex items-center gap-2">
-          <Icon name="lucide:clipboard-list" class="w-4 h-4" /> Planificadores
+          <Icon name="lucide:clipboard-list" class="w-4 h-4"  aria-hidden="true"/> Planificadores
         </h2>
         <div class="space-y-3 mb-10">
           {[{ slug: "plan-nutricional-semana-dental", title: "Plan Nutricional Semanal para Dientes Sanos", desc: "Menu semanal completo con lista de compras y recetas simples." }].map((t) => (
@@ -38,7 +38,7 @@ import Container from "../../components/ui/Container.astro";
           ))}
         </div>
         <h2 class="text-sm font-semibold text-neutral-400 uppercase tracking-wider mb-4 inline-flex items-center gap-2">
-          <Icon name="lucide:book-open" class="w-4 h-4" /> Guias paso a paso
+          <Icon name="lucide:book-open" class="w-4 h-4"  aria-hidden="true"/> Guias paso a paso
         </h2>
         <div class="space-y-3">
           {[

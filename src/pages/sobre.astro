@@ -24,7 +24,7 @@ import { siteConfig } from "../data/site";
       <div class="grid md:grid-cols-2 gap-12 items-start">
         <div>
           <Badge variant="secondary" class="inline-flex items-center gap-1.5">
-            <Icon name="lucide:user-round" class="w-4 h-4" /> El Doctor
+            <Icon name="lucide:user-round" class="w-4 h-4"  aria-hidden="true"/> El Doctor
           </Badge>
           <h2 class="font-heading font-bold text-3xl text-neutral-900 mt-4 mb-4">
             {siteConfig.doctor}
@@ -48,7 +48,7 @@ import { siteConfig } from "../data/site";
                 { t: "Miembro activo", s: "Sociedad de Odontología Integrativa de Chile (SIOCH)" },
               ].map((c) => (
                 <div class="flex items-start gap-3">
-                  <Icon name="lucide:check" class="w-5 h-5 text-primary-500 mt-0.5 shrink-0" />
+                  <Icon name="lucide:check" class="w-5 h-5 text-primary-500 mt-0.5 shrink-0"  aria-hidden="true"/>
                   <p class="text-neutral-600 text-sm"><strong class="text-neutral-800">{c.t}</strong>{c.s ? ` — ${c.s}` : ""}</p>
                 </div>
               ))}
@@ -66,7 +66,7 @@ import { siteConfig } from "../data/site";
           <div class="bg-gradient-to-br from-primary-100 to-secondary-50 rounded-lg aspect-square flex items-center justify-center sticky top-24">
             <div class="text-center px-8">
               <div class="w-32 h-32 bg-primary-200 rounded-full mx-auto mb-4 flex items-center justify-center">
-                <Icon name="lucide:user-round" class="w-16 h-16 text-primary-400" />
+                <Icon name="lucide:user-round" class="w-16 h-16 text-primary-400"  aria-hidden="true"/>
               </div>
               <p class="text-primary-700 text-sm font-medium">Foto profesional<br />por confirmar</p>
             </div>
@@ -99,7 +99,7 @@ import { siteConfig } from "../data/site";
           Compilé años de investigación en el libro "{siteConfig.bookTitle}", de lectura gratuita. 129 páginas sobre por qué tenemos las enfermedades que tenemos — y qué hacer al respecto.
         </p>
         <a href="/libro" class="inline-flex items-center gap-2 bg-primary-600 text-white font-semibold px-6 py-3 rounded-md hover:bg-primary-700 transition-colors no-underline">
-          <Icon name="lucide:book-open" class="w-5 h-5" /> Leer el libro gratuito <Icon name="lucide:arrow-right" class="w-4 h-4" />
+          <Icon name="lucide:book-open" class="w-5 h-5"  aria-hidden="true"/> Leer el libro gratuito <Icon name="lucide:arrow-right" class="w-4 h-4"  aria-hidden="true"/>
         </a>
       </div>
     </Container>

@@ -56,7 +56,7 @@ const related = getRelatedServices(service.relatedServices);
           <ul class="mt-6 space-y-3">
             {service.features.map((feature) => (
               <li class="flex items-start gap-3">
-                <Icon name="lucide:check" class="w-5 h-5 text-success mt-0.5 shrink-0" />
+                <Icon name="lucide:check" class="w-5 h-5 text-success mt-0.5 shrink-0"  aria-hidden="true"/>
                 <span class="text-neutral-700">{feature}</span>
               </li>
             ))}
@@ -79,12 +79,12 @@ const related = getRelatedServices(service.relatedServices);
             </dl>
             <div class="mt-6">
               <Button href="/contacto" variant="primary" class="w-full inline-flex items-center justify-center gap-2">
-                Solicitar evaluación <Icon name="lucide:arrow-right" class="w-4 h-4" />
+                Solicitar evaluación <Icon name="lucide:arrow-right" class="w-4 h-4"  aria-hidden="true"/>
               </Button>
             </div>
             <div class="mt-4 text-center">
               <a href="/sobre" class="text-sm text-neutral-500 hover:text-primary-600 no-underline inline-flex items-center gap-1">
-                Conoce al doctor <Icon name="lucide:arrow-right" class="w-3.5 h-3.5" />
+                Conoce al doctor <Icon name="lucide:arrow-right" class="w-3.5 h-3.5"  aria-hidden="true"/>
               </a>
             </div>
           </div>
@@ -120,7 +120,7 @@ const related = getRelatedServices(service.relatedServices);
       <div class="grid sm:grid-cols-2 gap-4 max-w-4xl mx-auto">
         {service.commonIssues.map((issue) => (
           <div class="flex items-start gap-3 bg-neutral-50 rounded-lg p-4">
-            <Icon name="lucide:zap" class="w-5 h-5 text-primary-600 mt-0.5 shrink-0" />
+            <Icon name="lucide:zap" class="w-5 h-5 text-primary-600 mt-0.5 shrink-0"  aria-hidden="true"/>
             <span class="text-sm text-neutral-700">{issue}</span>
           </div>
         ))}

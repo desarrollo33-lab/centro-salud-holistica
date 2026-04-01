@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Circle, Check, Sparkles, ThumbsUp, Flame, Hourglass } from 'lucide-react';
+import { Sparkles, ThumbsUp, Flame, Hourglass } from 'lucide-react';
 
 const SLUG = typeof window !== 'undefined' ? window.location.pathname.split('/').pop() : '';
 
@@ -91,7 +91,7 @@ export default function ChecklistTool() {
     return (
       <div className="flex items-center justify-center py-16">
         <div className="text-center">
-          <Hourglass className="w-10 h-10 text-neutral-300 mx-auto mb-3 animate-pulse" />
+          <Hourglass className="w-10 h-10 text-neutral-300 mx-auto mb-3 animate-pulse" aria-hidden="true" />
           <p className="text-neutral-500 text-sm">Cargando checklist...</p>
         </div>
       </div>
@@ -158,7 +158,7 @@ export default function ChecklistTool() {
                     on ? 'bg-emerald-500 border-emerald-500' : 'border-neutral-300'
                   }`}>
                     {on && (
-                      <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                       </svg>
                     )}
@@ -189,7 +189,7 @@ export default function ChecklistTool() {
       {/* Results */}
       {showResults && (
         <div className={`rounded-xl border-2 p-6 text-center ${getBorder()}`}>
-          <div className="mb-3 flex justify-center"><ResultIcon className="w-10 h-10" /></div>
+          <div className="mb-3 flex justify-center"><ResultIcon className="w-10 h-10" aria-hidden="true" /></div>
           <div className="text-sm text-neutral-500 mb-1">Tu puntaje: {checked}/{total} ({pct}%)</div>
           <h3 className={`text-xl font-bold mb-2 ${getResult().color}`}>
             {getResult().label}
@@ -206,7 +206,7 @@ export default function ChecklistTool() {
                   if (answers[key]) return null;
                   return (
                     <li key={key} className="flex items-start gap-2">
-                      <Circle className="w-3.5 h-3.5 text-neutral-400 mt-0.5 shrink-0" />
+                      <span className="w-1.5 h-1.5 bg-neutral-400 rounded-full mt-1.5 shrink-0" aria-hidden="true" />
                       <span>{item.q}</span>
                     </li>
                   );

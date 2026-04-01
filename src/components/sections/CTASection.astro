@@ -24,7 +24,7 @@ const {
     <p class="mt-4 text-lg text-white/80 max-w-xl mx-auto">{subtitle}</p>
     <div class="mt-8 flex flex-wrap justify-center gap-4">
       <Button href="/contacto" variant="white" size="lg">
-        Agendar mi consulta <Icon name="lucide:arrow-right" class="w-5 h-5" />
+        Agendar mi consulta <Icon name="lucide:arrow-right" class="w-5 h-5" aria-hidden="true" />
       </Button>
       {showPhone && (
         <Button href={`tel:${siteConfig.phoneTel}`} variant="outline-white" size="lg">
