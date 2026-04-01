@@ -227,64 +227,28 @@ const testimonials = [
   <!-- Pacientes Internacionales -->
   <Section bg="white" id="pacientes-internacionales">
     <Container>
-      <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+      <!-- Header + foto Dra. Maureira -->
+      <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center mb-12">
         <div data-animate="fade-left">
           <Badge variant="secondary" class="inline-flex items-center gap-1.5 mb-6">
             <Icon name="lucide:plane" class="w-4 h-4" /> Pacientes Internacionales
           </Badge>
           <h2 class="font-heading font-bold text-3xl md:text-4xl text-neutral-900 mb-4">
-            Tu tratamiento dental en Santiago, coordinado desde <span class="text-secondary-600">New York</span>
+            Salud que es viaje.<br />
+            <span class="text-secondary-600">Recuperación que es experiencia.</span>
           </h2>
-          <p class="text-lg text-neutral-600 leading-relaxed mb-6">
-            Planificamos todo a distancia. Tu tratamiento se realiza con <strong class="text-neutral-800">odontología digital e inteligencia artificial</strong> en sesiones largas que aprovechan al máximo tu estadía en Santiago.
+          <p class="text-lg text-neutral-600 leading-relaxed mb-4">
+            Un programa diseñado para pacientes de <strong class="text-neutral-800">New York, Moscú y Shanghái</strong> — con coordinación local en cada ciudad — que ahora también está disponible para pacientes en Chile. Tecnología de punta, un experto con formación internacional y la oportunidad de recuperar tu salud donde todo comenzó: <strong class="text-neutral-800">el sur de Chile</strong>.
           </p>
-          <div class="space-y-4 mb-8">
-            <div class="flex gap-3">
-              <div class="w-10 h-10 bg-primary-50 border border-neutral-200 rounded-lg flex items-center justify-center shrink-0">
-                <Icon name="lucide:video" class="w-5 h-5 text-primary-600" />
-              </div>
-              <div>
-                <h3 class="font-heading font-semibold text-neutral-900">Teleconsulta inicial</h3>
-                <p class="text-sm text-neutral-500">Evaluación completa a distancia con envío de estudios radiográficos y de salud digitales.</p>
-              </div>
-            </div>
-            <div class="flex gap-3">
-              <div class="w-10 h-10 bg-secondary-50 border border-neutral-200 rounded-lg flex items-center justify-center shrink-0">
-                <Icon name="lucide:building-2" class="w-5 h-5 text-secondary-600" />
-              </div>
-              <div>
-                <h3 class="font-heading font-semibold text-neutral-900">Oficina en Manhattan, New York</h3>
-                <p class="text-sm text-neutral-500">La <strong class="text-neutral-700">Dra. Sofía Maureira</strong> coordina tu caso y prepara cada detalle del viaje.</p>
-              </div>
-            </div>
-            <div class="flex gap-3">
-              <div class="w-10 h-10 bg-primary-50 border border-neutral-200 rounded-lg flex items-center justify-center shrink-0">
-                <Icon name="lucide:bed" class="w-5 h-5 text-primary-600" />
-              </div>
-              <div>
-                <h3 class="font-heading font-semibold text-neutral-900">Convenio con hoteles</h3>
-                <p class="text-sm text-neutral-500">Alojamiento cercano a la clínica en Las Condes, Santiago — todo gestionado para ti.</p>
-              </div>
-            </div>
-            <div class="flex gap-3">
-              <div class="w-10 h-10 bg-secondary-50 border border-neutral-200 rounded-lg flex items-center justify-center shrink-0">
-                <Icon name="lucide:clock" class="w-5 h-5 text-secondary-600" />
-              </div>
-              <div>
-                <h3 class="font-heading font-semibold text-neutral-900">Sesiones concentradas</h3>
-                <p class="text-sm text-neutral-500">Tratamientos completos en el menor tiempo posible — máximo aprovechamiento de tu viaje.</p>
-              </div>
-            </div>
-          </div>
-          <Button href="/pacientes-internacionales" variant="primary">
-            Agendar teleconsulta <Icon name="lucide:arrow-right" class="w-4 h-4" />
-          </Button>
+          <p class="text-sm text-neutral-500 leading-relaxed">
+            Desde la teleconsulta inicial hasta tu última sesión, cada detalle está gestionado. Sesiones clínicas concentradas en Santiago, seguidas de un plan de recuperación inmersivo en Chiloé — basado en los principios del <em>trípode de la salud</em> que el Dr. Ipinza describe en su libro: nutrición ancestral, movimiento en naturaleza y conexión con el entorno.
+          </p>
         </div>
         <div data-animate="fade-right" class="flex justify-center lg:justify-end">
           <div class="w-full max-w-[340px] aspect-square rounded-xl shadow-sm overflow-hidden">
             <img
               src="/images/dra-maureira.webp"
-              alt="Dra. Sofía Maureira — Coordinadora de Pacientes Internacionales, Manhattan New York"
+              alt="Dra. Sofía Maureira — Coordinadora de Pacientes Internacionales"
               width="340"
               height="340"
               class="w-full h-full object-cover"
@@ -292,6 +256,82 @@ const testimonials = [
             />
           </div>
         </div>
+      </div>
+
+      <!-- 3 fases del programa -->
+      <div data-stagger class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+        <article class="flex gap-4 p-5 bg-neutral-50 rounded-xl border border-neutral-200 hover:shadow-md transition-shadow duration-200">
+          <div class="w-10 h-10 bg-primary-50 border border-neutral-200 rounded-lg flex items-center justify-center shrink-0">
+            <Icon name="lucide:video" class="w-5 h-5 text-primary-600" />
+          </div>
+          <div>
+            <h3 class="font-heading font-semibold text-neutral-900 mb-1">1. Planificación a distancia</h3>
+            <p class="text-sm text-neutral-500 leading-relaxed">Teleconsulta con el Dr. Ipinza, envío de estudios digitales y diseño completo del tratamiento. Coordinadores en <strong class="text-neutral-700">New York</strong>, <strong class="text-neutral-700">Moscú</strong> y <strong class="text-neutral-700">Shanghái</strong>.</p>
+          </div>
+        </article>
+        <article class="flex gap-4 p-5 bg-neutral-50 rounded-xl border border-neutral-200 hover:shadow-md transition-shadow duration-200">
+          <div class="w-10 h-10 bg-secondary-50 border border-neutral-200 rounded-lg flex items-center justify-center shrink-0">
+            <Icon name="lucide:cpu" class="w-5 h-5 text-secondary-600" />
+          </div>
+          <div>
+            <h3 class="font-heading font-semibold text-neutral-900 mb-1">2. Tratamiento en Santiago</h3>
+            <p class="text-sm text-neutral-500 leading-relaxed">Sesiones concentradas con <strong class="text-neutral-700">IA, cirugía guiada e impresión 3D</strong>. Hotel asociado en Las Condes, a pasos del metro Los Dominicos.</p>
+          </div>
+        </article>
+        <article class="flex gap-4 p-5 bg-neutral-50 rounded-xl border border-neutral-200 hover:shadow-md transition-shadow duration-200">
+          <div class="w-10 h-10 bg-primary-50 border border-neutral-200 rounded-lg flex items-center justify-center shrink-0">
+            <Icon name="lucide:trees" class="w-5 h-5 text-primary-600" />
+          </div>
+          <div>
+            <h3 class="font-heading font-semibold text-neutral-900 mb-1">3. Recuperación en Chiloé</h3>
+            <p class="text-sm text-neutral-500 leading-relaxed">Estadía en hotel boutique rodeada de bosques, mar y comida ancestral. El <strong class="text-neutral-700">trípode de la salud</strong> en su forma más pura.</p>
+          </div>
+        </article>
+      </div>
+
+      <!-- Recuperación: detalle del programa en Chiloé -->
+      <div data-animate="fade-up" class="p-6 bg-neutral-50 rounded-xl border border-neutral-200 mb-8">
+        <h3 class="font-heading font-semibold text-xl text-neutral-900 mb-2">El viaje que inspiró el método</h3>
+        <p class="text-sm text-neutral-500 leading-relaxed mb-5">
+          Los bosques primigenios del sur, los canales australes, las costas de Chiloé — esos paisajes que el Dr. Ipinza recorrió durante años y que lo llevaron a escribir <em>Salud Evolutiva</em> — son ahora parte del plan de recuperación.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="flex items-start gap-3">
+            <div class="w-9 h-9 bg-white border border-neutral-200 rounded-lg flex items-center justify-center shrink-0">
+              <Icon name="lucide:salad" class="w-4 h-4 text-primary-600" />
+            </div>
+            <div>
+              <p class="font-semibold text-sm text-neutral-900">Nutrición ancestral</p>
+              <p class="text-xs text-neutral-500 mt-0.5">Alimentos locales, mariscos frescos, vegetales de huerto — la dieta evolutiva que describe el libro.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="w-9 h-9 bg-white border border-neutral-200 rounded-lg flex items-center justify-center shrink-0">
+              <Icon name="lucide:footprints" class="w-4 h-4 text-secondary-600" />
+            </div>
+            <div>
+              <p class="font-semibold text-sm text-neutral-900">Movimiento en naturaleza</p>
+              <p class="text-xs text-neutral-500 mt-0.5">Caminatas, navegación por canales, termas — el cuerpo se recupera mejor cuando se mueve.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="w-9 h-9 bg-white border border-neutral-200 rounded-lg flex items-center justify-center shrink-0">
+              <Icon name="lucide:heart" class="w-4 h-4 text-secondary-600" />
+            </div>
+            <div>
+              <p class="font-semibold text-sm text-neutral-900">Conexión y descanso</p>
+              <p class="text-xs text-neutral-500 mt-0.5">Hotel boutique, silencio, paisajes que inspiraron el libro. El cuarto pilar: comunidad y afecto.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA con doble mensaje -->
+      <div data-animate="fade-up" class="text-center">
+        <Button href="/pacientes-internacionales" variant="primary">
+          Conoce el programa completo <Icon name="lucide:arrow-right" class="w-4 h-4" />
+        </Button>
+        <p class="text-xs text-neutral-400 mt-3">Disponible para pacientes internacionales y residentes en Chile</p>
       </div>
     </Container>
   </Section>
