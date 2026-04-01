@@ -224,11 +224,71 @@ const testimonials = [
     </Container>
   </Section>
 
-  <!-- Testimonials -->
-  <Section bg="white">
+  <!-- Pacientes Internacionales -->
+  <Section bg="white" id="pacientes-internacionales">
     <Container>
-      <div data-animate="fade-up">
-        <Testimonials testimonials={testimonials} />
+      <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+        <div data-animate="fade-left">
+          <Badge variant="secondary" class="inline-flex items-center gap-1.5 mb-6">
+            <Icon name="lucide:plane" class="w-4 h-4" /> Pacientes Internacionales
+          </Badge>
+          <h2 class="font-heading font-bold text-3xl md:text-4xl text-neutral-900 mb-4">
+            Tu tratamiento dental en Santiago, coordinado desde <span class="text-secondary-600">New York</span>
+          </h2>
+          <p class="text-lg text-neutral-600 leading-relaxed mb-6">
+            Planificamos todo a distancia. Tu tratamiento se realiza con <strong class="text-neutral-800">odontología digital e inteligencia artificial</strong> en sesiones largas que aprovechan al máximo tu estadía en Santiago.
+          </p>
+          <div class="space-y-4 mb-8">
+            <div class="flex gap-3">
+              <div class="w-10 h-10 bg-primary-50 border border-neutral-200 rounded-lg flex items-center justify-center shrink-0">
+                <Icon name="lucide:video" class="w-5 h-5 text-primary-600" />
+              </div>
+              <div>
+                <h3 class="font-heading font-semibold text-neutral-900">Teleconsulta inicial</h3>
+                <p class="text-sm text-neutral-500">Evaluación completa a distancia con envío de estudios radiográficos y de salud digitales.</p>
+              </div>
+            </div>
+            <div class="flex gap-3">
+              <div class="w-10 h-10 bg-secondary-50 border border-neutral-200 rounded-lg flex items-center justify-center shrink-0">
+                <Icon name="lucide:building-2" class="w-5 h-5 text-secondary-600" />
+              </div>
+              <div>
+                <h3 class="font-heading font-semibold text-neutral-900">Oficina en Manhattan, New York</h3>
+                <p class="text-sm text-neutral-500">La <strong class="text-neutral-700">Dra. Sofía Maureira</strong> coordina tu caso y prepara cada detalle del viaje.</p>
+              </div>
+            </div>
+            <div class="flex gap-3">
+              <div class="w-10 h-10 bg-primary-50 border border-neutral-200 rounded-lg flex items-center justify-center shrink-0">
+                <Icon name="lucide:bed" class="w-5 h-5 text-primary-600" />
+              </div>
+              <div>
+                <h3 class="font-heading font-semibold text-neutral-900">Convenio con hoteles</h3>
+                <p class="text-sm text-neutral-500">Alojamiento cercano a la clínica en Las Condes, Santiago — todo gestionado para ti.</p>
+              </div>
+            </div>
+            <div class="flex gap-3">
+              <div class="w-10 h-10 bg-secondary-50 border border-neutral-200 rounded-lg flex items-center justify-center shrink-0">
+                <Icon name="lucide:clock" class="w-5 h-5 text-secondary-600" />
+              </div>
+              <div>
+                <h3 class="font-heading font-semibold text-neutral-900">Sesiones concentradas</h3>
+                <p class="text-sm text-neutral-500">Tratamientos completos en el menor tiempo posible — máximo aprovechamiento de tu viaje.</p>
+              </div>
+            </div>
+          </div>
+          <Button href="/pacientes-internacionales" variant="primary">
+            Agendar teleconsulta <Icon name="lucide:arrow-right" class="w-4 h-4" />
+          </Button>
+        </div>
+        <div data-animate="fade-right" class="flex justify-center lg:justify-end">
+          <div class="w-full max-w-[340px] aspect-square rounded-xl shadow-sm overflow-hidden bg-neutral-100 flex items-center justify-center">
+            <div class="text-center text-neutral-400">
+              <Icon name="lucide:user-round" class="w-12 h-12 mx-auto mb-2 opacity-50" />
+              <p class="text-sm font-medium">Dra. Sofía Maureira</p>
+              <p class="text-xs">Foto pendiente</p>
+            </div>
+          </div>
+        </div>
       </div>
     </Container>
   </Section>
