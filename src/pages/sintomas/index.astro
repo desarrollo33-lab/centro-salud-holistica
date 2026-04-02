@@ -1,0 +1,52 @@
+---
+import { Icon } from "astro-icon/components";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import HeroInner from "../../components/sections/HeroInner.astro";
+import Section from "../../components/ui/Section.astro";
+import Container from "../../components/ui/Container.astro";
+import { symptomPages } from "../../data/symptoms";
+---
+
+<BaseLayout
+  title="Síntomas y Condiciones — Centro de Salud Holística"
+  description="Encuentra el tratamiento adecuado para tu síntoma dental. Dolor de mandíbula, caries, encías sangrantes, bruxismo y más. Santiago, Chile."
+  ogImage="/images/og-default.png"
+>
+  <HeroInner
+    title="¿Qué síntoma tienes?"
+    subtitle="Encuentra información y tratamiento para las condiciones dentales más comunes"
+    breadcrumbs={[
+      { label: "Inicio", href: "/" },
+      { label: "Síntomas", href: "/sintomas" },
+    ]}
+  />
+
+  <Section>
+    <Container>
+      <div class="max-w-3xl mx-auto grid sm:grid-cols-2 gap-4">
+        {symptomPages.map((sp) => (
+          <a
+            href={`/sintomas/${sp.slug}`}
+            class="group flex items-start gap-3 p-5 rounded-xl border border-neutral-200 hover:border-primary-300 hover:shadow-md transition-all duration-200 no-underline"
+          >
+            <div class="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center shrink-0 group-hover:bg-primary-600 transition-colors">
+              <Icon name="lucide:search" class="w-5 h-5 text-primary-600 group-hover:text-white transition-colors" aria-hidden="true" />
+            </div>
+            <div>
+              <span class="text-base font-semibold text-neutral-900 group-hover:text-primary-700 transition-colors">
+                {sp.symptom}
+              </span>
+              <p class="text-sm text-neutral-500 mt-1 line-clamp-2">
+                {sp.description.slice(0, 100)}…
+              </p>
+              <span class="inline-flex items-center gap-1 text-sm text-accent font-medium mt-2 group-hover:gap-2 transition-all">
+                Ver tratamiento
+                <Icon name="lucide:arrow-right" class="w-3.5 h-3.5" aria-hidden="true" />
+              </span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </Container>
+  </Section>
+</BaseLayout>

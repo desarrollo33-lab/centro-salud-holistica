@@ -1,0 +1,142 @@
+---
+import { Icon } from "astro-icon/components";
+import { services, type Service } from "../../data/site";
+
+/**
+ * Mapping of content topics/keywords to related service slugs.
+ * Used to show contextual "Servicios relacionados" links in guides, chapters, and tools.
+ */
+const TOPIC_SERVICE_MAP: Record<string, string[]> = {
+  // Guías
+  "caries": ["odontologia-biomimetica", "nutricion"],
+  "prevención": ["odontologia-biomimetica", "ozonoterapia"],
+  "hidroxiapatita": ["odontologia-biomimetica"],
+  "periodontitis": ["tratamiento-atm", "nutricion", "ozonoterapia"],
+  "encías": ["tratamiento-atm", "nutricion", "ozonoterapia"],
+  "inflamación": ["nutricion", "ozonoterapia"],
+  "estrés": ["tratamiento-atm", "acupuntura"],
+  "bruxismo": ["tratamiento-atm", "acupuntura"],
+  "cortisol": ["acupuntura", "nutricion"],
+  "nutrición dental": ["nutricion"],
+  "vitamina D": ["nutricion"],
+  "vitamina K2": ["nutricion"],
+  "dieta ancestral": ["nutricion"],
+  "omega-3": ["nutricion"],
+  "mercurio": ["eliminacion-amalgamas"],
+  "amalgama": ["eliminacion-amalgamas"],
+  "metales pesados": ["eliminacion-amalgamas"],
+  "titanio": ["implantes-ceramicos"],
+  "implante": ["implantes-ceramicos"],
+  "circonio": ["implantes-ceramicos"],
+  "cerámica": ["implantes-ceramicos", "odontologia-biomimetica"],
+  "atm": ["tratamiento-atm"],
+  "mandíbula": ["tratamiento-atm"],
+  "cefalea": ["tratamiento-atm", "acupuntura"],
+  "mordida": ["tratamiento-atm", "ortodoncia-funcional"],
+  "ortodoncia": ["ortodoncia-funcional"],
+  "invisalign": ["ortodoncia-funcional"],
+  "ansiedad dental": ["acupuntura"],
+  "dolor crónico": ["acupuntura", "tratamiento-atm"],
+  "ozonoterapia": ["ozonoterapia"],
+  "embarazo": ["nutricion"],
+  "niñez": ["ortodoncia-funcional", "nutricion"],
+  "vejez": ["implantes-ceramicos", "nutricion"],
+  "sueño": ["tratamiento-atm", "nutricion"],
+  "estética": ["estetica-facial"],
+  "armonización": ["estetica-facial"],
+  "botox": ["estetica-facial"],
+  "bienestar": ["nutricion", "acupuntura"],
+  "salud-bucal": ["odontologia-biomimetica", "nutricion"],
+  "amalgamas-mercurio": ["eliminacion-amalgamas", "ozonoterapia"],
+  "mercurio": ["eliminacion-amalgamas"],
+  "amalgama": ["eliminacion-amalgamas"],
+  "ninez": ["ortodoncia-funcional", "nutricion"],
+  "adulto-mayor": ["implantes-ceramicos", "nutricion", "odontologia-biomimetica"],
+  "sueno": ["tratamiento-atm", "nutricion"],
+  "nutricion-dental": ["nutricion"],
+  "embarazo": ["nutricion"],
+  "estres": ["tratamiento-atm", "acupuntura"],
+};
+
+interface Props {
+  /** A single topic string (comma-separated) or array of keywords */
+  topics: string | string[];
+  /** Override service slugs directly (skips topic matching) */
+  serviceSlugs?: string[];
+  /** Max number of services to show */
+  max?: number;
+  /** Section heading */
+  heading?: string;
+}
+
+const {
+  topics: rawTopics,
+  serviceSlugs: overrideSlugs,
+  max = 3,
+  heading = "Servicios relacionados",
+} = Astro.props;
+
+let matchedServices: Service[];
+
+if (overrideSlugs && overrideSlugs.length > 0) {
+  matchedServices = overrideSlugs
+    .map((slug) => services.find((s) => s.slug === slug))
+    .filter(Boolean) as Service[];
+} else {
+  const topicList = Array.isArray(rawTopics) ? rawTopics : rawTopics.split(",").map((t) => t.trim().toLowerCase());
+
+  // Collect matching service slugs, preserving order of appearance
+  const seen = new Set<string>();
+  const matchedSlugs: string[] = [];
+
+  for (const topic of topicList) {
+    for (const [keyword, slugs] of Object.entries(TOPIC_SERVICE_MAP)) {
+      if (topic.includes(keyword.toLowerCase())) {
+        for (const slug of slugs) {
+          if (!seen.has(slug)) {
+            seen.add(slug);
+            matchedSlugs.push(slug);
+          }
+        }
+      }
+    }
+  }
+
+  matchedServices = matchedSlugs
+    .slice(0, max)
+    .map((slug) => services.find((s) => s.slug === slug))
+    .filter(Boolean) as Service[];
+}
+
+// Deduplicate by slug
+const unique = new Map<string, Service>();
+for (const svc of matchedServices) {
+  if (!unique.has(svc.slug)) unique.set(svc.slug, svc);
+}
+const finalServices = [...unique.values()].slice(0, max);
+---
+
+{finalServices.length > 0 && (
+  <aside class="mt-12 pt-8 border-t border-neutral-200">
+    <h3 class="text-lg font-heading font-semibold text-neutral-900 mb-4 inline-flex items-center gap-2">
+      <Icon name="lucide:link" class="w-5 h-5 text-primary-500" aria-hidden="true" />
+      {heading}
+    </h3>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+      {finalServices.map((svc) => (
+        <a
+          href={`/servicios/${svc.slug}`}
+          class="group flex items-start gap-3 p-4 rounded-lg border border-neutral-200 hover:border-primary-300 hover:bg-primary-50/50 transition-all duration-200 no-underline"
+        >
+          <div class="w-9 h-9 bg-primary-100 rounded-lg flex items-center justify-center shrink-0 group-hover:bg-primary-200 transition-colors">
+            <Icon name={svc.icon} class="w-4 h-4 text-primary-600" aria-hidden="true" />
+          </div>
+          <div class="min-w-0">
+            <span class="text-sm font-medium text-neutral-900 group-hover:text-primary-700 transition-colors">{svc.name}</span>
+            <p class="text-xs text-neutral-500 mt-0.5 line-clamp-2">{svc.description.slice(0, 80)}…</p>
+          </div>
+        </a>
+      ))}
+    </div>
+  </aside>
+)}

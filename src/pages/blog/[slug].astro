@@ -2,6 +2,11 @@
 import { Icon } from "astro-icon/components";
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { pb } from '../../lib/pocketbase';
+import { marked } from 'marked';
+import SchemaBreadcrumb from '../../components/seo/SchemaBreadcrumb.astro';
+import SchemaArticle from '../../components/seo/SchemaArticle.astro';
+import Breadcrumbs from '../../components/ui/Breadcrumbs.astro';
+import RelatedServices from '../../components/sections/RelatedServices.astro';
 
 export async function getStaticPaths() {
   try {
@@ -22,17 +27,9 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 
-function simpleMarkdown(text) {
+function renderMarkdown(text: string): string {
   if (!text) return '';
-  return text
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/## (.+)/g, '<h2>$1</h2>')
-    .replace(/### (.+)/g, '<h3>$1</h3>')
-    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-    .replace(/\n\n/g, '</p><p>')
-    .replace(/\n/g, '<br>');
+  return marked.parse(text, { async: false }) as string;
 }
 ---
 
@@ -56,15 +53,13 @@ function simpleMarkdown(text) {
     <article>
       <header class="bg-primary-700 text-white py-16">
         <div class="max-w-3xl mx-auto px-4">
-          <nav class="mb-6">
-            <ol class="flex items-center gap-2 text-sm">
-              <li><a href="/" class="text-white/70 hover:text-white">Inicio</a></li>
-              <li><span class="text-white/50">/</span></li>
-              <li><a href="/blog" class="text-white/70 hover:text-white">Blog</a></li>
-              <li><span class="text-white/50">/</span></li>
-              <li><span class="text-white/90 font-medium truncate max-w-[200px]">{post.title}</span></li>
-            </ol>
-          </nav>
+          <div class="mb-6">
+            <Breadcrumbs dark items={[
+              { label: 'Inicio', href: '/' },
+              { label: 'Blog', href: '/blog' },
+              { label: post.title, href: `/blog/${post.slug}` },
+            ]} />
+          </div>
           <div class="flex items-center gap-3 mb-4">
             <span class={`px-3 py-1 text-sm font-medium rounded ${
               post.author_type === 'doctor' 
@@ -85,11 +80,25 @@ function simpleMarkdown(text) {
           {post.excerpt && (
             <p class="mt-4 text-lg text-white/80">{post.excerpt}</p>
           )}
+          <SchemaBreadcrumb items={[
+            { name: 'Inicio', url: '/' },
+            { name: 'Blog', url: '/blog' },
+            { name: post.title, url: `/blog/${post.slug}` },
+          ]} />
+          <SchemaArticle
+            headline={post.title}
+            description={post.excerpt || `Artículo del blog del Dr. Ipinza`}
+            datePublished={post.published_at}
+            dateModified={post.updated_at || post.published_at}
+            authorType={post.author_type === 'doctor' ? 'doctor' : 'clinic'}
+          />
         </div>
       </header>
 
       <div class="max-w-3xl mx-auto px-4 py-12">
-        <div class="bg-white rounded-lg shadow-sm p-8 md:p-12 prose-evolutiva" set:html={simpleMarkdown(post.content_markdown)} />
+        <div class="bg-white rounded-lg shadow-sm p-8 md:p-12 prose-evolutiva" set:html={renderMarkdown(post.content_markdown)} />
+
+        <RelatedServices topics={`${post.title} ${post.excerpt || ''}`} />
 
         <div class="mt-12 bg-secondary-50 rounded-lg p-8 text-center">
           <h3 class="text-2xl font-bold text-neutral-900 font-heading mb-4">¿Quieres un plan personalizado?</h3>

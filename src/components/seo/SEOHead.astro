@@ -6,8 +6,10 @@ interface Props {
   ogImage?: string;
   ogType?: string;
   noindex?: boolean;
+  /** Alternate language versions [{ hreflang: 'en', href: '/en/sobre' }] */
+  alternates?: { hreflang: string; href: string }[];
 }
-const { title, description, canonical = Astro.url.href, ogImage = "/images/og-default.svg", ogType = "website", noindex = false } = Astro.props;
+const { title, description, canonical = Astro.url.href, ogImage = "/images/og-default.png", ogType = "website", noindex = false, alternates = [] } = Astro.props;
 import { siteConfig } from "../../data/site";
 const fullOgImage = ogImage.startsWith("http") ? ogImage : `${siteConfig.url}${ogImage}`;
 ---
@@ -27,3 +29,9 @@ const fullOgImage = ogImage.startsWith("http") ? ogImage : `${siteConfig.url}${o
 <meta name="twitter:image" content={fullOgImage} />
 <meta name="geo.region" content="CL-RM" />
 <meta name="geo.placename" content="Santiago" />
+{/* Language alternates — hreflang for multilingual SEO */}
+<link rel="alternate" hreflang="es" href={canonical} />
+<link rel="alternate" hreflang="x-default" href={`${siteConfig.url}`} />
+{alternates.map((alt) => (
+  <link rel="alternate" hreflang={alt.hreflang} href={alt.href} />
+))}

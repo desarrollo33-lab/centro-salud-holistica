@@ -1,0 +1,62 @@
+---
+import { siteConfig } from "../../data/site";
+
+interface Props {
+  headline: string;
+  description: string;
+  datePublished: string;
+  dateModified?: string;
+  image?: string;
+  authorType?: "doctor" | "clinic";
+}
+
+const {
+  headline,
+  description,
+  datePublished,
+  dateModified,
+  image,
+  authorType = "clinic",
+} = Astro.props;
+
+const author =
+  authorType === "doctor"
+    ? {
+        "@type": "Person",
+        name: "Dr. Joaquín Ipinza Hofmann",
+        jobTitle: "Cirujano Dentista",
+        url: `${siteConfig.url}/sobre`,
+      }
+    : {
+        "@type": "Organization",
+        name: siteConfig.name,
+        url: siteConfig.url,
+      };
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline,
+  description,
+  datePublished,
+  dateModified: dateModified || datePublished,
+  ...(image && {
+    image: image.startsWith("http")
+      ? image
+      : `${siteConfig.url}${image}`,
+  }),
+  author,
+  publisher: {
+    "@type": "Organization",
+    name: siteConfig.name,
+    url: siteConfig.url,
+    logo: {
+      "@type": "ImageObject",
+      url: `${siteConfig.url}/images/logo.webp`,
+    },
+  },
+  inLanguage: "es",
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

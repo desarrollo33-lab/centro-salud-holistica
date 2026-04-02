@@ -1,23 +1,43 @@
 ---
+import { siteConfig } from "../../data/site";
+
 interface Props {
   serviceName: string;
   serviceDescription: string;
   priceRange: string;
 }
+
 const { serviceName, serviceDescription, priceRange } = Astro.props;
-import { siteConfig } from "../../data/site";
+
 const schema = {
   "@context": "https://schema.org",
   "@type": "Service",
   name: serviceName,
-  provider: { "@type": "Dentist", name: siteConfig.name, url: siteConfig.url },
-  areaServed: { "@type": "Country", name: "Chile" },
+  provider: {
+    "@type": "Dentist",
+    name: siteConfig.name,
+    url: siteConfig.url,
+  },
+  areaServed: {
+    "@type": "City",
+    name: "Santiago",
+    containedInPlace: {
+      "@type": "AdministrativeArea",
+      name: "Región Metropolitana",
+      containedInPlace: { "@type": "Country", name: "Chile" },
+    },
+  },
   description: serviceDescription,
   offers: {
     "@type": "Offer",
     availability: "https://schema.org/InStock",
-    priceSpecification: { "@type": "PriceSpecification", priceCurrency: "CLP" },
+    priceSpecification: {
+      "@type": "PriceSpecification",
+      priceCurrency: "CLP",
+      price: undefined,
+    },
   },
 };
 ---
+
 <script type="application/ld+json" set:html={JSON.stringify(schema)} />

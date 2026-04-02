@@ -1,7 +1,12 @@
 ---
 import { Icon } from "astro-icon/components";
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import SchemaBreadcrumb from "../../components/seo/SchemaBreadcrumb.astro";
+import SchemaArticle from "../../components/seo/SchemaArticle.astro";
+import SchemaFAQ from "../../components/seo/SchemaFAQ.astro";
+import RelatedServices from "../../components/sections/RelatedServices.astro";
 import ChecklistTool from "../../components/ChecklistTool";
+import { getFaqs } from "../../data/faqs";
 import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
@@ -18,6 +23,7 @@ const readTime = Math.max(1, Math.round((word_count || 200) / 250));
 const iconMap: Record<string,string> = { checklist: "lucide:circle-check", planner: "lucide:clipboard-list", guide: "lucide:book-open" };
 const labels: Record<string,string> = { checklist: "Checklist", planner: "Planificador", guide: "Guia paso a paso" };
 const badgeClass: Record<string,string> = { checklist: "badge-checklist", planner: "badge-planner", guide: "badge-tool" };
+const faqs = getFaqs("tool", slug);
 ---
 
 <BaseLayout title={`${title} — Salud Evolutiva`} description={tool.data.meta_description || title}>
@@ -40,12 +46,25 @@ const badgeClass: Record<string,string> = { checklist: "badge-checklist", planne
         <span>·</span>
         <span>{readTime} min</span>
       </div>
+      <SchemaBreadcrumb items={[
+        { name: 'Inicio', url: '/' },
+        { name: 'Recursos', url: '/recursos' },
+        { name: title, url: `/recursos/${slug}` },
+      ]} />
+      <SchemaArticle
+        headline={title}
+        description={tool.data.meta_description || title}
+        datePublished={tool.data.date || new Date().toISOString()}
+        authorType="clinic"
+      />
+      {faqs.length > 0 && <SchemaFAQ faqs={faqs} />}
     </header>
     {tool_type === "checklist" ? (
       <ChecklistTool client:load />
     ) : (
       <div class="prose-evolutiva"><Content /></div>
     )}
+    <RelatedServices topics={tool.data.topic || title} />
     <div class="mt-12 pt-8 border-t border-neutral-200">
       <a href="/recursos" class="text-sm font-medium text-primary-700 hover:text-primary-800 no-underline inline-flex items-center gap-1">
         <Icon name="lucide:arrow-left" class="w-4 h-4"  aria-hidden="true"/> Ver todas las herramientas

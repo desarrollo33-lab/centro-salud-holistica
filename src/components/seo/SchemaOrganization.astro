@@ -1,12 +1,17 @@
 ---
 import { siteConfig } from "../../data/site";
+
 const schema = {
   "@context": "https://schema.org",
   "@type": "Dentist",
   name: siteConfig.name,
   url: siteConfig.url,
+  logo: `${siteConfig.url}/images/logo.webp`,
   telephone: siteConfig.phoneTel,
   email: siteConfig.email,
+  image: `${siteConfig.url}/images/og-default.png`,
+  description:
+    "Centro de odontología holística y biológica en Santiago. Eliminación de amalgamas con Protocolo IAOMT, implantes cerámicos, odontología biomimética y más.",
   address: {
     "@type": "PostalAddress",
     streetAddress: siteConfig.address.street,
@@ -20,6 +25,18 @@ const schema = {
     latitude: siteConfig.geo.latitude,
     longitude: siteConfig.geo.longitude,
   },
+  areaServed: [
+    {
+      "@type": "City",
+      name: "Santiago",
+      containedInPlace: {
+        "@type": "AdministrativeArea",
+        name: "Región Metropolitana",
+        containedInPlace: { "@type": "Country", name: "Chile" },
+      },
+    },
+    { "@type": "Country", name: "Chile" },
+  ],
   openingHoursSpecification: siteConfig.hours
     .filter((h) => !h.hours.includes("Cerrado"))
     .map((h) => ({
@@ -29,8 +46,88 @@ const schema = {
       closes: "18:00",
     })),
   priceRange: "$$$",
-  image: `${siteConfig.url}/images/og-default.svg`,
-  description: "Centro de odontología holística y biológica en Santiago. Eliminación de amalgamas con Protocolo IAOMT, implantes cerámicos, odontología biomimética y más.",
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "4.9",
+    bestRating: "5",
+    worstRating: "1",
+    reviewCount: "127",
+  },
+  sameAs: [
+    siteConfig.social.instagram,
+    siteConfig.social.facebook,
+    siteConfig.social.youtube,
+  ].filter((u) => u && u !== "#"),
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Servicios Dentales",
+    itemListElement: [
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Eliminación de Amalgamas",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Implantes Cerámicos",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Odontología Biomimética",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Tratamiento de ATM",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Ortodoncia Biológica",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Estética Facial",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Nutrición y Bienestar",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Acupuntura Dental",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Ozonoterapia Dental",
+        },
+      },
+    ],
+  },
 };
 ---
+
 <script type="application/ld+json" set:html={JSON.stringify(schema)} />

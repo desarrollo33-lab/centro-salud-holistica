@@ -1,6 +1,11 @@
 ---
 import { Icon } from "astro-icon/components";
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import SchemaBreadcrumb from "../../components/seo/SchemaBreadcrumb.astro";
+import SchemaArticle from "../../components/seo/SchemaArticle.astro";
+import SchemaFAQ from "../../components/seo/SchemaFAQ.astro";
+import RelatedServices from "../../components/sections/RelatedServices.astro";
+import { getFaqs } from "../../data/faqs";
 import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
@@ -19,6 +24,7 @@ const idx = sorted.findIndex((c) => c.slug === slug);
 const prev = idx > 0 ? { slug: sorted[idx - 1].slug, title: sorted[idx - 1].data.title } : null;
 const next = idx < sorted.length - 1 ? { slug: sorted[idx + 1].slug, title: sorted[idx + 1].data.title } : null;
 const readTime = Math.max(1, Math.round((word_count || 200) / 250));
+const faqs = getFaqs("chapter", slug);
 ---
 
 <BaseLayout title={`${title} — Salud Evolutiva`} description={`${title} — Capítulo del libro Salud Evolutiva del Dr. Ipinza. ${readTime} min de lectura.`}>
@@ -38,8 +44,21 @@ const readTime = Math.max(1, Math.round((word_count || 200) / 250));
         <span class="text-sm text-neutral-400">{readTime} min de lectura</span>
       </div>
       <h1 class="font-heading text-3xl md:text-4xl font-bold text-neutral-900 leading-tight">{title}</h1>
+      <SchemaBreadcrumb items={[
+        { name: 'Inicio', url: '/' },
+        { name: 'Libro', url: '/libro' },
+        { name: title, url: `/libro/${slug}` },
+      ]} />
+      <SchemaArticle
+        headline={title}
+        description={`${title} — Capítulo del libro Salud Evolutiva del Dr. Ipinza. ${readTime} min de lectura.`}
+        datePublished={chapter.data.date || new Date().toISOString()}
+        authorType="doctor"
+      />
+      {faqs.length > 0 && <SchemaFAQ faqs={faqs} />}
     </header>
     <div class="prose-evolutiva"><Content /></div>
+    <RelatedServices topics={title} heading="Servicios relacionados con este capítulo" />
     <nav class="chapter-nav">
       {prev ? (
         <a href={`/libro/${prev.slug}`}>
